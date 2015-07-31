@@ -1,0 +1,414 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CACC47FB1B6B9DDA00FDF2BF /* SwiftFlux.h in Headers */ = {isa = PBXBuildFile; fileRef = CACC47FA1B6B9DDA00FDF2BF /* SwiftFlux.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CACC48011B6B9DDA00FDF2BF /* SwiftFlux.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACC47F51B6B9DDA00FDF2BF /* SwiftFlux.framework */; };
+		CACC48081B6B9DDA00FDF2BF /* SwiftFluxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC48071B6B9DDA00FDF2BF /* SwiftFluxTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CACC48021B6B9DDA00FDF2BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CACC47EC1B6B9DDA00FDF2BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CACC47F41B6B9DDA00FDF2BF;
+			remoteInfo = SwiftFlux;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CACC47F51B6B9DDA00FDF2BF /* SwiftFlux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftFlux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CACC47F91B6B9DDA00FDF2BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CACC47FA1B6B9DDA00FDF2BF /* SwiftFlux.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftFlux.h; sourceTree = "<group>"; };
+		CACC48001B6B9DDA00FDF2BF /* SwiftFluxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftFluxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CACC48061B6B9DDA00FDF2BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CACC48071B6B9DDA00FDF2BF /* SwiftFluxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFluxTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CACC47F11B6B9DDA00FDF2BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CACC47FD1B6B9DDA00FDF2BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CACC48011B6B9DDA00FDF2BF /* SwiftFlux.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CACC47EB1B6B9DDA00FDF2BF = {
+			isa = PBXGroup;
+			children = (
+				CACC47F71B6B9DDA00FDF2BF /* SwiftFlux */,
+				CACC48041B6B9DDA00FDF2BF /* SwiftFluxTests */,
+				CACC47F61B6B9DDA00FDF2BF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CACC47F61B6B9DDA00FDF2BF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CACC47F51B6B9DDA00FDF2BF /* SwiftFlux.framework */,
+				CACC48001B6B9DDA00FDF2BF /* SwiftFluxTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CACC47F71B6B9DDA00FDF2BF /* SwiftFlux */ = {
+			isa = PBXGroup;
+			children = (
+				CACC47FA1B6B9DDA00FDF2BF /* SwiftFlux.h */,
+				CACC47F81B6B9DDA00FDF2BF /* Supporting Files */,
+			);
+			path = SwiftFlux;
+			sourceTree = "<group>";
+		};
+		CACC47F81B6B9DDA00FDF2BF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CACC47F91B6B9DDA00FDF2BF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CACC48041B6B9DDA00FDF2BF /* SwiftFluxTests */ = {
+			isa = PBXGroup;
+			children = (
+				CACC48071B6B9DDA00FDF2BF /* SwiftFluxTests.swift */,
+				CACC48051B6B9DDA00FDF2BF /* Supporting Files */,
+			);
+			path = SwiftFluxTests;
+			sourceTree = "<group>";
+		};
+		CACC48051B6B9DDA00FDF2BF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CACC48061B6B9DDA00FDF2BF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CACC47F21B6B9DDA00FDF2BF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CACC47FB1B6B9DDA00FDF2BF /* SwiftFlux.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CACC47F41B6B9DDA00FDF2BF /* SwiftFlux */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CACC480B1B6B9DDA00FDF2BF /* Build configuration list for PBXNativeTarget "SwiftFlux" */;
+			buildPhases = (
+				CACC47F01B6B9DDA00FDF2BF /* Sources */,
+				CACC47F11B6B9DDA00FDF2BF /* Frameworks */,
+				CACC47F21B6B9DDA00FDF2BF /* Headers */,
+				CACC47F31B6B9DDA00FDF2BF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftFlux;
+			productName = SwiftFlux;
+			productReference = CACC47F51B6B9DDA00FDF2BF /* SwiftFlux.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CACC47FF1B6B9DDA00FDF2BF /* SwiftFluxTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CACC480E1B6B9DDA00FDF2BF /* Build configuration list for PBXNativeTarget "SwiftFluxTests" */;
+			buildPhases = (
+				CACC47FC1B6B9DDA00FDF2BF /* Sources */,
+				CACC47FD1B6B9DDA00FDF2BF /* Frameworks */,
+				CACC47FE1B6B9DDA00FDF2BF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CACC48031B6B9DDA00FDF2BF /* PBXTargetDependency */,
+			);
+			name = SwiftFluxTests;
+			productName = SwiftFluxTests;
+			productReference = CACC48001B6B9DDA00FDF2BF /* SwiftFluxTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CACC47EC1B6B9DDA00FDF2BF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = mog2dev;
+				TargetAttributes = {
+					CACC47F41B6B9DDA00FDF2BF = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					CACC47FF1B6B9DDA00FDF2BF = {
+						CreatedOnToolsVersion = 6.4;
+					};
+				};
+			};
+			buildConfigurationList = CACC47EF1B6B9DDA00FDF2BF /* Build configuration list for PBXProject "SwiftFlux" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CACC47EB1B6B9DDA00FDF2BF;
+			productRefGroup = CACC47F61B6B9DDA00FDF2BF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CACC47F41B6B9DDA00FDF2BF /* SwiftFlux */,
+				CACC47FF1B6B9DDA00FDF2BF /* SwiftFluxTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CACC47F31B6B9DDA00FDF2BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CACC47FE1B6B9DDA00FDF2BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CACC47F01B6B9DDA00FDF2BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CACC47FC1B6B9DDA00FDF2BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CACC48081B6B9DDA00FDF2BF /* SwiftFluxTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CACC48031B6B9DDA00FDF2BF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CACC47F41B6B9DDA00FDF2BF /* SwiftFlux */;
+			targetProxy = CACC48021B6B9DDA00FDF2BF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CACC48091B6B9DDA00FDF2BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CACC480A1B6B9DDA00FDF2BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CACC480C1B6B9DDA00FDF2BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SwiftFlux/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CACC480D1B6B9DDA00FDF2BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SwiftFlux/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		CACC480F1B6B9DDA00FDF2BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftFluxTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CACC48101B6B9DDA00FDF2BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftFluxTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CACC47EF1B6B9DDA00FDF2BF /* Build configuration list for PBXProject "SwiftFlux" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CACC48091B6B9DDA00FDF2BF /* Debug */,
+				CACC480A1B6B9DDA00FDF2BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CACC480B1B6B9DDA00FDF2BF /* Build configuration list for PBXNativeTarget "SwiftFlux" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CACC480C1B6B9DDA00FDF2BF /* Debug */,
+				CACC480D1B6B9DDA00FDF2BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CACC480E1B6B9DDA00FDF2BF /* Build configuration list for PBXNativeTarget "SwiftFluxTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CACC480F1B6B9DDA00FDF2BF /* Debug */,
+				CACC48101B6B9DDA00FDF2BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CACC47EC1B6B9DDA00FDF2BF /* Project object */;
+}
