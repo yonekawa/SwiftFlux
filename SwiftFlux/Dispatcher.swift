@@ -83,6 +83,8 @@ extension Dispatcher {
                 case .Pending:
                     // Circular dependency detected while
                     continue
+                case .Handled:
+                    continue
                 default:
                     self.invokeCallback(id, action: action, result: result)
                 }
