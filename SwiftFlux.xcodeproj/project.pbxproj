@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA1FE2F71B6CC4BE00BC652D /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1FE2F61B6CC4BE00BC652D /* Result.framework */; };
+		CA315A061B6D2FB5004A8F2C /* SwiftFlux.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA3159FB1B6D2FB5004A8F2C /* SwiftFlux.framework */; };
 		CACA8E3E1B6CD85F00F051B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA8E3D1B6CD85F00F051B8 /* AppDelegate.swift */; };
 		CACA8E401B6CD85F00F051B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA8E3F1B6CD85F00F051B8 /* ViewController.swift */; };
 		CACA8E431B6CD85F00F051B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CACA8E411B6CD85F00F051B8 /* Main.storyboard */; };
@@ -30,9 +31,17 @@
 		CACC48121B6B9E4900FDF2BF /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC48111B6B9E4900FDF2BF /* Dispatcher.swift */; };
 		CACC48141B6B9E8000FDF2BF /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC48131B6B9E8000FDF2BF /* Action.swift */; };
 		CACC48161B6BA00D00FDF2BF /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC48151B6BA00D00FDF2BF /* Store.swift */; };
+		CAEF4EC21B6D3296005684E2 /* SwiftFlux.h in Headers */ = {isa = PBXBuildFile; fileRef = CACC47FA1B6B9DDA00FDF2BF /* SwiftFlux.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CA315A071B6D2FB5004A8F2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CACC47EC1B6B9DDA00FDF2BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA3159FA1B6D2FB5004A8F2C;
+			remoteInfo = "SwiftFlux-Mac";
+		};
 		CACA8E5D1B6CD87600F051B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CACC47EC1B6B9DDA00FDF2BF /* Project object */;
@@ -68,6 +77,8 @@
 /* Begin PBXFileReference section */
 		CA1FE2F51B6CBF4B00BC652D /* Demo.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Demo.playground; sourceTree = "<group>"; };
 		CA1FE2F61B6CC4BE00BC652D /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = ../Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		CA3159FB1B6D2FB5004A8F2C /* SwiftFlux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftFlux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA315A051B6D2FB5004A8F2C /* SwiftFluxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftFluxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACA8E391B6CD85F00F051B8 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACA8E3C1B6CD85F00F051B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CACA8E3D1B6CD85F00F051B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +103,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CA3159F71B6D2FB5004A8F2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA315A021B6D2FB5004A8F2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA315A061B6D2FB5004A8F2C /* SwiftFlux.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CACA8E361B6CD85F00F051B8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -187,6 +213,8 @@
 				CACC47F51B6B9DDA00FDF2BF /* SwiftFlux.framework */,
 				CACC48001B6B9DDA00FDF2BF /* SwiftFluxTests.xctest */,
 				CACA8E391B6CD85F00F051B8 /* DemoApp.app */,
+				CA3159FB1B6D2FB5004A8F2C /* SwiftFlux.framework */,
+				CA315A051B6D2FB5004A8F2C /* SwiftFluxTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -234,6 +262,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		CA3159F81B6D2FB5004A8F2C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAEF4EC21B6D3296005684E2 /* SwiftFlux.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CACC47F21B6B9DDA00FDF2BF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -245,6 +281,42 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		CA3159FA1B6D2FB5004A8F2C /* SwiftFlux-Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA315A121B6D2FB5004A8F2C /* Build configuration list for PBXNativeTarget "SwiftFlux-Mac" */;
+			buildPhases = (
+				CA3159F61B6D2FB5004A8F2C /* Sources */,
+				CA3159F71B6D2FB5004A8F2C /* Frameworks */,
+				CA3159F81B6D2FB5004A8F2C /* Headers */,
+				CA3159F91B6D2FB5004A8F2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwiftFlux-Mac";
+			productName = "SwiftFlux-Mac";
+			productReference = CA3159FB1B6D2FB5004A8F2C /* SwiftFlux.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CA315A041B6D2FB5004A8F2C /* SwiftFlux-MacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA315A131B6D2FB5004A8F2C /* Build configuration list for PBXNativeTarget "SwiftFlux-MacTests" */;
+			buildPhases = (
+				CA315A011B6D2FB5004A8F2C /* Sources */,
+				CA315A021B6D2FB5004A8F2C /* Frameworks */,
+				CA315A031B6D2FB5004A8F2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CA315A081B6D2FB5004A8F2C /* PBXTargetDependency */,
+			);
+			name = "SwiftFlux-MacTests";
+			productName = "SwiftFlux-MacTests";
+			productReference = CA315A051B6D2FB5004A8F2C /* SwiftFluxTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		CACA8E381B6CD85F00F051B8 /* DemoApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CACA8E591B6CD85F00F051B8 /* Build configuration list for PBXNativeTarget "DemoApp" */;
@@ -264,9 +336,9 @@
 			productReference = CACA8E391B6CD85F00F051B8 /* DemoApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CACC47F41B6B9DDA00FDF2BF /* SwiftFlux */ = {
+		CACC47F41B6B9DDA00FDF2BF /* SwiftFlux-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CACC480B1B6B9DDA00FDF2BF /* Build configuration list for PBXNativeTarget "SwiftFlux" */;
+			buildConfigurationList = CACC480B1B6B9DDA00FDF2BF /* Build configuration list for PBXNativeTarget "SwiftFlux-iOS" */;
 			buildPhases = (
 				CACC47F01B6B9DDA00FDF2BF /* Sources */,
 				CACC47F11B6B9DDA00FDF2BF /* Frameworks */,
@@ -277,14 +349,14 @@
 			);
 			dependencies = (
 			);
-			name = SwiftFlux;
+			name = "SwiftFlux-iOS";
 			productName = SwiftFlux;
 			productReference = CACC47F51B6B9DDA00FDF2BF /* SwiftFlux.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CACC47FF1B6B9DDA00FDF2BF /* SwiftFluxTests */ = {
+		CACC47FF1B6B9DDA00FDF2BF /* SwiftFlux-iOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CACC480E1B6B9DDA00FDF2BF /* Build configuration list for PBXNativeTarget "SwiftFluxTests" */;
+			buildConfigurationList = CACC480E1B6B9DDA00FDF2BF /* Build configuration list for PBXNativeTarget "SwiftFlux-iOSTests" */;
 			buildPhases = (
 				CACC47FC1B6B9DDA00FDF2BF /* Sources */,
 				CACC47FD1B6B9DDA00FDF2BF /* Frameworks */,
@@ -295,7 +367,7 @@
 			dependencies = (
 				CACC48031B6B9DDA00FDF2BF /* PBXTargetDependency */,
 			);
-			name = SwiftFluxTests;
+			name = "SwiftFlux-iOSTests";
 			productName = SwiftFluxTests;
 			productReference = CACC48001B6B9DDA00FDF2BF /* SwiftFluxTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -309,6 +381,12 @@
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = mog2dev;
 				TargetAttributes = {
+					CA3159FA1B6D2FB5004A8F2C = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					CA315A041B6D2FB5004A8F2C = {
+						CreatedOnToolsVersion = 6.4;
+					};
 					CACA8E381B6CD85F00F051B8 = {
 						CreatedOnToolsVersion = 6.4;
 					};
@@ -333,14 +411,30 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CACC47F41B6B9DDA00FDF2BF /* SwiftFlux */,
-				CACC47FF1B6B9DDA00FDF2BF /* SwiftFluxTests */,
+				CACC47F41B6B9DDA00FDF2BF /* SwiftFlux-iOS */,
+				CA3159FA1B6D2FB5004A8F2C /* SwiftFlux-Mac */,
+				CACC47FF1B6B9DDA00FDF2BF /* SwiftFlux-iOSTests */,
+				CA315A041B6D2FB5004A8F2C /* SwiftFlux-MacTests */,
 				CACA8E381B6CD85F00F051B8 /* DemoApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CA3159F91B6D2FB5004A8F2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA315A031B6D2FB5004A8F2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CACA8E371B6CD85F00F051B8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -368,6 +462,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CA3159F61B6D2FB5004A8F2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA315A011B6D2FB5004A8F2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CACA8E351B6CD85F00F051B8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -402,14 +510,19 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CA315A081B6D2FB5004A8F2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA3159FA1B6D2FB5004A8F2C /* SwiftFlux-Mac */;
+			targetProxy = CA315A071B6D2FB5004A8F2C /* PBXContainerItemProxy */;
+		};
 		CACA8E5E1B6CD87600F051B8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CACC47F41B6B9DDA00FDF2BF /* SwiftFlux */;
+			target = CACC47F41B6B9DDA00FDF2BF /* SwiftFlux-iOS */;
 			targetProxy = CACA8E5D1B6CD87600F051B8 /* PBXContainerItemProxy */;
 		};
 		CACC48031B6B9DDA00FDF2BF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CACC47F41B6B9DDA00FDF2BF /* SwiftFlux */;
+			target = CACC47F41B6B9DDA00FDF2BF /* SwiftFlux-iOS */;
 			targetProxy = CACC48021B6B9DDA00FDF2BF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -434,6 +547,90 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CA315A0E1B6D2FB5004A8F2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftFlux/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "i386 x86_64";
+			};
+			name = Debug;
+		};
+		CA315A0F1B6D2FB5004A8F2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = SwiftFlux/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "i386 x86_64";
+			};
+			name = Release;
+		};
+		CA315A101B6D2FB5004A8F2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftFluxTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = SwiftFluxTests;
+				SDKROOT = macosx;
+				VALID_ARCHS = "i386 x86_64";
+			};
+			name = Debug;
+		};
+		CA315A111B6D2FB5004A8F2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftFluxTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = SwiftFluxTests;
+				SDKROOT = macosx;
+				VALID_ARCHS = "i386 x86_64";
+			};
+			name = Release;
+		};
 		CACA8E551B6CD85F00F051B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -506,6 +703,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -549,6 +747,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -574,7 +773,7 @@
 				INFOPLIST_FILE = SwiftFlux/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -595,7 +794,7 @@
 				INFOPLIST_FILE = SwiftFlux/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -613,7 +812,7 @@
 				);
 				INFOPLIST_FILE = SwiftFluxTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SwiftFluxTests;
 			};
 			name = Debug;
 		};
@@ -626,13 +825,31 @@
 				);
 				INFOPLIST_FILE = SwiftFluxTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SwiftFluxTests;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CA315A121B6D2FB5004A8F2C /* Build configuration list for PBXNativeTarget "SwiftFlux-Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA315A0E1B6D2FB5004A8F2C /* Debug */,
+				CA315A0F1B6D2FB5004A8F2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA315A131B6D2FB5004A8F2C /* Build configuration list for PBXNativeTarget "SwiftFlux-MacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA315A101B6D2FB5004A8F2C /* Debug */,
+				CA315A111B6D2FB5004A8F2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CACA8E591B6CD85F00F051B8 /* Build configuration list for PBXNativeTarget "DemoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -640,6 +857,7 @@
 				CACA8E561B6CD85F00F051B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CACC47EF1B6B9DDA00FDF2BF /* Build configuration list for PBXProject "SwiftFlux" */ = {
 			isa = XCConfigurationList;
@@ -650,7 +868,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CACC480B1B6B9DDA00FDF2BF /* Build configuration list for PBXNativeTarget "SwiftFlux" */ = {
+		CACC480B1B6B9DDA00FDF2BF /* Build configuration list for PBXNativeTarget "SwiftFlux-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CACC480C1B6B9DDA00FDF2BF /* Debug */,
@@ -659,7 +877,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CACC480E1B6B9DDA00FDF2BF /* Build configuration list for PBXNativeTarget "SwiftFluxTests" */ = {
+		CACC480E1B6B9DDA00FDF2BF /* Build configuration list for PBXNativeTarget "SwiftFlux-iOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CACC480F1B6B9DDA00FDF2BF /* Debug */,
