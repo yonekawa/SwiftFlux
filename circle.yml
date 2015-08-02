@@ -2,8 +2,10 @@ machine:
   xcode:
     version: "6.4.0"
 
-checkout:
-  post:
+dependencies:
+  override:
+    - brew update
+    - brew install carthage
     - carthage bootstrap
 
 # despite what circle ci says, xctool 0.2.3 cannot run
@@ -12,5 +14,6 @@ checkout:
 # See: https://github.com/facebook/xctool/issues/415
 test:
   override:
+    - carthage build --no-skip-current
     - rake test:ios
     - rake test:osx
