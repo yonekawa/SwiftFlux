@@ -13,7 +13,7 @@ class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         EventEmitter.listen(TodoStore.instance, event: TodoStore.Event.List) { () -> Void in
             self.tableView.reloadData()
         }

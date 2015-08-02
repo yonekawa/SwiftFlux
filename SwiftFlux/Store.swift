@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import Result
 
 public protocol Store {
-    typealias Event
+    typealias Event: Hashable
 }

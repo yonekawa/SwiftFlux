@@ -9,24 +9,6 @@
 import Foundation
 import Result
 
-internal enum CallbackStatus<T: Action> {
-    case Waiting
-    case Pending
-    case Handled
-}
-
-internal class Callback<T: Action> {
-    let action: T
-    let handler: (Result<T.Payload, NSError>) -> Void
-
-    var status: CallbackStatus<T> = CallbackStatus.Waiting
-
-    init(action: T, handler: (Result<T.Payload, NSError>) -> Void) {
-        self.action = action
-        self.handler = handler
-    }
-}
-
 public class Dispatcher {
     private static let instance = Dispatcher()
     private var callbacks: Dictionary<String, AnyObject> = [:]
@@ -76,7 +58,7 @@ extension Dispatcher {
     
     private func register<T: Action>(action: T, handler: (Result<T.Payload, NSError>) -> Void) -> String {
         let nextId = "ID_\(++self.lastId)"
-        self.callbacks[nextId] = Callback<T>(action: action, handler: handler)
+        self.callbacks[nextId] = DispatchCallback<T>(action: action, handler: handler)
         return nextId
     }
 
@@ -86,7 +68,7 @@ extension Dispatcher {
     
     private func waitFor<T: Action>(ids: Array<String>, action: T, result: Result<T.Payload, NSError>) {
         for id in ids {
-            if let callback = self.callbacks[id] as? Callback<T> {
+            if let callback = self.callbacks[id] as? DispatchCallback<T> {
                 switch callback.status {
                 case .Handled:
                     continue
@@ -104,8 +86,8 @@ extension Dispatcher {
         self._isDispatching = true
         
         for (id, calllback) in self.callbacks {
-            if let callback = self.callbacks[id] as? Callback<T> {
-                callback.status = CallbackStatus.Waiting
+            if let callback = self.callbacks[id] as? DispatchCallback<T> {
+                callback.status = DispatchStatus.Waiting
             }
         }
     }
@@ -115,10 +97,28 @@ extension Dispatcher {
     }
     
     private func invokeCallback<T: Action>(id: String, action: T, result: Result<T.Payload, NSError>) {
-        if let callback = self.callbacks[id] as? Callback<T> {
-            callback.status = CallbackStatus.Pending
+        if let callback = self.callbacks[id] as? DispatchCallback<T> {
+            callback.status = DispatchStatus.Pending
             callback.handler(result)
-            callback.status = CallbackStatus.Handled
+            callback.status = DispatchStatus.Handled
         }
     }
+}
+
+internal class DispatchCallback<T: Action> {
+    let action: T
+    let handler: (Result<T.Payload, NSError>) -> Void
+    
+    var status: DispatchStatus = DispatchStatus.Waiting
+    
+    init(action: T, handler: (Result<T.Payload, NSError>) -> Void) {
+        self.action = action
+        self.handler = handler
+    }
+}
+
+internal enum DispatchStatus {
+    case Waiting
+    case Pending
+    case Handled
 }
