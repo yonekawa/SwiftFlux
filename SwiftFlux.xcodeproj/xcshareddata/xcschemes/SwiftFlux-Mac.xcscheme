@@ -7,7 +7,7 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
-            buildForTesting = "YES"
+            buildForTesting = "NO"
             buildForRunning = "YES"
             buildForProfiling = "YES"
             buildForArchiving = "YES"
@@ -22,7 +22,7 @@
          </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "YES"
+            buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
             buildForAnalyzing = "YES">
@@ -56,9 +56,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CA3159FA1B6D2FB5004A8F2C"
-            BuildableName = "SwiftFlux.framework"
-            BlueprintName = "SwiftFlux-Mac"
+            BlueprintIdentifier = "CA315A041B6D2FB5004A8F2C"
+            BuildableName = "SwiftFluxTests.xctest"
+            BlueprintName = "SwiftFlux-MacTests"
             ReferencedContainer = "container:SwiftFlux.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
