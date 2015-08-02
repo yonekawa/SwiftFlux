@@ -42,15 +42,19 @@ extension Dispatcher {
             return self._isDispatching
         }
     }
-    
+
     public class func dispatch<T: Action>(action: T, result: Result<T.Payload, NSError>) {
         instance.dispatch(action, result: result)
     }
 
-    public class func register<T: Action>(action: T, handler: (Result<T.Payload, NSError>) -> Void) {
-        instance.register(action, handler: handler)
+    public class func register<T: Action>(action: T, handler: (Result<T.Payload, NSError>) -> Void) -> String {
+        return instance.register(action, handler: handler)
     }
-    
+
+    public class func unregister(id: String) {
+        instance.unregister(id)
+    }
+
     public class func waitFor<T: Action>(ids: Array<String>, action: T, result: Result<T.Payload, NSError>) {
         instance.waitFor(ids, action: action, result: result)
     }
@@ -75,15 +79,19 @@ extension Dispatcher {
         self.callbacks[nextId] = Callback<T>(action: action, handler: handler)
         return nextId
     }
+
+    private func unregister(id: String) {
+        self.callbacks.removeValueForKey(id)
+    }
     
     private func waitFor<T: Action>(ids: Array<String>, action: T, result: Result<T.Payload, NSError>) {
         for id in ids {
             if let callback = self.callbacks[id] as? Callback<T> {
                 switch callback.status {
+                case .Handled:
+                    continue
                 case .Pending:
                     // Circular dependency detected while
-                    continue
-                case .Handled:
                     continue
                 default:
                     self.invokeCallback(id, action: action, result: result)

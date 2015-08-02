@@ -11,7 +11,7 @@ import SwiftFlux
 import Result
 
 class TodoAction {
-    class List : Action {
+    class List: Action {
         typealias Payload = [Todo]
         func invoke() {
             let todos = [Todo(title: "List ToDo 1"), Todo(title: "List ToDo 2"), Todo(title: "List ToDo 3")]
@@ -19,7 +19,7 @@ class TodoAction {
         }
     }
 
-    class Create : Action {
+    class Create: Action {
         typealias Payload = Todo
 
         private var title: String = ""
