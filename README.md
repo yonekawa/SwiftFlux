@@ -2,7 +2,7 @@
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-SwiftFlux is an implementation of Facebook's Flux architecure for Swift. 
+SwiftFlux is an implementation of [Facebook's Flux architecure](https://facebook.github.io/flux/) for Swift. 
 It provides concept of "one-way data flow" with **type-safe** modules by Swift language.
 
 - Type of an action payload is inferred from the type of its action.
@@ -31,7 +31,7 @@ It provides concept of "one-way data flow" with **type-safe** modules by Swift l
 - Define `invoke` to dispatching action to stores.
 - You can call api request here (you can use asynchronous request).
 
-```
+```swift
 class TodoAction {
     class Create : Action {
         typealias Payload = Todo
@@ -49,7 +49,7 @@ class TodoAction {
 - Register any subscribe action callback to dispatcher.
 - Unbox action result value by Either in callback.
 
-```
+```swift
 class TodoStore : Store {
     static let instance = TodoStore()
 
@@ -84,7 +84,7 @@ class TodoStore : Store {
 - Listen store's event by `EventEmitter`
 - Get result from store's public interface.
 
-```
+```swift
 EventEmitter.listen(TodoStore.instance, event: TodoStore.Event.List) { () -> Void in
     for todo in TodoStore.instance.list {
         plintln(todo.title)
@@ -94,7 +94,7 @@ EventEmitter.listen(TodoStore.instance, event: TodoStore.Event.List) { () -> Voi
 
 ### Step 4: Create and invoke Action from View
 
-```
+```swift
 TodoAction.List().invoke()
 ```
 
