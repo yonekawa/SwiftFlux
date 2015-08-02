@@ -57,7 +57,7 @@ extension Dispatcher {
     }
     
     private func register<T: Action>(action: T, handler: (Result<T.Payload, NSError>) -> Void) -> String {
-        let nextId = "ID_\(++self.lastId)"
+        let nextId = "DISPATCH_CALLBACK_\(++self.lastId)"
         self.callbacks[nextId] = DispatchCallback<T>(action: action, handler: handler)
         return nextId
     }
