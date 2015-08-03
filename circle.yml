@@ -4,6 +4,7 @@ machine:
 
 dependencies:
   pre:
+    - brew update
     - brew install carthage
 
 # despite what circle ci says, xctool 0.2.3 cannot run
