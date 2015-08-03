@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA37943C1B6F65BA000AE5F2 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CAEF5DB51B6D3951005684E2 /* Nimble.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CA37943D1B6F65BA000AE5F2 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CAEF56D71B6D36D3005684E2 /* Quick.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CA37943E1B6F65CF000AE5F2 /* SwiftFlux.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CA3159FB1B6D2FB5004A8F2C /* SwiftFlux.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CA37943F1B6F65DF000AE5F2 /* Box.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CAEF56D51B6D36D3005684E2 /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CA3794401B6F65DF000AE5F2 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CAEF56D81B6D36D3005684E2 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CA3794441B6F6632000AE5F2 /* SwiftFlux.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CACC47F51B6B9DDA00FDF2BF /* SwiftFlux.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CA7C53FA1B6DEB8D00F393CB /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEF56D01B6D36D3005684E2 /* Box.framework */; };
 		CA7C53FB1B6DEB8D00F393CB /* Box.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAEF56D01B6D36D3005684E2 /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA7C53FC1B6DEB8D00F393CB /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEF56D31B6D36D3005684E2 /* Result.framework */; };
@@ -51,7 +57,6 @@
 		CAEF5DCF1B6D3D64005684E2 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC48111B6B9E4900FDF2BF /* Dispatcher.swift */; };
 		CAEF5DD21B6DC0F7005684E2 /* Nimble.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CAEF5DB01B6D3927005684E2 /* Nimble.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CAEF5DD31B6DC0F7005684E2 /* Quick.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CAEF56D21B6D36D3005684E2 /* Quick.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CAEF5DD51B6DC7A5005684E2 /* SwiftFlux.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CACC47F51B6B9DDA00FDF2BF /* SwiftFlux.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CAEF5DD61B6DC7B6005684E2 /* Box.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CAEF56D01B6D36D3005684E2 /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAEF5DD71B6DC7B6005684E2 /* Result.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CAEF56D31B6D36D3005684E2 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -81,6 +86,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		CA37943B1B6F65A9000AE5F2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CA37943F1B6F65DF000AE5F2 /* Box.framework in CopyFiles */,
+				CA3794401B6F65DF000AE5F2 /* Result.framework in CopyFiles */,
+				CA37943E1B6F65CF000AE5F2 /* SwiftFlux.framework in CopyFiles */,
+				CA37943C1B6F65BA000AE5F2 /* Nimble.framework in CopyFiles */,
+				CA37943D1B6F65BA000AE5F2 /* Quick.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CACA8E5F1B6CD87700F051B8 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -100,9 +119,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				CA3794441B6F6632000AE5F2 /* SwiftFlux.framework in Copy Files (2 items) */,
 				CAEF5DD61B6DC7B6005684E2 /* Box.framework in Copy Files (2 items) */,
 				CAEF5DD71B6DC7B6005684E2 /* Result.framework in Copy Files (2 items) */,
-				CAEF5DD51B6DC7A5005684E2 /* SwiftFlux.framework in Copy Files (2 items) */,
 				CAEF5DD21B6DC0F7005684E2 /* Nimble.framework in Copy Files (2 items) */,
 				CAEF5DD31B6DC0F7005684E2 /* Quick.framework in Copy Files (2 items) */,
 			);
@@ -399,6 +418,7 @@
 				CA315A011B6D2FB5004A8F2C /* Sources */,
 				CA315A021B6D2FB5004A8F2C /* Frameworks */,
 				CA315A031B6D2FB5004A8F2C /* Resources */,
+				CA37943B1B6F65A9000AE5F2 /* CopyFiles */,
 			);
 			buildRules = (
 			);
