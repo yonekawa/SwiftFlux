@@ -101,4 +101,4 @@ TodoAction.List().invoke()
 
 ## License
 
-SwiftFlux is released under the [MIT License](https://github.com/yonekawa/SwiftFlux/blob/master/LICENSE)
+SwiftFlux is released under the [MIT License](https://github.com/yonekawa/SwiftFlux/blob/master/LICENSE).
