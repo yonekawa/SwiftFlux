@@ -14,6 +14,6 @@ dependencies:
 # See: https://github.com/facebook/xctool/issues/415
 test:
   override:
-    - carthage bootstrap
+    - carthage bootstrap --verbose
     - rake test:ios
     - rake test:osx
