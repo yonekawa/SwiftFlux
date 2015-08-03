@@ -1,7 +1,6 @@
 # SwiftFlux
 
 [![Circle CI](https://img.shields.io/circleci/project/yonekawa/SwiftFlux/master.svg?style=flat)](https://circleci.com/gh/yonekawa/SwiftFlux)
-[![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/yonekawa/SwiftFlux/master/LICENSE)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 SwiftFlux is an implementation of [Facebook's Flux architecure](https://facebook.github.io/flux/) for Swift. 
@@ -102,4 +101,4 @@ TodoAction.List().invoke()
 
 ## License
 
-MIT License. See the [LICENSE](https://github.com/yonekawa/SwiftFlux/blob/master/LICENSE) file for details.
+SwiftFlux is released under the [MIT License](https://github.com/yonekawa/SwiftFlux/blob/master/LICENSE)
