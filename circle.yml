@@ -3,10 +3,12 @@ machine:
     version: "6.3.1"
 
 dependencies:
-  pre:
+  override:
     - sudo chown :wheel /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ *.simruntime/Contents/Resources/RuntimeRoot/usr/lib/dyld_sim
+    - ./scripts/import-certificates
     - brew update
     - brew install carthage
+    - carthage bootstrap
 
 # despite what circle ci says, xctool 0.2.3 cannot run
 # ios simulator tests on iOS frameworks for whatever reason.
@@ -14,6 +16,6 @@ dependencies:
 # See: https://github.com/facebook/xctool/issues/415
 test:
   override:
-    - carthage bootstrap --verbose
+    - carthage build --no-skip-current
     - rake test:ios
     - rake test:osx
