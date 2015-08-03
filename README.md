@@ -1,6 +1,7 @@
 # SwiftFlux
 
 [![Circle CI](https://img.shields.io/circleci/project/yonekawa/SwiftFlux/master.svg?style=flat)](https://circleci.com/gh/yonekawa/SwiftFlux)
+[![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/yonekawa/SwiftFlux/master/LICENSE)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 SwiftFlux is an implementation of [Facebook's Flux architecure](https://facebook.github.io/flux/) for Swift. 
@@ -8,7 +9,7 @@ It provides concept of "one-way data flow" with **type-safe** modules by Swift l
 
 - Type of an action payload is inferred from the type of its action.
 - A result of an action is represented by [Result](https://github.com/antitypical/Result), which is also known as Either.
-- EventEmitter supports to fire event of store state changed.
+- EventEmitter supports to fire event of store changed.
 
 # Requirements
 
@@ -26,7 +27,7 @@ It provides concept of "one-way data flow" with **type-safe** modules by Swift l
 
 ## Usage
 
-### Step 1: Define action
+### Step 1: Define Action
 
 - Assign type that represents a result object to Payload `typealiase`.
 - Define `invoke` to dispatching action to stores.
@@ -101,4 +102,4 @@ TodoAction.List().invoke()
 
 ## License
 
-MIT License. See the `LICENSE` file for details.
+MIT License. See the [LICENSE](https://github.com/yonekawa/SwiftFlux/blob/master/LICENSE) file for details.
