@@ -33,7 +33,7 @@ class DispatcherSpec: QuickSpec {
                 fails = []
                 callbacks = []
 
-                let id1 = Dispatcher.register(TestAction()) { (result) in
+                let id1 = Dispatcher.register(TestAction.self) { (result) in
                     switch result {
                     case .Success(let box):
                         results.append("\(box.value.name)1")
@@ -41,7 +41,7 @@ class DispatcherSpec: QuickSpec {
                         fails.append("fail")
                     }
                 }
-                let id2 = Dispatcher.register(TestAction()) { (result) in
+                let id2 = Dispatcher.register(TestAction.self) { (result) in
                     switch result {
                     case .Success(let box):
                         results.append("\(box.value.name)2")
@@ -61,7 +61,7 @@ class DispatcherSpec: QuickSpec {
             
             context("when action succeeded") {
                 it("should dispatch to registered callback handlers") {
-                    Dispatcher.dispatch(TestAction(), result: Result(value: TestModel(name: "test")))
+                    Dispatcher.dispatch(TestAction.self, result: Result(value: TestModel(name: "test")))
                     expect(results.count).to(equal(2))
                     expect(fails.isEmpty).to(beTruthy())
                     expect(results).to(contain("test1", "test2"))
@@ -70,7 +70,7 @@ class DispatcherSpec: QuickSpec {
             
             context("when action failed") {
                 it("should dispatch to registered callback handlers") {
-                    Dispatcher.dispatch(TestAction(), result: Result(error: NSError()))
+                    Dispatcher.dispatch(TestAction.self, result: Result(error: NSError()))
                     expect(fails.count).to(equal(2))
                     expect(results.isEmpty).to(beTruthy())
                 }

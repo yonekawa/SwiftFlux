@@ -15,7 +15,7 @@ class TodoAction {
         typealias Payload = [Todo]
         func invoke() {
             let todos = [Todo(title: "List ToDo 1"), Todo(title: "List ToDo 2"), Todo(title: "List ToDo 3")]
-            Dispatcher.dispatch(self, result: Result(value: todos))
+            Dispatcher.dispatch(self.dynamicType, result: Result(value: todos))
         }
     }
 
@@ -30,7 +30,7 @@ class TodoAction {
         }
         
         func invoke() {
-            Dispatcher.dispatch(self, result: Result(value: Todo(title: self.title)))
+            Dispatcher.dispatch(self.dynamicType, result: Result(value: Todo(title: self.title)))
         }
     }
 }
