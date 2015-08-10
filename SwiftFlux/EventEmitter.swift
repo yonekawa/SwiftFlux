@@ -12,6 +12,7 @@ public class EventEmitter {
     private static let instance = EventEmitter()
     private var listenes: Dictionary<String, AnyObject> = [:]
     private var lastListenerIdentifier = 0
+    private init() {}
 }
 
 extension EventEmitter {

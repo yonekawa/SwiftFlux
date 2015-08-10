@@ -14,6 +14,7 @@ public class Dispatcher {
     private var callbacks: Dictionary<String, AnyObject> = [:]
     private var _isDispatching = false
     private var lastDispatchIdentifier = 0
+    private init() {}
 }
 
 extension Dispatcher {
