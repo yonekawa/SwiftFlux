@@ -10,7 +10,7 @@ import Foundation
 
 public class EventEmitter {
     private static let instance = EventEmitter()
-    private var listenes: Dictionary<String, AnyObject> = [:]
+    private var eventListeners: Dictionary<String, AnyObject> = [:]
     private var lastListenerIdentifier = 0
     private init() {}
 }
@@ -32,12 +32,12 @@ extension EventEmitter {
 extension EventEmitter {
     private func listen<T: Store>(store: T, event: T.Event, handler: () -> Void) -> String {
         let nextListenerIdentifier = "EVENT_LISTENER_\(++lastListenerIdentifier)"
-        self.listenes[nextListenerIdentifier] = EventListener<T>(store: store, event: event, handler: handler)
+        self.eventListeners[nextListenerIdentifier] = EventListener<T>(store: store, event: event, handler: handler)
         return nextListenerIdentifier
     }
 
     private func emit<T: Store>(store: T, event: T.Event) {
-        for (key, value) in self.listenes {
+        for (key, value) in self.eventListeners {
             if let listener = value as? EventListener<T> {
                 if listener.event == event {
                     listener.handler()
@@ -47,7 +47,7 @@ extension EventEmitter {
     }
 
     private func unlisten(identifier: String) {
-        self.listenes.removeValueForKey(identifier)
+        self.eventListeners.removeValueForKey(identifier)
     }
 }
 
