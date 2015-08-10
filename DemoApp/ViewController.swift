@@ -10,26 +10,27 @@ import UIKit
 import SwiftFlux
 
 class ViewController: UITableViewController {
+    let todoStore: TodoStore = TodoStore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        EventEmitter.listen(TodoStore.instance, event: TodoStore.Event.List) { () -> Void in
+        self.todoStore.eventEmitter.listen(self.todoStore, event: TodoStore.Event.List) { () -> Void in
             self.tableView.reloadData()
         }
-        EventEmitter.listen(TodoStore.instance, event: TodoStore.Event.Created) { () -> Void in
+        self.todoStore.eventEmitter.listen(self.todoStore, event: TodoStore.Event.Created) { () -> Void in
             self.tableView.reloadData()
         }
         TodoAction.List().invoke()
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TodoStore.instance.list.count
+        return self.todoStore.list.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("TodoCell") as! UITableViewCell
-        cell.textLabel!.text = TodoStore.instance.list[indexPath.row].title
+        cell.textLabel!.text = self.todoStore.list[indexPath.row].title
         return cell
     }
 

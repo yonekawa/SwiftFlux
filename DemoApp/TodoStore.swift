@@ -12,13 +12,13 @@ import Result
 import Box
 
 class TodoStore : Store {
-    static let instance = TodoStore()
-
     enum TodoEvent {
         case List
         case Created
     }
     typealias Event = TodoEvent
+
+    let eventEmitter = EventEmitter()
     
     private var todos = [Todo]()
     var list: Array<Todo> {
@@ -32,7 +32,7 @@ class TodoStore : Store {
             switch result {
             case .Success(let box):
                 self.todos = box.value
-                EventEmitter.emit(self, event: TodoEvent.List)
+                self.eventEmitter.emit(self, event: TodoEvent.List)
             case .Failure(let box):
                 break;
             }
@@ -42,7 +42,7 @@ class TodoStore : Store {
             switch result {
             case .Success(let box):
                 self.todos.insert(box.value, atIndex: 0)
-                EventEmitter.emit(self, event: TodoEvent.Created)
+                self.eventEmitter.emit(self, event: TodoEvent.Created)
             case .Failure(let box):
                 break;
             }
