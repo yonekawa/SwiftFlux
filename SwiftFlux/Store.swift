@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol Store {
-    typealias Event: Hashable
+    typealias Event: Equatable
 }

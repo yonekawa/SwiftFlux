@@ -11,5 +11,4 @@ import Result
 
 public protocol Action {
     typealias Payload
-    func invoke() -> Void
 }

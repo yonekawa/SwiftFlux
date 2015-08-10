@@ -13,11 +13,9 @@ public class Dispatcher {
     private static let instance = Dispatcher()
     private var callbacks: Dictionary<String, AnyObject> = [:]
     private var _isDispatching = false
-    private var lastId = 0
-    private init() {}
+    private var lastDispatchIdentifier = 0
 }
 
-// Public interfaces
 extension Dispatcher {
     public var isDispathing: Bool {
         get {
@@ -33,23 +31,22 @@ extension Dispatcher {
         return instance.register(action, handler: handler)
     }
 
-    public class func unregister(id: String) {
-        instance.unregister(id)
+    public class func unregister(identifier: String) {
+        instance.unregister(identifier)
     }
 
-    public class func waitFor<T: Action>(ids: Array<String>, action: T.Type, result: Result<T.Payload, NSError>) {
-        instance.waitFor(ids, action: action, result: result)
+    public class func waitFor<T: Action>(identifiers: Array<String>, action: T.Type, result: Result<T.Payload, NSError>) {
+        instance.waitFor(identifiers, action: action, result: result)
     }
 }
 
-// Private implementation
 extension Dispatcher {
     private func dispatch<T: Action>(action: T.Type, result: Result<T.Payload, NSError>) {
         objc_sync_enter(self)
         
         self.startDispatching(action)
-        for id in self.callbacks.keys {
-            self.invokeCallback(id, action: action, result: result)
+        for identifier in self.callbacks.keys {
+            self.invokeCallback(identifier, action: action, result: result)
         }
         self.finishDispatching(action)
         
@@ -57,18 +54,18 @@ extension Dispatcher {
     }
     
     private func register<T: Action>(action: T.Type, handler: (Result<T.Payload, NSError>) -> Void) -> String {
-        let nextId = "DISPATCH_CALLBACK_\(++self.lastId)"
-        self.callbacks[nextId] = DispatchCallback<T>(action: action, handler: handler)
-        return nextId
+        let nextDispatchIdentifier = "DISPATCH_CALLBACK_\(++self.lastDispatchIdentifier)"
+        self.callbacks[nextDispatchIdentifier] = DispatchCallback<T>(action: action, handler: handler)
+        return nextDispatchIdentifier
     }
 
-    private func unregister(id: String) {
-        self.callbacks.removeValueForKey(id)
+    private func unregister(identifier: String) {
+        self.callbacks.removeValueForKey(identifier)
     }
     
-    private func waitFor<T: Action>(ids: Array<String>, action: T.Type, result: Result<T.Payload, NSError>) {
-        for id in ids {
-            if let callback = self.callbacks[id] as? DispatchCallback<T> {
+    private func waitFor<T: Action>(identifiers: Array<String>, action: T.Type, result: Result<T.Payload, NSError>) {
+        for identifier in identifiers {
+            if let callback = self.callbacks[identifier] as? DispatchCallback<T> {
                 switch callback.status {
                 case .Handled:
                     continue
@@ -76,7 +73,7 @@ extension Dispatcher {
                     // Circular dependency detected while
                     continue
                 default:
-                    self.invokeCallback(id, action: action, result: result)
+                    self.invokeCallback(identifier, action: action, result: result)
                 }
             }
         }
@@ -85,8 +82,8 @@ extension Dispatcher {
     private func startDispatching<T: Action>(action: T.Type) {
         self._isDispatching = true
         
-        for (id, calllback) in self.callbacks {
-            if let callback = self.callbacks[id] as? DispatchCallback<T> {
+        for (identifier, calllback) in self.callbacks {
+            if let callback = self.callbacks[identifier] as? DispatchCallback<T> {
                 callback.status = DispatchStatus.Waiting
             }
         }
@@ -96,8 +93,8 @@ extension Dispatcher {
         self._isDispatching = false
     }
     
-    private func invokeCallback<T: Action>(id: String, action: T.Type, result: Result<T.Payload, NSError>) {
-        if let callback = self.callbacks[id] as? DispatchCallback<T> {
+    private func invokeCallback<T: Action>(identifier: String, action: T.Type, result: Result<T.Payload, NSError>) {
+        if let callback = self.callbacks[identifier] as? DispatchCallback<T> {
             callback.status = DispatchStatus.Pending
             callback.handler(result)
             callback.status = DispatchStatus.Handled
