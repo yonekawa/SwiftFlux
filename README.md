@@ -52,14 +52,14 @@ class TodoAction {
 
 ```swift
 class TodoStore : Store {
-    static let instance = TodoStore()
-
     enum TodoEvent {
         case Created
     }
     typealias Event = TodoEvent
 
-	var todos = [Todo]()
+    let eventEmitter = EventEmitter<TodoStore>()
+
+    var todos = [Todo]()
     var list: Array<Todo> {
         get {
             return todos;
@@ -71,7 +71,7 @@ class TodoStore : Store {
             switch result {
             case .Success(let box):
                 self.todo = box.value
-                EventEmitter.emit(self, event: TodoEvent.Created)
+                self.eventEmitter.emit(TodoEvent.Created)
             case .Failure(let box):
                 break;
             }
@@ -86,7 +86,8 @@ class TodoStore : Store {
 - Get result from store's public interface.
 
 ```swift
-EventEmitter.listen(TodoStore.instance, event: TodoStore.Event.List) { () -> Void in
+let store = TodoStore()
+store.eventEmitter.listen(TodoStore.Event.List) { () -> Void in
     for todo in TodoStore.instance.list {
         plintln(todo.title)
     }

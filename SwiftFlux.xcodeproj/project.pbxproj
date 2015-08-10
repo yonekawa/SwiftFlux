@@ -129,7 +129,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CA1FE2F51B6CBF4B00BC652D /* Demo.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Demo.playground; sourceTree = "<group>"; };
 		CA3159FB1B6D2FB5004A8F2C /* SwiftFlux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftFlux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA315A051B6D2FB5004A8F2C /* SwiftFluxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftFluxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7C53FE1B6DF17300F393CB /* EventEmitterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEmitterSpec.swift; sourceTree = "<group>"; };
@@ -269,7 +268,6 @@
 		CACC47EB1B6B9DDA00FDF2BF = {
 			isa = PBXGroup;
 			children = (
-				CA1FE2F51B6CBF4B00BC652D /* Demo.playground */,
 				CACC47F71B6B9DDA00FDF2BF /* SwiftFlux */,
 				CACC48041B6B9DDA00FDF2BF /* SwiftFluxTests */,
 				CAEF56CD1B6D36D3005684E2 /* Carthage */,
