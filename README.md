@@ -3,7 +3,7 @@
 [![Circle CI](https://img.shields.io/circleci/project/yonekawa/SwiftFlux/master.svg?style=flat)](https://circleci.com/gh/yonekawa/SwiftFlux)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-SwiftFlux is an implementation of [Facebook's Flux architecure](https://facebook.github.io/flux/) for Swift. 
+SwiftFlux is an implementation of [Facebook's Flux architecure](https://facebook.github.io/flux/) for Swift.
 It provides concept of "one-way data flow" with **type-safe** modules by Swift language.
 
 - Type of an action payload is inferred from the type of its action.
@@ -67,7 +67,7 @@ class TodoStore : Store {
     }
 
     init() {
-        Dispatcher.register(TodoAction.List()) { (result) -> Void in
+        Dispatcher.register(TodoAction.List.self) { (result) -> Void in
             switch result {
             case .Success(let box):
                 self.todo = box.value

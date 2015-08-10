@@ -11,7 +11,7 @@ import Foundation
 public class EventEmitter {
     private static let instance = EventEmitter()
     private var listenes: Dictionary<String, AnyObject> = [:]
-    private var lastId = 0
+    private var lastListenerIdentifier = 0
     private init() {}
 }
 
@@ -19,23 +19,23 @@ extension EventEmitter {
     public class func listen<T: Store>(store: T, event: T.Event, handler: () -> Void) -> String {
         return self.instance.listen(store, event: event, handler: handler)
     }
-    
+
     public class func emit<T: Store>(store: T, event: T.Event) {
         self.instance.emit(store, event: event)
     }
-    
-    public class func unlisten(id: String) {
-        self.instance.unlisten(id)
+
+    public class func unlisten(identifier: String) {
+        self.instance.unlisten(identifier)
     }
 }
 
 extension EventEmitter {
     private func listen<T: Store>(store: T, event: T.Event, handler: () -> Void) -> String {
-        let nextId = "EVENT_LISTENER_\(++lastId)"
-        self.listenes[nextId] = EventListener<T>(store: store, event: event, handler: handler)
-        return nextId
+        let nextListenerIdentifier = "EVENT_LISTENER_\(++lastListenerIdentifier)"
+        self.listenes[nextListenerIdentifier] = EventListener<T>(store: store, event: event, handler: handler)
+        return nextListenerIdentifier
     }
-    
+
     private func emit<T: Store>(store: T, event: T.Event) {
         for (key, value) in self.listenes {
             if let listener = value as? EventListener<T> {
@@ -45,9 +45,9 @@ extension EventEmitter {
             }
         }
     }
-    
-    private func unlisten(id: String) {
-        self.listenes.removeValueForKey(id)
+
+    private func unlisten(identifier: String) {
+        self.listenes.removeValueForKey(identifier)
     }
 }
 
