@@ -109,7 +109,7 @@ Store registerer handler to Action by Dispatcher.
 Dispatcher has handler reference in collection.
 You need to release when store instance released.
 
-```
+```swift
 class TodoStore {
     private var dispatchIdentifiers: Array<String> = []
     init() {
@@ -131,7 +131,7 @@ class TodoStore {
 
 Override dispatcher getter of `ActionCreator`, you can replace app dispatcher.
 
-```
+```swift
 class MyActionCreator: ActionCreator {
   class MyActionCreator: ActionCreator {
     override class var dispatcher: Dispatcher {
