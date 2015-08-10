@@ -36,9 +36,9 @@ It provides concept of "one-way data flow" with **type-safe** modules by Swift l
 class TodoAction {
     class Create : Action {
         typealias Payload = Todo
-        func invoke() {
+        func invoke(dispatcher: Dispatcher) {
             let todo = Todo(title: "New ToDo")
-            Dispatcher.dispatch(self, result: Result(value: todo))
+            dispatcher.dispatch(self, result: Result(value: todo))
         }
     }
 }
@@ -47,6 +47,7 @@ class TodoAction {
 ### Step 2: Define Store and register action to dispatch
 
 - Define event enum and assign type to Event `typealiase`.
+- Define `EventEmitter` instance with generic type.
 - Register any subscribe action callback to dispatcher.
 - Unbox action result value by Either in callback.
 
@@ -67,7 +68,7 @@ class TodoStore : Store {
     }
 
     init() {
-        Dispatcher.register(TodoAction.List.self) { (result) -> Void in
+        ActionCreator.dispatcher.register(TodoAction.List.self) { (result) -> Void in
             switch result {
             case .Success(let box):
                 self.todo = box.value
@@ -82,22 +83,22 @@ class TodoStore : Store {
 
 ### Step 3: Listen store's event at View
 
-- Listen store's event by `EventEmitter`
+- Listen store's event by `EventEmitter` created at Step2.
 - Get result from store's public interface.
 
 ```swift
-let store = TodoStore()
+let todoStore = TodoStore()
 store.eventEmitter.listen(TodoStore.Event.List) { () -> Void in
-    for todo in TodoStore.instance.list {
+    for todo in todoStore.list {
         plintln(todo.title)
     }
 }
 ```
 
-### Step 4: Create and invoke Action from View
+### Step 4: Create and invoke Action by ActionCreator
 
 ```swift
-TodoAction.List().invoke()
+ActionCreator.invoke(TodoAction.List())
 ```
 
 ## License

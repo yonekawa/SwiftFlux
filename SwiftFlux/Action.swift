@@ -11,4 +11,16 @@ import Result
 
 public protocol Action {
     typealias Payload
+    func invoke(dispatcher: Dispatcher)
+}
+
+public class ActionCreator {
+    private static let internalDefaultDispatcher = Dispatcher()
+    public class var dispatcher: Dispatcher {
+        return internalDefaultDispatcher;
+    }
+
+    public class func invoke<T: Action>(action: T) {
+        action.invoke(self.dispatcher)
+    }
 }

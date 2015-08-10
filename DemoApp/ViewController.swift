@@ -21,7 +21,7 @@ class ViewController: UITableViewController {
         self.todoStore.eventEmitter.listen(TodoStore.Event.Created) { () -> Void in
             self.tableView.reloadData()
         }
-        TodoAction.List().invoke()
+        ActionCreator.invoke(TodoAction.List())
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,7 +35,7 @@ class ViewController: UITableViewController {
     }
 
     @IBAction func createTodo() {
-        TodoAction.Create(title: "New ToDo").invoke()
+        ActionCreator.invoke(TodoAction.Create(title: "New ToDo"))
     }
 }
 

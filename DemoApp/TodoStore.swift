@@ -28,7 +28,7 @@ class TodoStore : Store {
     }
 
     init() {
-        Dispatcher.register(TodoAction.List.self) { (result) -> Void in
+        ActionCreator.dispatcher.register(TodoAction.List.self) { (result) -> Void in
             switch result {
             case .Success(let box):
                 self.todos = box.value
@@ -38,7 +38,7 @@ class TodoStore : Store {
             }
         }
 
-        Dispatcher.register(TodoAction.Create.self) { (result) -> Void in
+        ActionCreator.dispatcher.register(TodoAction.Create.self) { (result) -> Void in
             switch result {
             case .Success(let box):
                 self.todos.insert(box.value, atIndex: 0)
