@@ -9,7 +9,14 @@
 import Foundation
 import Result
 
-public class Dispatcher {
+public protocol Dispatcher {
+    func dispatch<T: Action>(action: T, result: Result<T.Payload, NSError>)
+    func register<T: Action>(type: T.Type, handler: (Result<T.Payload, NSError>) -> Void) -> String
+    func unregister(identifier: String)
+    func waitFor<T: Action>(identifiers: Array<String>, type: T.Type, result: Result<T.Payload, NSError>)
+}
+
+public class DefaultDispatcher: Dispatcher {
     private var callbacks: Dictionary<String, AnyObject> = [:]
     private var _isDispatching = false
     private var lastDispatchIdentifier = 0
@@ -24,18 +31,6 @@ public class Dispatcher {
         self.dispatch(action.dynamicType, result: result)
     }
 
-    public func dispatch<T: Action>(type: T.Type, result: Result<T.Payload, NSError>) {
-        objc_sync_enter(self)
-
-        self.startDispatching(type)
-        for identifier in self.callbacks.keys {
-            self.invokeCallback(identifier, type: type, result: result)
-        }
-        self.finishDispatching()
-        
-        objc_sync_exit(self)
-    }
-    
     public func register<T: Action>(type: T.Type, handler: (Result<T.Payload, NSError>) -> Void) -> String {
         let nextDispatchIdentifier = "DISPATCH_CALLBACK_\(++self.lastDispatchIdentifier)"
         self.callbacks[nextDispatchIdentifier] = DispatchCallback<T>(type: type, handler: handler)
@@ -61,7 +56,19 @@ public class Dispatcher {
             }
         }
     }
-    
+
+    private func dispatch<T: Action>(type: T.Type, result: Result<T.Payload, NSError>) {
+        objc_sync_enter(self)
+
+        self.startDispatching(type)
+        for identifier in self.callbacks.keys {
+            self.invokeCallback(identifier, type: type, result: result)
+        }
+        self.finishDispatching()
+
+        objc_sync_exit(self)
+    }
+
     private func startDispatching<T: Action>(type: T.Type) {
         self._isDispatching = true
         

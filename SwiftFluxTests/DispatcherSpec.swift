@@ -14,7 +14,7 @@ import SwiftFlux
 
 class DispatcherSpec: QuickSpec {
     override func spec() {
-        let dispatcher = Dispatcher()
+        let dispatcher = DefaultDispatcher()
 
         struct TestModel {
             let name: String

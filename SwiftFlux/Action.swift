@@ -15,7 +15,7 @@ public protocol Action {
 }
 
 public class ActionCreator {
-    private static let internalDefaultDispatcher = Dispatcher()
+    private static let internalDefaultDispatcher = DefaultDispatcher()
     public class var dispatcher: Dispatcher {
         return internalDefaultDispatcher;
     }
