@@ -10,15 +10,15 @@ import UIKit
 import SwiftFlux
 
 class ViewController: UITableViewController {
-    let todoStore: TodoStore = TodoStore()
+    let todoStore = TodoStore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.todoStore.eventEmitter.listen(self.todoStore, event: TodoStore.Event.List) { () -> Void in
+        self.todoStore.eventEmitter.listen(TodoStore.Event.List) { () -> Void in
             self.tableView.reloadData()
         }
-        self.todoStore.eventEmitter.listen(self.todoStore, event: TodoStore.Event.Created) { () -> Void in
+        self.todoStore.eventEmitter.listen(TodoStore.Event.Created) { () -> Void in
             self.tableView.reloadData()
         }
         TodoAction.List().invoke()

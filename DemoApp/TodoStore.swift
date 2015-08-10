@@ -18,8 +18,8 @@ class TodoStore : Store {
     }
     typealias Event = TodoEvent
 
-    let eventEmitter = EventEmitter()
-    
+    let eventEmitter = EventEmitter<TodoStore>()
+
     private var todos = [Todo]()
     var list: Array<Todo> {
         get {
@@ -32,7 +32,7 @@ class TodoStore : Store {
             switch result {
             case .Success(let box):
                 self.todos = box.value
-                self.eventEmitter.emit(self, event: TodoEvent.List)
+                self.eventEmitter.emit(TodoEvent.List)
             case .Failure(let box):
                 break;
             }
@@ -42,7 +42,7 @@ class TodoStore : Store {
             switch result {
             case .Success(let box):
                 self.todos.insert(box.value, atIndex: 0)
-                self.eventEmitter.emit(self, event: TodoEvent.Created)
+                self.eventEmitter.emit(TodoEvent.Created)
             case .Failure(let box):
                 break;
             }
