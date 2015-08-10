@@ -101,6 +101,62 @@ store.eventEmitter.listen(TodoStore.Event.List) { () -> Void in
 ActionCreator.invoke(TodoAction.List())
 ```
 
+## Advanced
+
+### Destroy callbacks
+
+Store registerer handler to Action by Dispatcher.
+Dispatcher has handler reference in collection.
+You need to release when store instance released.
+
+```
+class TodoStore {
+    private var dispatchIdentifiers: Array<String> = []
+    init() {
+        dispatchIdentifiers.append(
+            ActionCreator.dispatcher.register(TodoAction.self) { (result) -> Void in
+              ...
+            }
+        )
+    }
+
+    deinit {
+        for identifier in dispatchIdentifiers {
+            ActionCreator.dispatcher.unregister(identifier)
+        }
+    }
+```
+
+### Replace to your own Dispatcher
+
+Override dispatcher getter of `ActionCreator`, you can replace app dispatcher.
+
+```
+class MyActionCreator: ActionCreator {
+  class MyActionCreator: ActionCreator {
+    override class var dispatcher: Dispatcher {
+        get {
+            return YourOwnDispatcher()
+        }
+    }
+}
+class YourOwnDispatcher: Dispatcher {
+    func dispatch<T: Action>(action: T, result: Result<T.Payload, NSError>) {
+        ...
+    }
+    func register<T: Action>(type: T.Type, handler: (Result<T.Payload, NSError>) -> Void) -> String {
+        ...
+    }
+
+    func unregister(identifier: String) {
+        ...
+    }
+    func waitFor<T: Action>(identifiers: Array<String>, type: T.Type, result: Result<T.Payload, NSError>) {
+        ...
+    }
+}
+```
+
 ## License
 
 MIT License. See the `LICENSE` file for details.
