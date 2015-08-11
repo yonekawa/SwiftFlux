@@ -133,10 +133,11 @@ Override dispatcher getter of `ActionCreator`, you can replace app dispatcher.
 
 ```swift
 class MyActionCreator: ActionCreator {
+  static let ownDispatcher = YourOwnDispatcher()
   class MyActionCreator: ActionCreator {
     override class var dispatcher: Dispatcher {
         get {
-            return YourOwnDispatcher()
+            return ownDispatcher
         }
     }
 }
