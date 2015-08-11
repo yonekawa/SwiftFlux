@@ -88,7 +88,7 @@ class TodoStore : Store {
 
 ```swift
 let todoStore = TodoStore()
-store.eventEmitter.listen(TodoStore.Event.List) { () -> Void in
+todoStore.eventEmitter.listen(TodoStore.Event.List) { () -> Void in
     for todo in todoStore.list {
         plintln(todo.title)
     }
