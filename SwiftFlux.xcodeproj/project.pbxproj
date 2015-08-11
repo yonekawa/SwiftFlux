@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA1C3FEC1B791CA20048126F /* ActionCreatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1C3FEA1B7919390048126F /* ActionCreatorSpec.swift */; };
+		CA1C3FED1B791CA30048126F /* ActionCreatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1C3FEA1B7919390048126F /* ActionCreatorSpec.swift */; };
 		CA37943C1B6F65BA000AE5F2 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CAEF5DB51B6D3951005684E2 /* Nimble.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CA37943D1B6F65BA000AE5F2 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CAEF56D71B6D36D3005684E2 /* Quick.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CA37943E1B6F65CF000AE5F2 /* SwiftFlux.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CA3159FB1B6D2FB5004A8F2C /* SwiftFlux.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -19,8 +21,6 @@
 		CA7C53FD1B6DEB8D00F393CB /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAEF56D31B6D36D3005684E2 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA7C54001B6DF4B400F393CB /* EventEmitterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7C53FE1B6DF17300F393CB /* EventEmitterSpec.swift */; };
 		CA7C54011B6DF4B400F393CB /* EventEmitterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7C53FE1B6DF17300F393CB /* EventEmitterSpec.swift */; };
-		CA7C54031B6DF4FD00F393CB /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7C54021B6DF4FD00F393CB /* EventEmitter.swift */; };
-		CA7C54041B6DF51400F393CB /* EventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7C54021B6DF4FD00F393CB /* EventEmitter.swift */; };
 		CACA8E3E1B6CD85F00F051B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA8E3D1B6CD85F00F051B8 /* AppDelegate.swift */; };
 		CACA8E401B6CD85F00F051B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA8E3F1B6CD85F00F051B8 /* ViewController.swift */; };
 		CACA8E431B6CD85F00F051B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CACA8E411B6CD85F00F051B8 /* Main.storyboard */; };
@@ -131,11 +131,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CA1FE2F51B6CBF4B00BC652D /* Demo.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Demo.playground; sourceTree = "<group>"; };
+		CA1C3FEA1B7919390048126F /* ActionCreatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCreatorSpec.swift; sourceTree = "<group>"; };
 		CA3159FB1B6D2FB5004A8F2C /* SwiftFlux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftFlux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA315A051B6D2FB5004A8F2C /* SwiftFluxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftFluxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7C53FE1B6DF17300F393CB /* EventEmitterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEmitterSpec.swift; sourceTree = "<group>"; };
-		CA7C54021B6DF4FD00F393CB /* EventEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEmitter.swift; sourceTree = "<group>"; };
 		CACA8E391B6CD85F00F051B8 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACA8E3C1B6CD85F00F051B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CACA8E3D1B6CD85F00F051B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -272,7 +271,6 @@
 		CACC47EB1B6B9DDA00FDF2BF = {
 			isa = PBXGroup;
 			children = (
-				CA1FE2F51B6CBF4B00BC652D /* Demo.playground */,
 				CACC47F71B6B9DDA00FDF2BF /* SwiftFlux */,
 				CACC48041B6B9DDA00FDF2BF /* SwiftFluxTests */,
 				CAEF56CD1B6D36D3005684E2 /* Carthage */,
@@ -300,7 +298,6 @@
 				CACC48111B6B9E4900FDF2BF /* Dispatcher.swift */,
 				CACC48131B6B9E8000FDF2BF /* Action.swift */,
 				CACC48151B6BA00D00FDF2BF /* Store.swift */,
-				CA7C54021B6DF4FD00F393CB /* EventEmitter.swift */,
 				CACC47F81B6B9DDA00FDF2BF /* Supporting Files */,
 			);
 			path = SwiftFlux;
@@ -317,6 +314,7 @@
 		CACC48041B6B9DDA00FDF2BF /* SwiftFluxTests */ = {
 			isa = PBXGroup;
 			children = (
+				CA1C3FEA1B7919390048126F /* ActionCreatorSpec.swift */,
 				CAEF5DBA1B6D3989005684E2 /* DispatcherSpec.swift */,
 				CA7C53FE1B6DF17300F393CB /* EventEmitterSpec.swift */,
 				CACC48051B6B9DDA00FDF2BF /* Supporting Files */,
@@ -581,7 +579,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAEF5DCE1B6D3D61005684E2 /* Action.swift in Sources */,
-				CA7C54041B6DF51400F393CB /* EventEmitter.swift in Sources */,
 				CAEF5DCF1B6D3D64005684E2 /* Dispatcher.swift in Sources */,
 				CAEF5DCD1B6D3D5F005684E2 /* Store.swift in Sources */,
 			);
@@ -591,6 +588,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA1C3FED1B791CA30048126F /* ActionCreatorSpec.swift in Sources */,
 				CA7C54011B6DF4B400F393CB /* EventEmitterSpec.swift in Sources */,
 				CAEF5DBE1B6D3989005684E2 /* DispatcherSpec.swift in Sources */,
 			);
@@ -613,7 +611,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CACC48161B6BA00D00FDF2BF /* Store.swift in Sources */,
-				CA7C54031B6DF4FD00F393CB /* EventEmitter.swift in Sources */,
 				CACC48141B6B9E8000FDF2BF /* Action.swift in Sources */,
 				CACC48121B6B9E4900FDF2BF /* Dispatcher.swift in Sources */,
 			);
@@ -623,6 +620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA1C3FEC1B791CA20048126F /* ActionCreatorSpec.swift in Sources */,
 				CA7C54001B6DF4B400F393CB /* EventEmitterSpec.swift in Sources */,
 				CAEF5DBD1B6D3989005684E2 /* DispatcherSpec.swift in Sources */,
 			);

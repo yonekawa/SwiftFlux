@@ -31,19 +31,22 @@ class EventEmitterSpec: QuickSpec {
             typealias Event = TestEvent
         }
 
+        let emitter = EventEmitter<TestStore>()
+        let emitter2 = EventEmitter<TestStore2>()
+
         describe("emit") {
             var listeners = [String]()
             var results = [String]()
 
             beforeEach({ () -> () in
                 listeners = []
-                let id1 = EventEmitter.listen(TestStore.instance, event: TestStore.Event.List, handler: { () -> Void in
+                let id1 = emitter.listen(TestStore.Event.List, handler: { () -> Void in
                     results.append("test list")
                 })
-                let id2 = EventEmitter.listen(TestStore2.instance, event: TestStore2.Event.List, handler: { () -> Void in
+                let id2 = emitter2.listen(TestStore2.Event.List, handler: { () -> Void in
                     results.append("test2 list")
                 })
-                let id3 = EventEmitter.listen(TestStore.instance, event: TestStore.Event.Created, handler: { () -> Void in
+                let id3 = emitter.listen(TestStore.Event.Created, handler: { () -> Void in
                     results.append("test created")
                 })
                 listeners.append(id1)
@@ -53,29 +56,29 @@ class EventEmitterSpec: QuickSpec {
 
             afterEach({ () -> () in
                 for listener in listeners {
-                    EventEmitter.unlisten(listener)
+                    emitter.unlisten(listener)
                 }
             })
             
             it("should fire event correctly") {
-                EventEmitter.emit(TestStore.instance, event: TestStore.Event.List)
+                emitter.emit(TestStore.Event.List)
                 expect(results.count).to(equal(1))
                 expect(results[0]).to(equal("test list"))
  
-                EventEmitter.emit(TestStore.instance, event: TestStore.Event.List)
+                emitter.emit(TestStore.Event.List)
                 expect(results.count).to(equal(2))
                 expect(results[1]).to(equal("test list"))
 
-                EventEmitter.emit(TestStore2.instance, event: TestStore2.Event.List)
+                emitter2.emit(TestStore2.Event.List)
                 expect(results.count).to(equal(3))
                 expect(results[2]).to(equal("test2 list"))
 
-                EventEmitter.emit(TestStore.instance, event: TestStore.Event.Created)
+                emitter.emit(TestStore.Event.Created)
                 expect(results.count).to(equal(4))
                 expect(results[3]).to(equal("test created"))
 
-                EventEmitter.unlisten(listeners[2])
-                EventEmitter.emit(TestStore.instance, event: TestStore.Event.Created)
+                emitter.unlisten(listeners[2])
+                emitter.emit(TestStore.Event.Created)
                 expect(results.count).to(equal(4))
             }
         }

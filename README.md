@@ -36,9 +36,9 @@ It provides concept of "one-way data flow" with **type-safe** modules by Swift l
 class TodoAction {
     class Create : Action {
         typealias Payload = Todo
-        func invoke() {
+        func invoke(dispatcher: Dispatcher) {
             let todo = Todo(title: "New ToDo")
-            Dispatcher.dispatch(self, result: Result(value: todo))
+            dispatcher.dispatch(self, result: Result(value: todo))
         }
     }
 }
@@ -47,19 +47,20 @@ class TodoAction {
 ### Step 2: Define Store and register action to dispatch
 
 - Define event enum and assign type to Event `typealiase`.
+- Define `EventEmitter` instance with generic type.
 - Register any subscribe action callback to dispatcher.
 - Unbox action result value by Either in callback.
 
 ```swift
 class TodoStore : Store {
-    static let instance = TodoStore()
-
     enum TodoEvent {
         case Created
     }
     typealias Event = TodoEvent
 
-	var todos = [Todo]()
+    let eventEmitter = EventEmitter<TodoStore>()
+
+    var todos = [Todo]()
     var list: Array<Todo> {
         get {
             return todos;
@@ -67,11 +68,11 @@ class TodoStore : Store {
     }
 
     init() {
-        Dispatcher.register(TodoAction.List.self) { (result) -> Void in
+        ActionCreator.dispatcher.register(TodoAction.List.self) { (result) -> Void in
             switch result {
             case .Success(let box):
                 self.todo = box.value
-                EventEmitter.emit(self, event: TodoEvent.Created)
+                self.eventEmitter.emit(TodoEvent.Created)
             case .Failure(let box):
                 break;
             }
@@ -82,21 +83,78 @@ class TodoStore : Store {
 
 ### Step 3: Listen store's event at View
 
-- Listen store's event by `EventEmitter`
+- Listen store's event by `EventEmitter` created at Step2.
 - Get result from store's public interface.
 
 ```swift
-EventEmitter.listen(TodoStore.instance, event: TodoStore.Event.List) { () -> Void in
-    for todo in TodoStore.instance.list {
+let todoStore = TodoStore()
+store.eventEmitter.listen(TodoStore.Event.List) { () -> Void in
+    for todo in todoStore.list {
         plintln(todo.title)
     }
 }
 ```
 
-### Step 4: Create and invoke Action from View
+### Step 4: Create and invoke Action by ActionCreator
 
 ```swift
-TodoAction.List().invoke()
+ActionCreator.invoke(TodoAction.List())
+```
+
+## Advanced
+
+### Destroy callbacks
+
+Store registerer handler to Action by Dispatcher.
+Dispatcher has handler reference in collection.
+You need to release when store instance released.
+
+```swift
+class TodoStore {
+    private var dispatchIdentifiers: Array<String> = []
+    init() {
+        dispatchIdentifiers.append(
+            ActionCreator.dispatcher.register(TodoAction.self) { (result) -> Void in
+              ...
+            }
+        )
+    }
+
+    deinit {
+        for identifier in dispatchIdentifiers {
+            ActionCreator.dispatcher.unregister(identifier)
+        }
+    }
+```
+
+### Replace to your own Dispatcher
+
+Override dispatcher getter of `ActionCreator`, you can replace app dispatcher.
+
+```swift
+class MyActionCreator: ActionCreator {
+  class MyActionCreator: ActionCreator {
+    override class var dispatcher: Dispatcher {
+        get {
+            return YourOwnDispatcher()
+        }
+    }
+}
+class YourOwnDispatcher: Dispatcher {
+    func dispatch<T: Action>(action: T, result: Result<T.Payload, NSError>) {
+        ...
+    }
+    func register<T: Action>(type: T.Type, handler: (Result<T.Payload, NSError>) -> Void) -> String {
+        ...
+    }
+
+    func unregister(identifier: String) {
+        ...
+    }
+    func waitFor<T: Action>(identifiers: Array<String>, type: T.Type, result: Result<T.Payload, NSError>) {
+        ...
+    }
+}
 ```
 
 ## License

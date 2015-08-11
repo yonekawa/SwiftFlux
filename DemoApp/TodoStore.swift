@@ -12,14 +12,14 @@ import Result
 import Box
 
 class TodoStore : Store {
-    static let instance = TodoStore()
-
     enum TodoEvent {
         case List
         case Created
     }
     typealias Event = TodoEvent
-    
+
+    let eventEmitter = EventEmitter<TodoStore>()
+
     private var todos = [Todo]()
     var list: Array<Todo> {
         get {
@@ -28,21 +28,21 @@ class TodoStore : Store {
     }
 
     init() {
-        Dispatcher.register(TodoAction.List.self) { (result) -> Void in
+        ActionCreator.dispatcher.register(TodoAction.List.self) { (result) -> Void in
             switch result {
             case .Success(let box):
                 self.todos = box.value
-                EventEmitter.emit(self, event: TodoEvent.List)
+                self.eventEmitter.emit(TodoEvent.List)
             case .Failure(let box):
                 break;
             }
         }
 
-        Dispatcher.register(TodoAction.Create.self) { (result) -> Void in
+        ActionCreator.dispatcher.register(TodoAction.Create.self) { (result) -> Void in
             switch result {
             case .Success(let box):
                 self.todos.insert(box.value, atIndex: 0)
-                EventEmitter.emit(self, event: TodoEvent.Created)
+                self.eventEmitter.emit(TodoEvent.Created)
             case .Failure(let box):
                 break;
             }
