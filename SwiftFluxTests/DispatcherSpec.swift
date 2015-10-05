@@ -13,6 +13,15 @@ import Result
 import SwiftFlux
 
 class DispatcherSpec: QuickSpec {
+    struct DispatcherTestModel {
+        let name: String
+    }
+
+    struct DispatcherTestAction: Action {
+        typealias Payload = DispatcherTestModel
+        func invoke(dispatcher: Dispatcher) {}
+    }
+    
     override func spec() {
         let dispatcher = DefaultDispatcher()
 
@@ -25,29 +34,24 @@ class DispatcherSpec: QuickSpec {
             var fails = [String]()
             var callbacks = [String]()
 
-            class TestAction: Action {
-                typealias Payload = TestModel
-                func invoke(dispatcher: Dispatcher) {}
-            }
-
             beforeEach({ () -> () in
                 results = []
                 fails = []
                 callbacks = []
 
-                let id1 = dispatcher.register(TestAction.self) { (result) in
+                let id1 = dispatcher.register(DispatcherTestAction.self) { (result) in
                     switch result {
                     case .Success(let box):
-                        results.append("\(box.value.name)1")
-                    case .Failure(let box):
+                        results.append("\(box.name)1")
+                    case .Failure(_):
                         fails.append("fail")
                     }
                 }
-                let id2 = dispatcher.register(TestAction.self) { (result) in
+                let id2 = dispatcher.register(DispatcherTestAction.self) { (result) in
                     switch result {
                     case .Success(let box):
-                        results.append("\(box.value.name)2")
-                    case .Failure(let box):
+                        results.append("\(box.name)2")
+                    case .Failure(_):
                         fails.append("fail")
                     }
                 }
@@ -63,7 +67,7 @@ class DispatcherSpec: QuickSpec {
             
             context("when action succeeded") {
                 it("should dispatch to registered callback handlers") {
-                    dispatcher.dispatch(TestAction(), result: Result(value: TestModel(name: "test")))
+                    dispatcher.dispatch(DispatcherTestAction(), result: Result(value: DispatcherTestModel(name: "test")))
                     expect(results.count).to(equal(2))
                     expect(fails.isEmpty).to(beTruthy())
                     expect(results).to(contain("test1", "test2"))
@@ -72,7 +76,7 @@ class DispatcherSpec: QuickSpec {
             
             context("when action failed") {
                 it("should dispatch to registered callback handlers") {
-                    dispatcher.dispatch(TestAction(), result: Result(error: NSError()))
+                    dispatcher.dispatch(DispatcherTestAction(), result: Result(error: NSError(domain: "TEST0000", code: -1, userInfo: [:])))
                     expect(fails.count).to(equal(2))
                     expect(results.isEmpty).to(beTruthy())
                 }

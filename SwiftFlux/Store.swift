@@ -28,7 +28,7 @@ public class EventEmitter<T: Store> {
     }
     
     public func emit(event: T.Event) {
-        for (key, value) in self.eventListeners {
+        for (_, value) in self.eventListeners {
             if let listener = value as? EventListener<T> {
                 if listener.event == event {
                     listener.handler()

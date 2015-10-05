@@ -12,7 +12,7 @@ It provides concept of "one-way data flow" with **type-safe** modules by Swift l
 
 # Requirements
 
-- Swift 1.2 (We has a plan of update to Swift 2)
+- Swift 2.0 (If you need to use with Swift 1.2, Use v0.3.0)
 - iOS 8.0 or later
 - Mac OS 10.9 or later
 
@@ -33,8 +33,8 @@ It provides concept of "one-way data flow" with **type-safe** modules by Swift l
 - You can call api request here (you can use asynchronous request).
 
 ```swift
-class TodoAction {
-    class Create : Action {
+struct TodoAction {
+    struct Create : Action {
         typealias Payload = Todo
         func invoke(dispatcher: Dispatcher) {
             let todo = Todo(title: "New ToDo")
@@ -71,9 +71,10 @@ class TodoStore : Store {
         ActionCreator.dispatcher.register(TodoAction.List.self) { (result) -> Void in
             switch result {
             case .Success(let box):
-                self.todo = box.value
+                self.todo = box
                 self.eventEmitter.emit(TodoEvent.Created)
             case .Failure(let box):
+                NSLog("error \(box)")
                 break;
             }
         }
@@ -120,11 +121,19 @@ class TodoStore {
         )
     }
 
-    deinit {
+    func unregsiter() {
         for identifier in dispatchIdentifiers {
             ActionCreator.dispatcher.unregister(identifier)
         }
     }
+}
+
+class TodoViewController {
+  let store = TodoStore()
+  deinit {
+      store.unregister()
+  }
+}
 ```
 
 ### Replace to your own Dispatcher

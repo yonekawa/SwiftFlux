@@ -29,7 +29,7 @@ class ViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("TodoCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("TodoCell") as UITableViewCell!
         cell.textLabel!.text = self.todoStore.list[indexPath.row].title
         return cell
     }
