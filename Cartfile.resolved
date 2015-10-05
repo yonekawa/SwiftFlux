@@ -1,4 +1,3 @@
-github "robrix/Box" "1.2.2"
-github "Quick/Nimble" "97c26fff41ac09a5e15eaa3feea45c7c2568f5a8"
-github "Quick/Quick" "682bb956a5bbd3ea7217208ec2a79f78dbab0697"
-github "antitypical/Result" "81b189645babd30c6f70ed3f82a83988a467fb02"
+github "Quick/Nimble" "v2.0.0"
+github "Quick/Quick" "v0.6.0"
+github "antitypical/Result" "0.5"

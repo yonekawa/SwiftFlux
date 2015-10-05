@@ -72,17 +72,17 @@ public class DefaultDispatcher: Dispatcher {
     private func startDispatching<T: Action>(type: T.Type) {
         self._isDispatching = true
         
-        for (identifier, calllback) in self.callbacks {
+        for (identifier, _) in self.callbacks {
             if let callback = self.callbacks[identifier] as? DispatchCallback<T> {
                 callback.status = DispatchStatus.Waiting
             }
         }
     }
-    
+
     private func finishDispatching() {
         self._isDispatching = false
     }
-    
+
     private func invokeCallback<T: Action>(identifier: String, type: T.Type, result: Result<T.Payload, NSError>) {
         if let callback = self.callbacks[identifier] as? DispatchCallback<T> {
             callback.status = DispatchStatus.Pending

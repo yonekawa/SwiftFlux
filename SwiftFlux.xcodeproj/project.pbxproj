@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		CA1C3FEC1B791CA20048126F /* ActionCreatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1C3FEA1B7919390048126F /* ActionCreatorSpec.swift */; };
 		CA1C3FED1B791CA30048126F /* ActionCreatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1C3FEA1B7919390048126F /* ActionCreatorSpec.swift */; };
-		CA37943C1B6F65BA000AE5F2 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CAEF5DB51B6D3951005684E2 /* Nimble.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CA37943D1B6F65BA000AE5F2 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CAEF56D71B6D36D3005684E2 /* Quick.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CA37943E1B6F65CF000AE5F2 /* SwiftFlux.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CA3159FB1B6D2FB5004A8F2C /* SwiftFlux.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CA37943C1B6F65BA000AE5F2 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CAEF5DB51B6D3951005684E2 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CA37943D1B6F65BA000AE5F2 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CAEF56D71B6D36D3005684E2 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CA37943E1B6F65CF000AE5F2 /* SwiftFlux.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CA3159FB1B6D2FB5004A8F2C /* SwiftFlux.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA37943F1B6F65DF000AE5F2 /* Box.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CAEF56D51B6D36D3005684E2 /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA3794401B6F65DF000AE5F2 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CAEF56D81B6D36D3005684E2 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CA3794441B6F6632000AE5F2 /* SwiftFlux.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CACC47F51B6B9DDA00FDF2BF /* SwiftFlux.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CA3794441B6F6632000AE5F2 /* SwiftFlux.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CACC47F51B6B9DDA00FDF2BF /* SwiftFlux.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA7C53FA1B6DEB8D00F393CB /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEF56D01B6D36D3005684E2 /* Box.framework */; };
 		CA7C53FB1B6DEB8D00F393CB /* Box.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAEF56D01B6D36D3005684E2 /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA7C53FC1B6DEB8D00F393CB /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEF56D31B6D36D3005684E2 /* Result.framework */; };
@@ -55,8 +55,8 @@
 		CAEF5DCD1B6D3D5F005684E2 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC48151B6BA00D00FDF2BF /* Store.swift */; };
 		CAEF5DCE1B6D3D61005684E2 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC48131B6B9E8000FDF2BF /* Action.swift */; };
 		CAEF5DCF1B6D3D64005684E2 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC48111B6B9E4900FDF2BF /* Dispatcher.swift */; };
-		CAEF5DD21B6DC0F7005684E2 /* Nimble.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CAEF5DB01B6D3927005684E2 /* Nimble.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CAEF5DD31B6DC0F7005684E2 /* Quick.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CAEF56D21B6D36D3005684E2 /* Quick.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CAEF5DD21B6DC0F7005684E2 /* Nimble.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CAEF5DB01B6D3927005684E2 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CAEF5DD31B6DC0F7005684E2 /* Quick.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CAEF56D21B6D36D3005684E2 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAEF5DD61B6DC7B6005684E2 /* Box.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CAEF56D01B6D36D3005684E2 /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAEF5DD71B6DC7B6005684E2 /* Result.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CAEF56D31B6D36D3005684E2 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -490,7 +490,8 @@
 		CACC47EC1B6B9DDA00FDF2BF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = mog2dev;
 				TargetAttributes = {
 					CA3159FA1B6D2FB5004A8F2C = {
@@ -690,6 +691,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.mog2dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -717,6 +719,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.mog2dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -744,6 +747,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.mog2dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SwiftFluxTests;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -766,6 +770,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.mog2dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SwiftFluxTests;
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
@@ -787,6 +792,7 @@
 				INFOPLIST_FILE = DemoApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.mog2dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -802,6 +808,7 @@
 				INFOPLIST_FILE = DemoApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.mog2dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -828,6 +835,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -916,6 +924,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.mog2dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -939,6 +948,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.mog2dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -960,6 +970,7 @@
 				INFOPLIST_FILE = SwiftFluxTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.mog2dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SwiftFluxTests;
 			};
 			name = Debug;
@@ -976,6 +987,7 @@
 				INFOPLIST_FILE = SwiftFluxTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.mog2dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SwiftFluxTests;
 			};
 			name = Release;

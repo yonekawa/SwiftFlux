@@ -31,9 +31,9 @@ class TodoStore : Store {
         ActionCreator.dispatcher.register(TodoAction.List.self) { (result) -> Void in
             switch result {
             case .Success(let box):
-                self.todos = box.value
+                self.todos = box
                 self.eventEmitter.emit(TodoEvent.List)
-            case .Failure(let box):
+            case .Failure(_):
                 break;
             }
         }
@@ -41,9 +41,9 @@ class TodoStore : Store {
         ActionCreator.dispatcher.register(TodoAction.Create.self) { (result) -> Void in
             switch result {
             case .Success(let box):
-                self.todos.insert(box.value, atIndex: 0)
+                self.todos.insert(box, atIndex: 0)
                 self.eventEmitter.emit(TodoEvent.Created)
-            case .Failure(let box):
+            case .Failure(_):
                 break;
             }
         }
