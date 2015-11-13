@@ -9,7 +9,6 @@
 import Foundation
 import SwiftFlux
 import Result
-import Box
 
 class TodoStore : Store {
     enum TodoEvent {
