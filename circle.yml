@@ -1,6 +1,6 @@
 machine:
   xcode:
-    version: "7.0"
+    version: "7.1"
 
 dependencies:
   override:
@@ -8,7 +8,7 @@ dependencies:
     - ./scripts/import-certificates
     - brew update
     - brew install carthage
-    - carthage bootstrap
+    - carthage bootstrap --platform Mac,iOS
 
 # despite what circle ci says, xctool 0.2.3 cannot run
 # ios simulator tests on iOS frameworks for whatever reason.
@@ -16,6 +16,6 @@ dependencies:
 # See: https://github.com/facebook/xctool/issues/415
 test:
   override:
-    - carthage build --no-skip-current
+    - carthage build --no-skip-current --platform Mac,iOS
     - rake test:ios
     - rake test:osx
