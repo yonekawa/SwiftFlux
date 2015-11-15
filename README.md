@@ -1,6 +1,6 @@
 # SwiftFlux
 
-[![Circle CI](https://img.shields.io/circleci/project/yonekawa/SwiftFlux/master.svg?style=flat)](https://circleci.com/gh/yonekawa/SwiftFlux)
+[![Travis CI](https://travis-ci.org/yonekawa/SwiftFlux.svg?branch=master)]https://travis-ci.org/yonekawa/SwiftFlux)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 SwiftFlux is an implementation of [Facebook's Flux architecure](https://facebook.github.io/flux/) for Swift.
