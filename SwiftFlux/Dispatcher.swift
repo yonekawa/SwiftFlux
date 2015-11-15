@@ -40,19 +40,18 @@ public class DefaultDispatcher: Dispatcher {
     public func unregister(identifier: String) {
         self.callbacks.removeValueForKey(identifier)
     }
-    
+
     public func waitFor<T: Action>(identifiers: Array<String>, type: T.Type, result: Result<T.Payload, NSError>) {
         for identifier in identifiers {
-            if let callback = self.callbacks[identifier] as? DispatchCallback<T> {
-                switch callback.status {
-                case .Handled:
-                    continue
-                case .Pending:
-                    // Circular dependency detected while
-                    continue
-                default:
-                    self.invokeCallback(identifier, type: type, result: result)
-                }
+            guard let callback = self.callbacks[identifier] as? DispatchCallback<T> else { continue }
+            switch callback.status {
+            case .Handled:
+                continue
+            case .Pending:
+                // Circular dependency detected while
+                continue
+            default:
+                self.invokeCallback(identifier, type: type, result: result)
             }
         }
     }
@@ -71,11 +70,10 @@ public class DefaultDispatcher: Dispatcher {
 
     private func startDispatching<T: Action>(type: T.Type) {
         self._isDispatching = true
-        
+
         for (identifier, _) in self.callbacks {
-            if let callback = self.callbacks[identifier] as? DispatchCallback<T> {
-                callback.status = DispatchStatus.Waiting
-            }
+            guard let callback = self.callbacks[identifier] as? DispatchCallback<T> else { continue }
+            callback.status = DispatchStatus.Waiting
         }
     }
 
@@ -84,20 +82,20 @@ public class DefaultDispatcher: Dispatcher {
     }
 
     private func invokeCallback<T: Action>(identifier: String, type: T.Type, result: Result<T.Payload, NSError>) {
-        if let callback = self.callbacks[identifier] as? DispatchCallback<T> {
-            callback.status = DispatchStatus.Pending
-            callback.handler(result)
-            callback.status = DispatchStatus.Handled
-        }
+        guard let callback = self.callbacks[identifier] as? DispatchCallback<T> else { return }
+
+        callback.status = DispatchStatus.Pending
+        callback.handler(result)
+        callback.status = DispatchStatus.Handled
     }
 }
 
 internal class DispatchCallback<T: Action> {
     let type: T.Type
     let handler: (Result<T.Payload, NSError>) -> Void
-    
+
     var status: DispatchStatus = DispatchStatus.Waiting
-    
+
     init(type: T.Type, handler: (Result<T.Payload, NSError>) -> Void) {
         self.type = type
         self.handler = handler
