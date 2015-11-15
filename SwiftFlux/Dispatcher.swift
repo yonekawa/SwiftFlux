@@ -10,10 +10,10 @@ import Foundation
 import Result
 
 public protocol Dispatcher {
-    func dispatch<T: Action>(action: T, result: Result<T.Payload, NSError>)
-    func register<T: Action>(type: T.Type, handler: (Result<T.Payload, NSError>) -> Void) -> String
+    func dispatch<T: Action>(action: T, result: Result<T.Payload, T.Error>)
+    func register<T: Action>(type: T.Type, handler: (Result<T.Payload, T.Error>) -> Void) -> String
     func unregister(identifier: String)
-    func waitFor<T: Action>(identifiers: Array<String>, type: T.Type, result: Result<T.Payload, NSError>)
+    func waitFor<T: Action>(identifiers: Array<String>, type: T.Type, result: Result<T.Payload, T.Error>)
 }
 
 public class DefaultDispatcher: Dispatcher {
@@ -27,11 +27,11 @@ public class DefaultDispatcher: Dispatcher {
         self.callbacks.removeAll()
     }
 
-    public func dispatch<T: Action>(action: T, result: Result<T.Payload, NSError>) {
+    public func dispatch<T: Action>(action: T, result: Result<T.Payload, T.Error>) {
         self.dispatch(action.dynamicType, result: result)
     }
 
-    public func register<T: Action>(type: T.Type, handler: (Result<T.Payload, NSError>) -> Void) -> String {
+    public func register<T: Action>(type: T.Type, handler: (Result<T.Payload, T.Error>) -> Void) -> String {
         let nextDispatchIdentifier = "DISPATCH_CALLBACK_\(++self.lastDispatchIdentifier)"
         self.callbacks[nextDispatchIdentifier] = DispatchCallback<T>(type: type, handler: handler)
         return nextDispatchIdentifier
@@ -41,7 +41,7 @@ public class DefaultDispatcher: Dispatcher {
         self.callbacks.removeValueForKey(identifier)
     }
 
-    public func waitFor<T: Action>(identifiers: Array<String>, type: T.Type, result: Result<T.Payload, NSError>) {
+    public func waitFor<T: Action>(identifiers: Array<String>, type: T.Type, result: Result<T.Payload, T.Error>) {
         for identifier in identifiers {
             guard let callback = self.callbacks[identifier] as? DispatchCallback<T> else { continue }
             switch callback.status {
@@ -56,7 +56,7 @@ public class DefaultDispatcher: Dispatcher {
         }
     }
 
-    private func dispatch<T: Action>(type: T.Type, result: Result<T.Payload, NSError>) {
+    private func dispatch<T: Action>(type: T.Type, result: Result<T.Payload, T.Error>) {
         objc_sync_enter(self)
 
         self.startDispatching(type)
@@ -81,7 +81,7 @@ public class DefaultDispatcher: Dispatcher {
         self._isDispatching = false
     }
 
-    private func invokeCallback<T: Action>(identifier: String, type: T.Type, result: Result<T.Payload, NSError>) {
+    private func invokeCallback<T: Action>(identifier: String, type: T.Type, result: Result<T.Payload, T.Error>) {
         guard let callback = self.callbacks[identifier] as? DispatchCallback<T> else { return }
 
         callback.status = DispatchStatus.Pending
@@ -92,11 +92,11 @@ public class DefaultDispatcher: Dispatcher {
 
 internal class DispatchCallback<T: Action> {
     let type: T.Type
-    let handler: (Result<T.Payload, NSError>) -> Void
+    let handler: (Result<T.Payload, T.Error>) -> Void
 
     var status: DispatchStatus = DispatchStatus.Waiting
 
-    init(type: T.Type, handler: (Result<T.Payload, NSError>) -> Void) {
+    init(type: T.Type, handler: (Result<T.Payload, T.Error>) -> Void) {
         self.type = type
         self.handler = handler
     }
