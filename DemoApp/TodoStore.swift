@@ -9,7 +9,6 @@
 import Foundation
 import SwiftFlux
 import Result
-import Box
 
 class TodoStore : Store {
     enum TodoEvent {
@@ -22,9 +21,7 @@ class TodoStore : Store {
 
     private var todos = [Todo]()
     var list: Array<Todo> {
-        get {
-            return todos;
-        }
+        return todos;
     }
 
     init() {

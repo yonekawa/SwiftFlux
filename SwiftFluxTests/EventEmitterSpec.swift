@@ -8,7 +8,6 @@
 
 import Quick
 import Nimble
-import Box
 import Result
 import SwiftFlux
 

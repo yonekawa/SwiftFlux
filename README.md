@@ -151,18 +151,38 @@ class MyActionCreator: ActionCreator {
     }
 }
 class YourOwnDispatcher: Dispatcher {
-    func dispatch<T: Action>(action: T, result: Result<T.Payload, NSError>) {
+    func dispatch<T: Action>(action: T, result: Result<T.Payload, T.Error>) {
         ...
     }
-    func register<T: Action>(type: T.Type, handler: (Result<T.Payload, NSError>) -> Void) -> String {
+    func register<T: Action>(type: T.Type, handler: (Result<T.Payload, T.Error>) -> Void) -> String {
         ...
     }
 
     func unregister(identifier: String) {
         ...
     }
-    func waitFor<T: Action>(identifiers: Array<String>, type: T.Type, result: Result<T.Payload, NSError>) {
+    func waitFor<T: Action>(identifiers: Array<String>, type: T.Type, result: Result<T.Payload, T.Error>) {
         ...
+    }
+}
+```
+
+## Use your own ErrorType instead of NSError
+
+You can assign error type with `typealias` on your `Action`.
+
+```swift
+struct TodoAction {
+    enum TodoError {
+        case CreateError
+    }
+    struct Create : Action {
+        typealias Payload = Todo
+        typealias Error = TodoError
+        func invoke(dispatcher: Dispatcher) {
+            let error = TodoError.CreateError
+            dispatcher.dispatch(self, result: Result(error: error))
+        }
     }
 }
 ```
