@@ -22,7 +22,7 @@ It provides concept of "one-way data flow" with **type-safe** modules by Swift l
 
 - Insert github "yonekawa/SwiftFlux" to your Cartfile.
 - Run carthage update.
-- Link your app with SwiftFlux.framework, Result.framework, Box.framework in Carthage/Build
+- Link your app with SwiftFlux.framework, Result.framework, in Carthage/Build
 
 ## Usage
 
