@@ -15,7 +15,6 @@ before_install:
 
 script:
   - set -o pipefail
-  - ./script/import-certificates
   - carthage build --no-skip-current --platform Mac,iOS
   - rake test:ios
   - rake test:osx
