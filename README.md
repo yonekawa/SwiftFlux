@@ -20,19 +20,13 @@ It provides concept of "one-way data flow" with **type-safe** modules by Swift l
 
 #### [Carthage](https://github.com/Carthage/Carthage)
 
-- Insert github "yonekawa/SwiftFlux" to your Cartfile.
-- Run carthage update.
-- Link your app with SwiftFlux.framework, Result.framework, in Carthage/Build
+- Insert `github "yonekawa/SwiftFlux"` to your Cartfile.
+- Run `carthage update`.
+- Link your app with `SwiftFlux.framework`, `Result.framework`, in Carthage/Build
 
 #### [Cocoapods](https://cocoapods.org/)
 
-- Add the followings to your Podfile:
-
-```
-use_frameworks!
-pod "SwiftFlux", "~> 0.1"
-```
-
+- Insert `pod "SwiftFlux", "~> 0.1"` to your Podfile:
 - Run `pod install`.
 
 ## Usage
