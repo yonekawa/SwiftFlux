@@ -14,6 +14,8 @@ before_install:
   - brew install carthage
 
 script:
+  - pod repo update
+  - pod spec lint SwiftFlux.podspec
   - set -o pipefail
   - carthage build --no-skip-current --platform Mac,iOS
   - rake test:ios
