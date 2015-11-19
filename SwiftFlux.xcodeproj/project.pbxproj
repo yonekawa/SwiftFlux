@@ -32,6 +32,10 @@
 		CACC48121B6B9E4900FDF2BF /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC48111B6B9E4900FDF2BF /* Dispatcher.swift */; };
 		CACC48141B6B9E8000FDF2BF /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC48131B6B9E8000FDF2BF /* Action.swift */; };
 		CACC48161B6BA00D00FDF2BF /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC48151B6BA00D00FDF2BF /* Store.swift */; };
+		CAEAF03C1BFB97DF0021CC66 /* ReduceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAF03B1BFB97DF0021CC66 /* ReduceStore.swift */; };
+		CAEEE1191BFDBB29000C1B09 /* ReduceStoreSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAF03E1BFBA4EB0021CC66 /* ReduceStoreSpec.swift */; };
+		CAEEE11A1BFDBB2A000C1B09 /* ReduceStoreSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAF03E1BFBA4EB0021CC66 /* ReduceStoreSpec.swift */; };
+		CAEEE11B1BFDC3C5000C1B09 /* ReduceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAF03B1BFB97DF0021CC66 /* ReduceStore.swift */; };
 		CAEF4EC21B6D3296005684E2 /* SwiftFlux.h in Headers */ = {isa = PBXBuildFile; fileRef = CACC47FA1B6B9DDA00FDF2BF /* SwiftFlux.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CAEF5DAB1B6D36FC005684E2 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEF56D31B6D36D3005684E2 /* Result.framework */; };
 		CAEF5DAF1B6D374D005684E2 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEF56D81B6D36D3005684E2 /* Result.framework */; };
@@ -142,6 +146,8 @@
 		CACC48111B6B9E4900FDF2BF /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		CACC48131B6B9E8000FDF2BF /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		CACC48151B6BA00D00FDF2BF /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		CAEAF03B1BFB97DF0021CC66 /* ReduceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReduceStore.swift; sourceTree = "<group>"; };
+		CAEAF03E1BFBA4EB0021CC66 /* ReduceStoreSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReduceStoreSpec.swift; sourceTree = "<group>"; };
 		CAEF56D21B6D36D3005684E2 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
 		CAEF56D31B6D36D3005684E2 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
 		CAEF56D71B6D36D3005684E2 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
@@ -280,6 +286,7 @@
 				CACC48111B6B9E4900FDF2BF /* Dispatcher.swift */,
 				CACC48131B6B9E8000FDF2BF /* Action.swift */,
 				CACC48151B6BA00D00FDF2BF /* Store.swift */,
+				CAEAF03A1BFB97CC0021CC66 /* Utils */,
 				CACC47F81B6B9DDA00FDF2BF /* Supporting Files */,
 			);
 			path = SwiftFlux;
@@ -299,6 +306,7 @@
 				CA1C3FEA1B7919390048126F /* ActionCreatorSpec.swift */,
 				CAEF5DBA1B6D3989005684E2 /* DispatcherSpec.swift */,
 				CA7C53FE1B6DF17300F393CB /* EventEmitterSpec.swift */,
+				CAEAF03D1BFBA4C70021CC66 /* Utils */,
 				CACC48051B6B9DDA00FDF2BF /* Supporting Files */,
 			);
 			path = SwiftFluxTests;
@@ -310,6 +318,22 @@
 				CACC48061B6B9DDA00FDF2BF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CAEAF03A1BFB97CC0021CC66 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CAEAF03B1BFB97DF0021CC66 /* ReduceStore.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CAEAF03D1BFBA4C70021CC66 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CAEAF03E1BFBA4EB0021CC66 /* ReduceStoreSpec.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		CAEF56CD1B6D36D3005684E2 /* Carthage */ = {
@@ -560,6 +584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAEF5DCE1B6D3D61005684E2 /* Action.swift in Sources */,
+				CAEEE11B1BFDC3C5000C1B09 /* ReduceStore.swift in Sources */,
 				CAEF5DCF1B6D3D64005684E2 /* Dispatcher.swift in Sources */,
 				CAEF5DCD1B6D3D5F005684E2 /* Store.swift in Sources */,
 			);
@@ -569,6 +594,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAEEE11A1BFDBB2A000C1B09 /* ReduceStoreSpec.swift in Sources */,
 				CA1C3FED1B791CA30048126F /* ActionCreatorSpec.swift in Sources */,
 				CA7C54011B6DF4B400F393CB /* EventEmitterSpec.swift in Sources */,
 				CAEF5DBE1B6D3989005684E2 /* DispatcherSpec.swift in Sources */,
@@ -592,6 +618,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CACC48161B6BA00D00FDF2BF /* Store.swift in Sources */,
+				CAEAF03C1BFB97DF0021CC66 /* ReduceStore.swift in Sources */,
 				CACC48141B6B9E8000FDF2BF /* Action.swift in Sources */,
 				CACC48121B6B9E4900FDF2BF /* Dispatcher.swift in Sources */,
 			);
@@ -601,6 +628,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAEEE1191BFDBB29000C1B09 /* ReduceStoreSpec.swift in Sources */,
 				CA1C3FEC1B791CA20048126F /* ActionCreatorSpec.swift in Sources */,
 				CA7C54001B6DF4B400F393CB /* EventEmitterSpec.swift in Sources */,
 				CAEF5DBD1B6D3989005684E2 /* DispatcherSpec.swift in Sources */,
@@ -943,7 +971,6 @@
 			buildSettings = {
 				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
@@ -964,7 +991,6 @@
 			buildSettings = {
 				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
