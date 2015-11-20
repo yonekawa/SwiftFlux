@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
     git: "https://github.com/yonekawa/SwiftFlux.git",
     tag: "v0.2.0",
   }
-  s.source_files = "SwiftFlux/*.swift"
+  s.source_files = "SwiftFlux/**/*.swift"
 
   s.license = {
     :type => "MIT",
