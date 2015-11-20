@@ -94,7 +94,7 @@ class TodoStore : Store {
 
 ```swift
 let todoStore = TodoStore()
-todoStore.eventEmitter.listen(TodoStore.Event.List) { () -> Void in
+todoStore.eventEmitter.listen(.Created) { () -> Void in
     for todo in todoStore.list {
         plintln(todo.title)
     }
@@ -174,10 +174,10 @@ class YourOwnDispatcher: Dispatcher {
 
 ## Use your own ErrorType instead of NSError
 
-You can assign error type with `typealias` on your `Action`.
+You can assign your own `ErrorType` with `typealias` on your `Action`.
 
 ```swift
-struct TodoAction {
+struct TodoAction: ErrorType {
     enum TodoError {
         case CreateError
     }
