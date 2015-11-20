@@ -33,7 +33,7 @@ class DispatcherSpec: QuickSpec {
             var fails = [String]()
             var callbacks = [String]()
 
-            beforeEach({ () -> () in
+            beforeEach { () in
                 results = []
                 fails = []
                 callbacks = []
@@ -56,13 +56,13 @@ class DispatcherSpec: QuickSpec {
                 }
                 callbacks.append(id1)
                 callbacks.append(id2)
-            })
+            }
 
-            afterEach({ () -> () in
+            afterEach { () in
                 for id in callbacks {
                     dispatcher.unregister(id)
                 }
-            })
+            }
             
             context("when action succeeded") {
                 it("should dispatch to registered callback handlers") {

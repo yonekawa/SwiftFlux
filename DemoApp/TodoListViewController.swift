@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TodoListViewController.swift
 //  DemoApp
 //
 //  Created by Kenichi Yonekawa on 8/1/15.
@@ -9,19 +9,19 @@
 import UIKit
 import SwiftFlux
 
-class ViewController: UITableViewController {
+class TodoListViewController: UITableViewController {
     let todoStore = TodoStore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.todoStore.eventEmitter.listen(TodoStore.Event.List) { () -> Void in
+
+        self.todoStore.eventEmitter.listen(TodoStore.Event.Fetched) { () -> Void in
             self.tableView.reloadData()
         }
         self.todoStore.eventEmitter.listen(TodoStore.Event.Created) { () -> Void in
             self.tableView.reloadData()
         }
-        ActionCreator.invoke(TodoAction.List())
+        ActionCreator.invoke(TodoAction.Fetch())
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

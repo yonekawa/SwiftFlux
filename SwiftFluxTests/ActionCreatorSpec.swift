@@ -46,7 +46,7 @@ class ActionCreatorSpec: QuickSpec {
     }
 
     override func spec() {
-        describe("invoke", { () -> Void in
+        describe("invoke", { () in
             var results = [String]()
             var fails = [String]()
             var callbacks = [String]()

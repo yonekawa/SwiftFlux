@@ -12,7 +12,7 @@ import Result
 
 class TodoStore : Store {
     enum TodoEvent {
-        case List
+        case Fetched
         case Created
     }
     typealias Event = TodoEvent
@@ -25,11 +25,11 @@ class TodoStore : Store {
     }
 
     init() {
-        ActionCreator.dispatcher.register(TodoAction.List.self) { (result) -> Void in
+        ActionCreator.dispatcher.register(TodoAction.Fetch.self) { (result) -> Void in
             switch result {
             case .Success(let box):
                 self.todos = box
-                self.eventEmitter.emit(TodoEvent.List)
+                self.eventEmitter.emit(TodoEvent.Fetched)
             case .Failure(_):
                 break;
             }

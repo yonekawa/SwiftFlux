@@ -11,10 +11,14 @@ import SwiftFlux
 import Result
 
 class TodoAction {
-    class List: Action {
+    class Fetch: Action {
         typealias Payload = [Todo]
         func invoke(dispatcher: Dispatcher) {
-            let todos = [Todo(title: "List ToDo 1"), Todo(title: "List ToDo 2"), Todo(title: "List ToDo 3")]
+            let todos = [
+                Todo(title: "Default ToDo 1"),
+                Todo(title: "Default ToDo 2"),
+                Todo(title: "Default ToDo 3")
+            ]
             dispatcher.dispatch(self, result: Result(value: todos))
         }
     }

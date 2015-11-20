@@ -37,27 +37,27 @@ class EventEmitterSpec: QuickSpec {
             var listeners = [String]()
             var results = [String]()
 
-            beforeEach({ () -> () in
+            beforeEach { () in
                 listeners = []
-                let id1 = emitter.listen(EventEmitterTestStore.Event.List, handler: { () -> Void in
+                let id1 = emitter.listen(EventEmitterTestStore.Event.List, handler: { () in
                     results.append("test list")
                 })
-                let id2 = emitter2.listen(EventEmitterTestStore2.Event.List, handler: { () -> Void in
+                let id2 = emitter2.listen(EventEmitterTestStore2.Event.List, handler: { () in
                     results.append("test2 list")
                 })
-                let id3 = emitter.listen(EventEmitterTestStore.Event.Created, handler: { () -> Void in
+                let id3 = emitter.listen(EventEmitterTestStore.Event.Created, handler: { () in
                     results.append("test created")
                 })
                 listeners.append(id1)
                 listeners.append(id2)
                 listeners.append(id3)
-            })
+            }
 
-            afterEach({ () -> () in
+            afterEach { () in
                 for listener in listeners {
                     emitter.unlisten(listener)
                 }
-            })
+            }
             
             it("should fire event correctly") {
                 emitter.emit(EventEmitterTestStore.Event.List)

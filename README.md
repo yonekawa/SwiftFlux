@@ -113,7 +113,7 @@ ActionCreator.invoke(TodoAction.List())
 
 Store registerer handler to Action by Dispatcher.
 Dispatcher has handler reference in collection.
-You need to release when store instance released.
+You need to release handler reference when store instance released.
 
 ```swift
 class TodoStore {
@@ -140,6 +140,9 @@ class TodoViewController {
   }
 }
 ```
+
+`StoreBase` contains register/unregister utility.
+You can use these methods when override it to your own Store class.
 
 ### Replace to your own Dispatcher
 
@@ -188,6 +191,81 @@ struct TodoAction: ErrorType {
             let error = TodoError.CreateError
             dispatcher.dispatch(self, result: Result(error: error))
         }
+    }
+}
+```
+
+## SwiftFlux Utils
+
+SwiftFlux contains basic `Store` implementation utilities like as [flux-utils](https://facebook.github.io/flux/docs/flux-utils.html).
+
+### StoreBase
+
+`StoreBase` provides basic store implementation.
+For example, register/unregister callback of `Action`, `eventEmitter` property, etc.
+
+```
+class CalculateStore: StoreBase {
+    private var internalNumber: Int = 0
+    var number: Int {
+        return internalNumber
+    }
+
+    override init() {
+        super.init()
+
+        self.register(CalculateActions.Plus.self) { (result) in
+            switch result {
+            case .Success(let value):
+                self.internalNumber += value
+                self.eventEmitter.emit(.Changed)
+            default:
+                break
+            }
+        }
+
+        self.register(CalculateActions.Minus.self) { (result) in
+            switch result {
+            case .Success(let value):
+                self.internalNumber -= value
+                self.eventEmitter.emit(.Changed)
+            default:
+                break
+            }
+        }
+    }
+}
+```
+
+### ReduceStore
+
+`ReduceStore` provides simply implementation to reduce the current state by reducer.
+Reducer receives the current state and Action's result. And reducer returns new state reduced.
+Reducer should be pure and have no side-effects.
+`ReduceStore` extends `StoreBase`.
+
+```
+class CalculateStore: ReduceStore<Int> {
+    override init() {
+        super.init()
+
+        self.reduce(CalculateActions.Plus.self) { (state, result) -> Int in
+            switch result {
+            case .Success(let number): return state + number
+            default: return state
+            }
+        }
+
+        self.reduce(CalculateActions.Minus.self) { (state, result) -> Int in
+            switch result {
+            case .Success(let number): return state - number
+            default: return state
+            }
+        }
+    }
+
+    override var initialState: Int {
+        return 0
     }
 }
 ```
