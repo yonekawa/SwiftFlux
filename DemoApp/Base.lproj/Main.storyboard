@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4o7-vd-knq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4o7-vd-knq">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Flux ToDo List-->
         <scene sceneID="98q-tb-fiq">
             <objects>
-                <tableViewController id="gOx-70-l2J" customClass="ViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="gOx-70-l2J" customClass="TodoListViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gOp-7h-bAb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoCell" textLabel="z1c-pQ-MgR" style="IBUITableViewCellStyleDefault" id="Zbr-5m-DDC">
+                                <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zbr-5m-DDC" id="Bb0-Eu-Ih2">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z1c-pQ-MgR">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,14 +40,90 @@
                     <navigationItem key="navigationItem" title="Flux ToDo List" id="RcG-l5-awd">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4eR-Cx-rUv">
                             <connections>
-                                <action selector="createTodo" destination="gOx-70-l2J" id="nHD-c5-x2J"/>
+                                <segue destination="J15-aO-vNM" kind="presentation" id="Scq-a9-LKL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8OT-SK-h5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="339" y="420"/>
+            <point key="canvasLocation" x="312" y="420"/>
+        </scene>
+        <!--Create ToDo-->
+        <scene sceneID="WI4-rk-Zdf">
+            <objects>
+                <tableViewController id="l0Z-20-Mw2" customClass="CreateTodoViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="aGQ-hj-ulg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="LJO-yW-AJF">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleFieldCell" id="JNC-Ey-Ksi">
+                                        <rect key="frame" x="0.0" y="99" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JNC-Ey-Ksi" id="ZlV-ho-IEq">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ToDo Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VmO-bO-dUA">
+                                                    <rect key="frame" x="12" y="0.0" width="576" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="VmO-bO-dUA" firstAttribute="top" secondItem="ZlV-ho-IEq" secondAttribute="top" id="8iP-Bg-pqd"/>
+                                                <constraint firstAttribute="trailing" secondItem="VmO-bO-dUA" secondAttribute="trailing" constant="12" id="Gh4-Sz-JxN"/>
+                                                <constraint firstAttribute="bottom" secondItem="VmO-bO-dUA" secondAttribute="bottom" id="NaH-DP-QUV"/>
+                                                <constraint firstItem="VmO-bO-dUA" firstAttribute="leading" secondItem="ZlV-ho-IEq" secondAttribute="leading" constant="12" id="r7u-o8-u8T"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="l0Z-20-Mw2" id="bOK-te-a9w"/>
+                            <outlet property="delegate" destination="l0Z-20-Mw2" id="sIm-Bz-boa"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Create ToDo" id="sHK-JO-Z1f">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="S4A-mw-Uhl">
+                            <connections>
+                                <action selector="dismiss" destination="l0Z-20-Mw2" id="7jQ-dc-oxK"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="tmM-pv-kt2">
+                            <connections>
+                                <action selector="createTodo" destination="l0Z-20-Mw2" id="2NH-5I-gys"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="titleTextField" destination="VmO-bO-dUA" id="Wm0-en-Bf6"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yaf-I8-Uf9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1820" y="420"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UuO-RS-8RV">
+            <objects>
+                <navigationController id="J15-aO-vNM" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0nK-Y7-7B4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="l0Z-20-Mw2" kind="relationship" relationship="rootViewController" id="Wdh-hi-2BE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gsK-it-R2u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1000" y="420"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HMq-cF-0oU">
