@@ -5,7 +5,7 @@ end
 namespace :carthage do
   desc 'Update depndencies by carthage'
   task :update do |t|
-    run 'carthage update --use-submodules --platform Mac,iOS'
+    run 'carthage update --use-submodules --verbose'
   end
 end
 

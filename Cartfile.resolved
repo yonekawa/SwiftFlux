@@ -1,3 +1,3 @@
-github "Quick/Nimble" "v3.0.0"
-github "Quick/Quick" "v0.8.0"
+github "yonekawa/Nimble" "105e1bd0bb8ba1f2b06d0f43193725edde762017"
+github "yonekawa/Quick" "b799df399b48281633103ea5b2c46fd6eeff5e1d"
 github "antitypical/Result" "0.6.0-beta.6"
