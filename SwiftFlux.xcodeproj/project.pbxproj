@@ -55,6 +55,10 @@
 		CAEF5DD21B6DC0F7005684E2 /* Nimble.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CAEF5DB01B6D3927005684E2 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAEF5DD31B6DC0F7005684E2 /* Quick.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CAEF56D21B6D36D3005684E2 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAEF5DD71B6DC7B6005684E2 /* Result.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CAEF56D31B6D36D3005684E2 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CAFDEA171BFF59E000AF7A09 /* StoreBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFDEA161BFF59E000AF7A09 /* StoreBase.swift */; };
+		CAFDEA181BFF59E500AF7A09 /* StoreBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFDEA161BFF59E000AF7A09 /* StoreBase.swift */; };
+		CAFDEA1B1BFF5D5300AF7A09 /* StoreBaseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFDEA191BFF5D4E00AF7A09 /* StoreBaseSpec.swift */; };
+		CAFDEA1C1BFF5D5300AF7A09 /* StoreBaseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFDEA191BFF5D4E00AF7A09 /* StoreBaseSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +159,8 @@
 		CAEF5DB01B6D3927005684E2 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
 		CAEF5DB51B6D3951005684E2 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
 		CAEF5DBA1B6D3989005684E2 /* DispatcherSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatcherSpec.swift; sourceTree = "<group>"; };
+		CAFDEA161BFF59E000AF7A09 /* StoreBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreBase.swift; sourceTree = "<group>"; };
+		CAFDEA191BFF5D4E00AF7A09 /* StoreBaseSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreBaseSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +329,7 @@
 		CAEAF03A1BFB97CC0021CC66 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CAFDEA161BFF59E000AF7A09 /* StoreBase.swift */,
 				CAEAF03B1BFB97DF0021CC66 /* ReduceStore.swift */,
 			);
 			path = Utils;
@@ -331,6 +338,7 @@
 		CAEAF03D1BFBA4C70021CC66 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CAFDEA191BFF5D4E00AF7A09 /* StoreBaseSpec.swift */,
 				CAEAF03E1BFBA4EB0021CC66 /* ReduceStoreSpec.swift */,
 			);
 			path = Utils;
@@ -585,6 +593,7 @@
 			files = (
 				CAEF5DCE1B6D3D61005684E2 /* Action.swift in Sources */,
 				CAEEE11B1BFDC3C5000C1B09 /* ReduceStore.swift in Sources */,
+				CAFDEA181BFF59E500AF7A09 /* StoreBase.swift in Sources */,
 				CAEF5DCF1B6D3D64005684E2 /* Dispatcher.swift in Sources */,
 				CAEF5DCD1B6D3D5F005684E2 /* Store.swift in Sources */,
 			);
@@ -594,6 +603,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAFDEA1C1BFF5D5300AF7A09 /* StoreBaseSpec.swift in Sources */,
 				CAEEE11A1BFDBB2A000C1B09 /* ReduceStoreSpec.swift in Sources */,
 				CA1C3FED1B791CA30048126F /* ActionCreatorSpec.swift in Sources */,
 				CA7C54011B6DF4B400F393CB /* EventEmitterSpec.swift in Sources */,
@@ -619,6 +629,7 @@
 			files = (
 				CACC48161B6BA00D00FDF2BF /* Store.swift in Sources */,
 				CAEAF03C1BFB97DF0021CC66 /* ReduceStore.swift in Sources */,
+				CAFDEA171BFF59E000AF7A09 /* StoreBase.swift in Sources */,
 				CACC48141B6B9E8000FDF2BF /* Action.swift in Sources */,
 				CACC48121B6B9E4900FDF2BF /* Dispatcher.swift in Sources */,
 			);
@@ -628,6 +639,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAFDEA1B1BFF5D5300AF7A09 /* StoreBaseSpec.swift in Sources */,
 				CAEEE1191BFDBB29000C1B09 /* ReduceStoreSpec.swift in Sources */,
 				CA1C3FEC1B791CA20048126F /* ActionCreatorSpec.swift in Sources */,
 				CA7C54001B6DF4B400F393CB /* EventEmitterSpec.swift in Sources */,

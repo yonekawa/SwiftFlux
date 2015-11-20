@@ -1,17 +1,18 @@
 //
-//  ReduceStoreSpec.swift
+//  StoreBaseSpec.swift
 //  SwiftFlux
 //
-//  Created by Kenichi Yonekawa on 11/18/15.
+//  Created by Kenichi Yonekawa on 11/20/15.
 //  Copyright © 2015 mog2dev. All rights reserved.
 //
 
+import Foundation
 import Quick
 import Nimble
 import Result
 import SwiftFlux
 
-class ReduceStoreSpec: QuickSpec {
+class StoreBaseSpec: QuickSpec {
     struct CalculateActions {
         struct Plus: Action {
             typealias Payload = Int
@@ -28,28 +29,35 @@ class ReduceStoreSpec: QuickSpec {
             }
         }
     }
+    
+    class CalculateStore: StoreBase {
+        private var internalNumber: Int = 0
+        var number: Int {
+            return internalNumber
+        }
 
-    class CalculateStore: ReduceStore<Int> {
         override init() {
             super.init()
 
-            self.reduce(CalculateActions.Plus.self) { (state, result) -> Int in
+            self.register(CalculateActions.Plus.self) { (result) in
                 switch result {
-                case .Success(let number): return state + number
-                default: return state
+                case .Success(let value):
+                    self.internalNumber += value
+                    self.eventEmitter.emit(.Changed)
+                default:
+                    break
                 }
             }
-
-            self.reduce(CalculateActions.Minus.self) { (state, result) -> Int in
+            
+            self.register(CalculateActions.Minus.self) { (result) in
                 switch result {
-                case .Success(let number): return state - number
-                default: return state
+                case .Success(let value):
+                    self.internalNumber -= value
+                    self.eventEmitter.emit(.Changed)
+                default:
+                    break
                 }
             }
-        }
-
-        override var initialState: Int {
-            return 0
         }
     }
 
@@ -57,16 +65,16 @@ class ReduceStoreSpec: QuickSpec {
         let store = CalculateStore()
         var results = [Int]()
 
-        beforeEach { () -> () in
+        beforeEach { () in
             results = []
-            store.eventEmitter.listen(.Changed) { () -> () in
-                results.append(store.state)
+            store.eventEmitter.listen(.Changed) { () in
+                results.append(store.number)
             }
         }
 
-        afterEach({ () -> () in
+        afterEach { () in
             store.unregister()
-        })
+        }
 
         it("should calculate state with number") {
             ActionCreator.invoke(CalculateActions.Plus(number: 3))
