@@ -2,6 +2,7 @@
 
 [![Travis CI](https://travis-ci.org/yonekawa/SwiftFlux.svg?branch=master)](https://travis-ci.org/yonekawa/SwiftFlux)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Cocoapods](https://img.shields.io/cocoapods/v/SwiftFlux.svg)](https://cocoapods.org/pods/SwiftFlux)
 
 SwiftFlux is an implementation of [Facebook's Flux architecure](https://facebook.github.io/flux/) for Swift.
 It provides concept of "one-way data flow" with **type-safe** modules by Swift language.
@@ -195,7 +196,7 @@ struct TodoAction: ErrorType {
 }
 ```
 
-## SwiftFlux Utils
+## Flux Utils
 
 SwiftFlux contains basic `Store` implementation utilities like as [flux-utils](https://facebook.github.io/flux/docs/flux-utils.html).
 
