@@ -27,7 +27,7 @@ It provides concept of "one-way data flow" with **type-safe** modules by Swift l
 
 #### [Cocoapods](https://cocoapods.org/)
 
-- Insert `pod "SwiftFlux", "~> 0.1"` to your Podfile:
+- Insert `pod "SwiftFlux"` to your Podfile:
 - Run `pod install`.
 
 ## Usage
