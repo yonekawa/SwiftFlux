@@ -1,6 +1,2 @@
-# FIXME:
-# Quick & Nimble builds are failed caused by tvOS's XCTest does not contain bitcode.
-# https://github.com/Quick/Quick/issues/422
-# https://github.com/Quick/Nimble/pull/210
-github "yonekawa/Quick" "v0.8.0-tvos-disabled"
-github "yonekawa/Nimble" "v3.0.0-tvos-disabled"
+github "Quick/Quick" "v0.8.0"
+github "Quick/Nimble" "v3.0.0"
