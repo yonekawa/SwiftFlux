@@ -13,7 +13,7 @@ It provides concept of "one-way data flow" with **type-safe** modules by Swift l
 
 # Requirements
 
-- Swift 2.0 (If you need to use with Swift 1.2, Use v0.0.3)
+- Swift 2.0 or later
 - iOS 8.0 or later
 - Mac OS 10.9 or later
 - watch OS 2.0 or later
