@@ -16,7 +16,6 @@
 		CA3794441B6F6632000AE5F2 /* SwiftFlux.framework in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = CACC47F51B6B9DDA00FDF2BF /* SwiftFlux.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA70C3591BFF82CA00EABF70 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA70C3541BFF82AA00EABF70 /* Result.framework */; };
 		CA70C35A1BFF82E200EABF70 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEF56D31B6D36D3005684E2 /* Result.framework */; };
-		CA70C3621BFF8C7000EABF70 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA70C35D1BFF8C6000EABF70 /* Result.framework */; };
 		CA7C53FC1B6DEB8D00F393CB /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEF56D31B6D36D3005684E2 /* Result.framework */; };
 		CA7C53FD1B6DEB8D00F393CB /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAEF56D31B6D36D3005684E2 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA7C54001B6DF4B400F393CB /* EventEmitterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7C53FE1B6DF17300F393CB /* EventEmitterSpec.swift */; };
@@ -67,11 +66,6 @@
 		CAFDEA2E1BFF762300AF7A09 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC48151B6BA00D00FDF2BF /* Store.swift */; };
 		CAFDEA2F1BFF762700AF7A09 /* StoreBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFDEA161BFF59E000AF7A09 /* StoreBase.swift */; };
 		CAFDEA301BFF762700AF7A09 /* ReduceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAF03B1BFB97DF0021CC66 /* ReduceStore.swift */; };
-		CAFDEA3E1BFF780700AF7A09 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC48111B6B9E4900FDF2BF /* Dispatcher.swift */; };
-		CAFDEA3F1BFF780700AF7A09 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC48131B6B9E8000FDF2BF /* Action.swift */; };
-		CAFDEA401BFF780700AF7A09 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC48151B6BA00D00FDF2BF /* Store.swift */; };
-		CAFDEA411BFF780B00AF7A09 /* StoreBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFDEA161BFF59E000AF7A09 /* StoreBase.swift */; };
-		CAFDEA421BFF780B00AF7A09 /* ReduceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAF03B1BFB97DF0021CC66 /* ReduceStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,7 +139,6 @@
 		CA3159FB1B6D2FB5004A8F2C /* SwiftFlux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftFlux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA315A051B6D2FB5004A8F2C /* SwiftFluxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftFluxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA70C3541BFF82AA00EABF70 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
-		CA70C35D1BFF8C6000EABF70 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
 		CA7C53FE1B6DF17300F393CB /* EventEmitterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEmitterSpec.swift; sourceTree = "<group>"; };
 		CACA8E391B6CD85F00F051B8 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACA8E3C1B6CD85F00F051B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -178,7 +171,6 @@
 		CAFDEA191BFF5D4E00AF7A09 /* StoreBaseSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreBaseSpec.swift; sourceTree = "<group>"; };
 		CAFDEA1D1BFF64F700AF7A09 /* CreateTodoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTodoViewController.swift; sourceTree = "<group>"; };
 		CAFDEA241BFF749B00AF7A09 /* SwiftFlux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftFlux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CAFDEA361BFF77E000AF7A09 /* SwiftFlux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftFlux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,14 +229,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CAFDEA321BFF77E000AF7A09 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CA70C3621BFF8C7000EABF70 /* Result.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -254,14 +238,6 @@
 				CA70C3541BFF82AA00EABF70 /* Result.framework */,
 			);
 			path = watchOS;
-			sourceTree = "<group>";
-		};
-		CA70C35B1BFF8C6000EABF70 /* tvOS */ = {
-			isa = PBXGroup;
-			children = (
-				CA70C35D1BFF8C6000EABF70 /* Result.framework */,
-			);
-			path = tvOS;
 			sourceTree = "<group>";
 		};
 		CACA8E3A1B6CD85F00F051B8 /* DemoApp */ = {
@@ -333,7 +309,6 @@
 				CA3159FB1B6D2FB5004A8F2C /* SwiftFlux.framework */,
 				CA315A051B6D2FB5004A8F2C /* SwiftFluxTests.xctest */,
 				CAFDEA241BFF749B00AF7A09 /* SwiftFlux.framework */,
-				CAFDEA361BFF77E000AF7A09 /* SwiftFlux.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -408,7 +383,6 @@
 		CAEF56CE1B6D36D3005684E2 /* Build */ = {
 			isa = PBXGroup;
 			children = (
-				CA70C35B1BFF8C6000EABF70 /* tvOS */,
 				CA70C3521BFF82AA00EABF70 /* watchOS */,
 				CAEF56CF1B6D36D3005684E2 /* iOS */,
 				CAEF56D41B6D36D3005684E2 /* Mac */,
@@ -456,13 +430,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CAFDEA211BFF749B00AF7A09 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CAFDEA331BFF77E000AF7A09 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -583,24 +550,6 @@
 			productReference = CAFDEA241BFF749B00AF7A09 /* SwiftFlux.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CAFDEA351BFF77E000AF7A09 /* SwiftFlux-tvOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CAFDEA3D1BFF77E000AF7A09 /* Build configuration list for PBXNativeTarget "SwiftFlux-tvOS" */;
-			buildPhases = (
-				CAFDEA311BFF77E000AF7A09 /* Sources */,
-				CAFDEA321BFF77E000AF7A09 /* Frameworks */,
-				CAFDEA331BFF77E000AF7A09 /* Headers */,
-				CAFDEA341BFF77E000AF7A09 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "SwiftFlux-tvOS";
-			productName = "SwiftFlux-tvOS";
-			productReference = CAFDEA361BFF77E000AF7A09 /* SwiftFlux.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -629,9 +578,6 @@
 					CAFDEA231BFF749B00AF7A09 = {
 						CreatedOnToolsVersion = 7.1.1;
 					};
-					CAFDEA351BFF77E000AF7A09 = {
-						CreatedOnToolsVersion = 7.1.1;
-					};
 				};
 			};
 			buildConfigurationList = CACC47EF1B6B9DDA00FDF2BF /* Build configuration list for PBXProject "SwiftFlux" */;
@@ -650,7 +596,6 @@
 				CACC47F41B6B9DDA00FDF2BF /* SwiftFlux-iOS */,
 				CA3159FA1B6D2FB5004A8F2C /* SwiftFlux-Mac */,
 				CAFDEA231BFF749B00AF7A09 /* SwiftFlux-watchOS */,
-				CAFDEA351BFF77E000AF7A09 /* SwiftFlux-tvOS */,
 				CACC47FF1B6B9DDA00FDF2BF /* SwiftFlux-iOSTests */,
 				CA315A041B6D2FB5004A8F2C /* SwiftFlux-MacTests */,
 				CACA8E381B6CD85F00F051B8 /* DemoApp */,
@@ -698,13 +643,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CAFDEA221BFF749B00AF7A09 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CAFDEA341BFF77E000AF7A09 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -784,18 +722,6 @@
 				CAFDEA2C1BFF762200AF7A09 /* Dispatcher.swift in Sources */,
 				CAFDEA2F1BFF762700AF7A09 /* StoreBase.swift in Sources */,
 				CAFDEA2D1BFF762200AF7A09 /* Action.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CAFDEA311BFF77E000AF7A09 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CAFDEA401BFF780700AF7A09 /* Store.swift in Sources */,
-				CAFDEA421BFF780B00AF7A09 /* ReduceStore.swift in Sources */,
-				CAFDEA3E1BFF780700AF7A09 /* Dispatcher.swift in Sources */,
-				CAFDEA411BFF780B00AF7A09 /* StoreBase.swift in Sources */,
-				CAFDEA3F1BFF780700AF7A09 /* Action.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1094,8 +1020,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
 				INFOPLIST_FILE = SwiftFlux/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1121,8 +1045,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
 				INFOPLIST_FILE = SwiftFlux/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1213,53 +1135,6 @@
 			};
 			name = Release;
 		};
-		CAFDEA3B1BFF77E000AF7A09 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
-				INFOPLIST_FILE = SwiftFlux/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.mog2dev.SwiftFlux;
-				PRODUCT_NAME = "$(PROJECT_NAME)";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		CAFDEA3C1BFF77E000AF7A09 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
-				INFOPLIST_FILE = SwiftFlux/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.mog2dev.SwiftFlux;
-				PRODUCT_NAME = "$(PROJECT_NAME)";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1322,15 +1197,6 @@
 			buildConfigurations = (
 				CAFDEA291BFF749B00AF7A09 /* Debug */,
 				CAFDEA2A1BFF749B00AF7A09 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CAFDEA3D1BFF77E000AF7A09 /* Build configuration list for PBXNativeTarget "SwiftFlux-tvOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CAFDEA3B1BFF77E000AF7A09 /* Debug */,
-				CAFDEA3C1BFF77E000AF7A09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
