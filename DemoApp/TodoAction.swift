@@ -11,28 +11,33 @@ import SwiftFlux
 import Result
 
 class TodoAction {
-    class Fetch: Action {
+    struct Fetch: Action {
         typealias Payload = [Todo]
         func invoke(dispatcher: Dispatcher) {
             let todos = [
-                Todo(title: "Default ToDo 1"),
-                Todo(title: "Default ToDo 2"),
-                Todo(title: "Default ToDo 3")
+                Todo(title: "ToDo 1"),
+                Todo(title: "ToDo 2"),
+                Todo(title: "ToDo 3")
             ]
             dispatcher.dispatch(self, result: Result(value: todos))
         }
     }
 
-    class Create: Action {
+    struct Create: Action {
         typealias Payload = Todo
-
-        private var title: String = ""
-        init(title: String) {
-            self.title = title
-        }
+        let title: String
 
         func invoke(dispatcher: Dispatcher) {
-            dispatcher.dispatch(self, result: Result(value: Todo(title: self.title)))
+            dispatcher.dispatch(self, result: Result(value: Todo(title: title)))
+        }
+    }
+
+    struct Delete: Action {
+        typealias Payload = Int
+        let index: Int
+        
+        func invoke(dispatcher: Dispatcher) {
+            dispatcher.dispatch(self, result: Result(value: index))
         }
     }
 }
