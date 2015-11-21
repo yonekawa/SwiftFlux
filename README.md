@@ -16,6 +16,7 @@ It provides concept of "one-way data flow" with **type-safe** modules by Swift l
 - Swift 2.0 (If you need to use with Swift 1.2, Use v0.0.3)
 - iOS 8.0 or later
 - Mac OS 10.9 or later
+- watch OS 2.0 or later
 
 ## Installation
 
@@ -27,7 +28,7 @@ It provides concept of "one-way data flow" with **type-safe** modules by Swift l
 
 #### [Cocoapods](https://cocoapods.org/)
 
-- Insert `pod "SwiftFlux", "~> 0.1"` to your Podfile:
+- Insert `pod "SwiftFlux"` to your Podfile:
 - Run `pod install`.
 
 ## Usage
