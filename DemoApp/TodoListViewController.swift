@@ -15,13 +15,20 @@ class TodoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.todoStore.eventEmitter.listen(TodoStore.Event.Fetched) { () -> Void in
+        self.todoStore.eventEmitter.listen(TodoStore.Event.Fetched) { () in
             self.tableView.reloadData()
         }
-        self.todoStore.eventEmitter.listen(TodoStore.Event.Created) { () -> Void in
+        self.todoStore.eventEmitter.listen(TodoStore.Event.Created) { () in
+            self.tableView.reloadData()
+        }
+        self.todoStore.eventEmitter.listen(TodoStore.Event.Deleted) { () in
             self.tableView.reloadData()
         }
         ActionCreator.invoke(TodoAction.Fetch())
+    }
+
+    @IBAction func createTodo() {
+        ActionCreator.invoke(TodoAction.Create(title: "New ToDo"))
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,8 +41,8 @@ class TodoListViewController: UITableViewController {
         return cell
     }
 
-    @IBAction func createTodo() {
-        ActionCreator.invoke(TodoAction.Create(title: "New ToDo"))
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        ActionCreator.invoke(TodoAction.Delete(index: indexPath.row))
     }
 }
 
