@@ -4,12 +4,12 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Cocoapods](https://img.shields.io/cocoapods/v/SwiftFlux.svg)](https://cocoapods.org/pods/SwiftFlux)
 
-SwiftFlux is an implementation of [Facebook's Flux architecure](https://facebook.github.io/flux/) for Swift.
+SwiftFlux is an implementation of [Facebook's Flux architecure](https://facebook.github.io/flux/) for Swift.  
 It provides concept of "one-way data flow" with **type-safe** modules by Swift language.
 
-- Type of an action payload is inferred from the type of its action.
+- Type of an action's payload is inferred from the type of its action.
 - A result of an action is represented by [Result](https://github.com/antitypical/Result), which is also known as Either.
-- EventEmitter supports to fire event of store changed.
+- EventEmitter supports to fire event of Store changed.
 
 # Requirements
 
