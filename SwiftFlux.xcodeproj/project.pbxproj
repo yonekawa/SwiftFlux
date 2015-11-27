@@ -30,6 +30,11 @@
 		CACA8E691B6CD91200F051B8 /* TodoAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA8E681B6CD91200F051B8 /* TodoAction.swift */; };
 		CACA8E6C1B6CD93E00F051B8 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA8E6B1B6CD93E00F051B8 /* Todo.swift */; };
 		CACA8E6E1B6CD95600F051B8 /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA8E6D1B6CD95600F051B8 /* TodoStore.swift */; };
+		CACB6FD91C08CAF500597940 /* Redux.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB6FD81C08CAF500597940 /* Redux.swift */; };
+		CACB6FDC1C08CBF200597940 /* Redux.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB6FD81C08CAF500597940 /* Redux.swift */; };
+		CACB6FDD1C08CBF300597940 /* Redux.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB6FD81C08CAF500597940 /* Redux.swift */; };
+		CACB6FDE1C08CBF700597940 /* ReduxSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB6FDA1C08CBE600597940 /* ReduxSpec.swift */; };
+		CACB6FDF1C08CBF800597940 /* ReduxSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB6FDA1C08CBE600597940 /* ReduxSpec.swift */; };
 		CACC47FB1B6B9DDA00FDF2BF /* SwiftFlux.h in Headers */ = {isa = PBXBuildFile; fileRef = CACC47FA1B6B9DDA00FDF2BF /* SwiftFlux.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CACC48121B6B9E4900FDF2BF /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC48111B6B9E4900FDF2BF /* Dispatcher.swift */; };
 		CACC48141B6B9E8000FDF2BF /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC48131B6B9E8000FDF2BF /* Action.swift */; };
@@ -150,6 +155,8 @@
 		CACA8E681B6CD91200F051B8 /* TodoAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoAction.swift; sourceTree = "<group>"; };
 		CACA8E6B1B6CD93E00F051B8 /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		CACA8E6D1B6CD95600F051B8 /* TodoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
+		CACB6FD81C08CAF500597940 /* Redux.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Redux.swift; sourceTree = "<group>"; };
+		CACB6FDA1C08CBE600597940 /* ReduxSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReduxSpec.swift; sourceTree = "<group>"; };
 		CACC47F51B6B9DDA00FDF2BF /* SwiftFlux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftFlux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACC47F91B6B9DDA00FDF2BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CACC47FA1B6B9DDA00FDF2BF /* SwiftFlux.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftFlux.h; sourceTree = "<group>"; };
@@ -359,6 +366,7 @@
 			children = (
 				CAFDEA161BFF59E000AF7A09 /* StoreBase.swift */,
 				CAEAF03B1BFB97DF0021CC66 /* ReduceStore.swift */,
+				CACB6FD81C08CAF500597940 /* Redux.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -368,6 +376,7 @@
 			children = (
 				CAFDEA191BFF5D4E00AF7A09 /* StoreBaseSpec.swift */,
 				CAEAF03E1BFBA4EB0021CC66 /* ReduceStoreSpec.swift */,
+				CACB6FDA1C08CBE600597940 /* ReduxSpec.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -658,6 +667,7 @@
 			files = (
 				CAEF5DCE1B6D3D61005684E2 /* Action.swift in Sources */,
 				CAEEE11B1BFDC3C5000C1B09 /* ReduceStore.swift in Sources */,
+				CACB6FDC1C08CBF200597940 /* Redux.swift in Sources */,
 				CAFDEA181BFF59E500AF7A09 /* StoreBase.swift in Sources */,
 				CAEF5DCF1B6D3D64005684E2 /* Dispatcher.swift in Sources */,
 				CAEF5DCD1B6D3D5F005684E2 /* Store.swift in Sources */,
@@ -671,6 +681,7 @@
 				CAFDEA1C1BFF5D5300AF7A09 /* StoreBaseSpec.swift in Sources */,
 				CAEEE11A1BFDBB2A000C1B09 /* ReduceStoreSpec.swift in Sources */,
 				CA1C3FED1B791CA30048126F /* ActionCreatorSpec.swift in Sources */,
+				CACB6FDE1C08CBF700597940 /* ReduxSpec.swift in Sources */,
 				CA7C54011B6DF4B400F393CB /* EventEmitterSpec.swift in Sources */,
 				CAEF5DBE1B6D3989005684E2 /* DispatcherSpec.swift in Sources */,
 			);
@@ -695,6 +706,7 @@
 			files = (
 				CACC48161B6BA00D00FDF2BF /* Store.swift in Sources */,
 				CAEAF03C1BFB97DF0021CC66 /* ReduceStore.swift in Sources */,
+				CACB6FD91C08CAF500597940 /* Redux.swift in Sources */,
 				CAFDEA171BFF59E000AF7A09 /* StoreBase.swift in Sources */,
 				CACC48141B6B9E8000FDF2BF /* Action.swift in Sources */,
 				CACC48121B6B9E4900FDF2BF /* Dispatcher.swift in Sources */,
@@ -708,6 +720,7 @@
 				CAFDEA1B1BFF5D5300AF7A09 /* StoreBaseSpec.swift in Sources */,
 				CAEEE1191BFDBB29000C1B09 /* ReduceStoreSpec.swift in Sources */,
 				CA1C3FEC1B791CA20048126F /* ActionCreatorSpec.swift in Sources */,
+				CACB6FDF1C08CBF800597940 /* ReduxSpec.swift in Sources */,
 				CA7C54001B6DF4B400F393CB /* EventEmitterSpec.swift in Sources */,
 				CAEF5DBD1B6D3989005684E2 /* DispatcherSpec.swift in Sources */,
 			);
@@ -719,6 +732,7 @@
 			files = (
 				CAFDEA2E1BFF762300AF7A09 /* Store.swift in Sources */,
 				CAFDEA301BFF762700AF7A09 /* ReduceStore.swift in Sources */,
+				CACB6FDD1C08CBF300597940 /* Redux.swift in Sources */,
 				CAFDEA2C1BFF762200AF7A09 /* Dispatcher.swift in Sources */,
 				CAFDEA2F1BFF762700AF7A09 /* StoreBase.swift in Sources */,
 				CAFDEA2D1BFF762200AF7A09 /* Action.swift in Sources */,
