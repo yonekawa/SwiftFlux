@@ -75,5 +75,25 @@ class ReduxSpec: QuickSpec {
                 expect(store.state).toEventually(equal("Data"))
             }
         }
+
+        describe("subscribe") {
+            it("should call subscriber function") {
+                var results = [Int]()
+                let initialState = 0
+                let store = ReduxStore<Int>.create(initialState, reducer: self.counterReducer)
+
+                store.subscribe { () in
+                    results.append(store.state)
+                }
+                store.dispatch(CounterAction.Increment)
+                store.dispatch(CounterAction.Increment)
+                store.dispatch(CounterAction.Decrement)
+                store.dispatch(CounterAction.Decrement)
+                expect(results[0]).to(equal(1))
+                expect(results[1]).to(equal(2))
+                expect(results[2]).to(equal(1))
+                expect(results[3]).to(equal(0))
+            }
+        }
     }
 }
