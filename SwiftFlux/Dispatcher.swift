@@ -18,7 +18,6 @@ public protocol Dispatcher {
 
 public class DefaultDispatcher: Dispatcher {
     private var callbacks: Dictionary<String, AnyObject> = [:]
-    private var _isDispatching = false
     private var lastDispatchIdentifier = 0
 
     public init() {}
@@ -63,22 +62,15 @@ public class DefaultDispatcher: Dispatcher {
         for identifier in self.callbacks.keys {
             self.invokeCallback(identifier, type: type, result: result)
         }
-        self.finishDispatching()
 
         objc_sync_exit(self)
     }
 
     private func startDispatching<T: Action>(type: T.Type) {
-        self._isDispatching = true
-
         for (identifier, _) in self.callbacks {
             guard let callback = self.callbacks[identifier] as? DispatchCallback<T> else { continue }
             callback.status = DispatchStatus.Waiting
         }
-    }
-
-    private func finishDispatching() {
-        self._isDispatching = false
     }
 
     private func invokeCallback<T: Action>(identifier: String, type: T.Type, result: Result<T.Payload, T.Error>) {
