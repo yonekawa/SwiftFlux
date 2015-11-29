@@ -206,9 +206,9 @@ SwiftFlux contains basic `Store` implementation utilities like as [flux-utils](h
 `StoreBase` provides basic store implementation.
 For example, register/unregister callback of `Action`, `eventEmitter` property, etc.
 
-```
+```swift
 class CalculateStore: StoreBase {
-    private var internalNumber: Int = 0
+    private var internalNumber = 0
     var number: Int {
         return internalNumber
     }
@@ -246,7 +246,7 @@ Reducer receives the current state and Action's result. And reducer returns new 
 Reducer should be pure and have no side-effects.
 `ReduceStore` extends `StoreBase`.
 
-```
+```swift
 class CalculateStore: ReduceStore<Int> {
     override init() {
         super.init()
