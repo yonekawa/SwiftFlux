@@ -67,7 +67,7 @@ class TodoStore : Store {
 
     let eventEmitter = EventEmitter<TodoStore>()
 
-    var todos = [Todo]()
+    private var todos = [Todo]()
     var list: Array<Todo> {
         get {
             return todos;
