@@ -16,7 +16,6 @@ public class ReduxStore<T: Equatable> {
 
     public typealias Subscriber = () -> ()
     private var subscribers = [Subscriber]()
-    private var isDispatching: Bool = false
 
     private var internalState: T?
     public var state: T {
@@ -38,7 +37,6 @@ public class ReduxStore<T: Equatable> {
 
     public func dispatch(action: ReduxAction) {
         objc_sync_enter(self)
-        isDispatching = true
 
         let startState = self.state
         internalState = reducer(self.state, action)
@@ -46,7 +44,6 @@ public class ReduxStore<T: Equatable> {
             emitChange()
         }
 
-        isDispatching = false
         objc_sync_exit(self)
     }
 
@@ -58,7 +55,7 @@ public class ReduxStore<T: Equatable> {
         subscribers.append(subscriber)
     }
 
-    public func emitChange() {
+    private func emitChange() {
         subscribers.forEach { (subscriber) in subscriber() }
     }
 }
