@@ -75,13 +75,13 @@ class TodoStore : Store {
     }
 
     init() {
-        ActionCreator.dispatcher.register(TodoAction.List.self) { (result) -> Void in
+        ActionCreator.dispatcher.register(TodoAction.List.self) { (result) in
             switch result {
-            case .Success(let box):
-                self.todo = box
-                self.eventEmitter.emit(TodoEvent.Created)
-            case .Failure(let box):
-                NSLog("error \(box)")
+            case .Success(let value):
+                self.todos.append(value)
+                self.eventEmitter.emit(.Created)
+            case .Failure(let error):
+                NSLog("error \(error)")
                 break;
             }
         }
