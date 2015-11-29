@@ -30,8 +30,8 @@ class ReduceStoreSpec: QuickSpec {
     }
 
     class CalculateStore: ReduceStore<Int> {
-        override init() {
-            super.init()
+        init() {
+            super.init(initialState: 0)
 
             self.reduce(CalculateActions.Plus.self) { (state, result) -> Int in
                 switch result {
@@ -46,10 +46,6 @@ class ReduceStoreSpec: QuickSpec {
                 default: return state
                 }
             }
-        }
-
-        override var initialState: Int {
-            return 0
         }
     }
 

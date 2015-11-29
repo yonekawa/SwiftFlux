@@ -248,8 +248,8 @@ Reducer should be pure and have no side-effects.
 
 ```swift
 class CalculateStore: ReduceStore<Int> {
-    override init() {
-        super.init()
+    init() {
+        super.init(initialState: 0)
 
         self.reduce(CalculateActions.Plus.self) { (state, result) -> Int in
             switch result {
@@ -264,10 +264,6 @@ class CalculateStore: ReduceStore<Int> {
             default: return state
             }
         }
-    }
-
-    override var initialState: Int {
-        return 0
     }
 }
 ```
