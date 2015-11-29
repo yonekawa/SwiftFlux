@@ -106,7 +106,7 @@ todoStore.eventEmitter.listen(.Created) { () -> Void in
 ### Step 4: Create and invoke Action by ActionCreator
 
 ```swift
-ActionCreator.invoke(TodoAction.List())
+ActionCreator.invoke(TodoAction.Create())
 ```
 
 ## Advanced
