@@ -69,16 +69,17 @@ public class DefaultDispatcher: Dispatcher {
     private func startDispatching<T: Action>(type: T.Type) {
         for (identifier, _) in self.callbacks {
             guard let callback = self.callbacks[identifier] as? DispatchCallback<T> else { continue }
-            callback.status = DispatchStatus.Waiting
+            callback.status = .Waiting
         }
     }
 
     private func invokeCallback<T: Action>(identifier: String, type: T.Type, result: Result<T.Payload, T.Error>) {
         guard let callback = self.callbacks[identifier] as? DispatchCallback<T> else { return }
+        guard callback.status == .Waiting else { return }
 
-        callback.status = DispatchStatus.Pending
+        callback.status = .Pending
         callback.handler(result)
-        callback.status = DispatchStatus.Handled
+        callback.status = .Handled
     }
 }
 
