@@ -24,10 +24,6 @@ class DispatcherSpec: QuickSpec {
     override func spec() {
         let dispatcher = DefaultDispatcher()
 
-        struct TestModel {
-            let name: String
-        }
-
         describe("dispatch") {
             var results = [String]()
             var fails = [String]()
@@ -79,6 +75,63 @@ class DispatcherSpec: QuickSpec {
                     expect(fails.count).to(equal(2))
                     expect(results.isEmpty).to(beTruthy())
                 }
+            }
+        }
+
+        describe("waitFor") {
+            var results = [String]()
+            var callbacks = [String]()
+            var id1 = "";
+            var id2 = "";
+            var id3 = "";
+
+            beforeEach { () in
+                results = []
+                callbacks = []
+
+                id1 = dispatcher.register(DispatcherTestAction.self) { (result) in
+                    switch result {
+                    case .Success(let box):
+                        dispatcher.waitFor([id2], type: DispatcherTestAction.self, result: result)
+                        results.append("\(box.name)1")
+                    default:
+                        break
+                    }
+                }
+                id2 = dispatcher.register(DispatcherTestAction.self) { (result) in
+                    switch result {
+                    case .Success(let box):
+                        dispatcher.waitFor([id3], type: DispatcherTestAction.self, result: result)
+                        results.append("\(box.name)2")
+                    default:
+                        break
+                    }
+                }
+                id3 = dispatcher.register(DispatcherTestAction.self) { (result) in
+                    switch result {
+                    case .Success(let box):
+                        results.append("\(box.name)3")
+                    default:
+                        break
+                    }
+                }
+                callbacks.append(id1)
+                callbacks.append(id2)
+                callbacks.append(id3)
+            }
+
+            afterEach { () in
+                for id in callbacks {
+                    dispatcher.unregister(id)
+                }
+            }
+
+            it("should wait for invoke callback") {
+                dispatcher.dispatch(DispatcherTestAction(), result: Result(value: DispatcherTestModel(name: "test")))
+                expect(results.count).to(equal(3))
+                expect(results[0]).to(equal("test3"))
+                expect(results[1]).to(equal("test2"))
+                expect(results[2]).to(equal("test1"))
             }
         }
     }
