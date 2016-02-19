@@ -2,7 +2,7 @@
 
 [![Travis CI](https://travis-ci.org/yonekawa/SwiftFlux.svg?branch=master)](https://travis-ci.org/yonekawa/SwiftFlux)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Cocoapods](https://img.shields.io/cocoapods/v/SwiftFlux.svg)](https://cocoapods.org/pods/SwiftFlux)
+[![CocoaPods](https://img.shields.io/cocoapods/v/SwiftFlux.svg)](https://cocoapods.org/pods/SwiftFlux)
 
 SwiftFlux is an implementation of [Facebook's Flux architecure](https://facebook.github.io/flux/) for Swift.  
 It provides concept of "one-way data flow" with **type-safe** modules by Swift language.
@@ -26,7 +26,7 @@ It provides concept of "one-way data flow" with **type-safe** modules by Swift l
 - Run `carthage update`.
 - Link your app with `SwiftFlux.framework`, `Result.framework`, in Carthage/Build
 
-#### [Cocoapods](https://cocoapods.org/)
+#### [CocoaPods](https://cocoapods.org/)
 
 - Insert `pod "SwiftFlux"` to your Podfile:
 - Run `pod install`.
