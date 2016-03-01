@@ -54,29 +54,29 @@ public class DefaultEventEmitter: EventEmitter {
 
     public init() {}
     deinit {
-        self.eventListeners.removeAll()
+        eventListeners.removeAll()
     }
 
     public func subscribe<T: Store>(store: T, handler: () -> ()) -> StoreListenerToken {
         let nextListenerToken = NSUUID().UUIDString
-        self.eventListeners[nextListenerToken] = EventListener(store: store, handler: handler)
+        eventListeners[nextListenerToken] = EventListener(store: store, handler: handler)
         return nextListenerToken
     }
 
     public func unsubscribe<T: Store>(store: T) {
-        self.eventListeners.forEach { (token, listener) -> () in
+        eventListeners.forEach { (token, listener) -> () in
             if (listener.store === store) {
-                self.eventListeners.removeValueForKey(token)
+                eventListeners.removeValueForKey(token)
             }
         }
     }
 
     public func unsubscribe<T: Store>(store: T, listenerToken: StoreListenerToken) {
-        self.eventListeners.removeValueForKey(listenerToken)
+        eventListeners.removeValueForKey(listenerToken)
     }
 
     public func emitChange<T: Store>(store: T) {
-        self.eventListeners.forEach { (_, listener) -> () in
+        eventListeners.forEach { (_, listener) -> () in
             if (listener.store === store) { listener.handler() }
         }
     }

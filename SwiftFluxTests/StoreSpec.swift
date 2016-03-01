@@ -12,53 +12,73 @@ import Result
 import SwiftFlux
 
 class StoreSpec: QuickSpec {
-    final class TestStore: Store {}
+    final class TestStore1: Store {}
     final class TestStore2: Store {}
 
     override func spec() {
-        let store = TestStore()
+        let store1 = TestStore1()
         let store2 = TestStore2()
 
         describe("emitChange") {
-            var unsubscribeIdentifier = ""
             var results = [String]()
 
             beforeEach { () in
                 results = []
-                store.subscribe { () in
-                    results.append("test 1")
-                }
-                unsubscribeIdentifier = store.subscribe { () in
-                    results.append("test 2")
+                store1.subscribe { () in
+                    results.append("store1")
                 }
                 store2.subscribe { () in
-                    results.append("test2 1")
+                    results.append("store2")
                 }
             }
 
             afterEach { () in
-                store.unsubscribeAll()
+                store1.unsubscribeAll()
+                store2.unsubscribeAll()
             }
 
             it("should fire event correctly") {
-                store.emitChange()
-                expect(results.count).to(equal(2))
-                expect(results[0]).to(equal("test 2"))
-                expect(results[1]).to(equal("test 1"))
+                store1.emitChange()
+                expect(results.count).to(equal(1))
+                expect(results).to(contain("store1"))
 
-                store.unsubscribe(unsubscribeIdentifier)
-                store.emitChange()
-                expect(results.count).to(equal(3))
-                expect(results[0]).to(equal("test 2"))
-                expect(results[1]).to(equal("test 1"))
-                expect(results[2]).to(equal("test 1"))
+                store1.emitChange()
+                expect(results.count).to(equal(2))
+                expect(results).to(contain("store1"))
 
                 store2.emitChange()
-                expect(results.count).to(equal(4))
-                expect(results[0]).to(equal("test 2"))
-                expect(results[1]).to(equal("test 1"))
-                expect(results[2]).to(equal("test 1"))
-                expect(results[3]).to(equal("test2 1"))
+                expect(results.count).to(equal(3))
+                expect(results).to(contain("store2"))
+            }
+        }
+
+        describe("unsubscribe") {
+            var results = [String]()
+            var token = ""
+
+            beforeEach { () in
+                results = []
+                token = store1.subscribe { () in
+                    results.append("store1")
+                }
+            }
+
+            afterEach { () in
+                store1.unsubscribeAll()
+                store2.unsubscribeAll()
+            }
+
+            it("should unsubscribe collectly") {
+                store1.emitChange()
+                expect(results.count).to(equal(1))
+                expect(results).to(contain("store1"))
+
+                results = []
+
+                store1.unsubscribe(token)
+                store1.emitChange()
+                expect(results.count).to(equal(0))
+                expect(results).toNot(contain("store1"))
             }
         }
     }
