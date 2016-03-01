@@ -9,22 +9,21 @@
 import Result
 
 public class StoreBase: Store {
-    private var dispatchIdentifiers: [String] = []
+    private var dispatchTokens: [DispatchToken] = []
 
     public init() {}
 
-    public func register<T: Action>(type: T.Type, handler: (Result<T.Payload, T.Error>) -> ()) -> String {
-        let identifier = ActionCreator.dispatcher.register(type) { (result) -> () in
+    public func register<T: Action>(type: T.Type, handler: (Result<T.Payload, T.Error>) -> ()) -> DispatchToken {
+        let dispatchToken = ActionCreator.dispatcher.register(type) { (result) -> () in
             handler(result)
         }
-        dispatchIdentifiers.append(identifier)
-
-        return identifier
+        dispatchTokens.append(dispatchToken)
+        return dispatchToken
     }
 
     public func unregister() {
-        dispatchIdentifiers.forEach { (identifier) -> () in
-            ActionCreator.dispatcher.unregister(identifier)
+        dispatchTokens.forEach { (dispatchToken) -> () in
+            ActionCreator.dispatcher.unregister(dispatchToken)
         }
     }
 }

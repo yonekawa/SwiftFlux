@@ -20,7 +20,7 @@ public class ReduceStore<T: Equatable>: StoreBase {
         return internalState ?? initialState
     }
 
-    public func reduce<A: Action>(type: A.Type, reducer: (T, Result<A.Payload, A.Error>) -> T) -> String {
+    public func reduce<A: Action>(type: A.Type, reducer: (T, Result<A.Payload, A.Error>) -> T) -> DispatchToken {
         return self.register(type) { (result) in
             let startState = self.state
             self.internalState = reducer(self.state, result)
@@ -30,4 +30,3 @@ public class ReduceStore<T: Equatable>: StoreBase {
         }
     }
 }
-

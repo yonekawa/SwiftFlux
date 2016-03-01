@@ -8,13 +8,15 @@
 
 import Foundation
 
+public typealias StoreListenerToken = String
+
 public protocol Store : AnyObject {
 }
 
 private var EventEmitterObjectKey: UInt8 = 0
 
 extension Store {
-    public var eventEmitter: EventEmitter {
+    private var eventEmitter: EventEmitter {
         guard let eventEmitter = objc_getAssociatedObject(self, &EventEmitterObjectKey) as? EventEmitter else {
             let eventEmitter = DefaultEventEmitter()
             objc_setAssociatedObject(self, &EventEmitterObjectKey, eventEmitter, .OBJC_ASSOCIATION_RETAIN)
@@ -23,12 +25,12 @@ extension Store {
         return eventEmitter
     }
 
-    public func subscribe(handler: () -> ()) -> String {
+    public func subscribe(handler: () -> ()) -> StoreListenerToken {
         return eventEmitter.subscribe(self, handler: handler)
     }
 
-    public func unsubscribe(identifier: String) {
-        eventEmitter.unsubscribe(self, identifier: identifier)
+    public func unsubscribe(listenerToken: StoreListenerToken) {
+        eventEmitter.unsubscribe(self, listenerToken: listenerToken)
     }
 
     public func unsubscribeAll() {
@@ -43,41 +45,40 @@ extension Store {
 public protocol EventEmitter {
     func subscribe<T: Store>(store: T, handler: () -> ()) -> String
     func unsubscribe<T: Store>(store: T)
-    func unsubscribe<T: Store>(store: T, identifier: String)
+    func unsubscribe<T: Store>(store: T, listenerToken: StoreListenerToken)
     func emitChange<T: Store>(store: T)
 }
 
 public class DefaultEventEmitter: EventEmitter {
-    private var eventListeners: Dictionary<String, EventListener> = [:]
-    private var lastListenerIdentifier = 0
+    private var eventListeners: [StoreListenerToken: EventListener] = [:]
 
     public init() {}
     deinit {
-        self.eventListeners.removeAll()
+        eventListeners.removeAll()
     }
 
-    public func subscribe<T: Store>(store: T, handler: () -> ()) -> String {
-        let nextListenerIdentifier = "EVENT_LISTENER_\(++lastListenerIdentifier)"
-        self.eventListeners[nextListenerIdentifier] = EventListener(store: store, handler: handler)
-        return nextListenerIdentifier
+    public func subscribe<T: Store>(store: T, handler: () -> ()) -> StoreListenerToken {
+        let nextListenerToken = NSUUID().UUIDString
+        eventListeners[nextListenerToken] = EventListener(store: store, handler: handler)
+        return nextListenerToken
     }
 
     public func unsubscribe<T: Store>(store: T) {
-        self.eventListeners.forEach({ (identifier, listener) -> () in
+        eventListeners.forEach { (token, listener) -> () in
             if (listener.store === store) {
-                self.eventListeners.removeValueForKey(identifier)
+                eventListeners.removeValueForKey(token)
             }
-        })
+        }
     }
 
-    public func unsubscribe<T: Store>(store: T, identifier: String) {
-        self.eventListeners.removeValueForKey(identifier)
+    public func unsubscribe<T: Store>(store: T, listenerToken: StoreListenerToken) {
+        eventListeners.removeValueForKey(listenerToken)
     }
 
     public func emitChange<T: Store>(store: T) {
-        self.eventListeners.forEach({ (_, listener) -> () in
+        eventListeners.forEach { (_, listener) -> () in
             if (listener.store === store) { listener.handler() }
-        })
+        }
     }
 }
 

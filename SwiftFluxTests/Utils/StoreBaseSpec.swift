@@ -31,10 +31,7 @@ class StoreBaseSpec: QuickSpec {
     }
     
     class CalculateStore: StoreBase {
-        private var internalNumber: Int = 0
-        var number: Int {
-            return internalNumber
-        }
+        private(set) var number: Int = 0
 
         override init() {
             super.init()
@@ -42,7 +39,7 @@ class StoreBaseSpec: QuickSpec {
             self.register(CalculateActions.Plus.self) { (result) in
                 switch result {
                 case .Success(let value):
-                    self.internalNumber += value
+                    self.number += value
                     self.emitChange()
                 default:
                     break
@@ -52,7 +49,7 @@ class StoreBaseSpec: QuickSpec {
             self.register(CalculateActions.Minus.self) { (result) in
                 switch result {
                 case .Success(let value):
-                    self.internalNumber -= value
+                    self.number -= value
                     self.emitChange()
                 default:
                     break
