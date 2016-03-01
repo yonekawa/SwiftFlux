@@ -18,8 +18,8 @@
 		CA70C35A1BFF82E200EABF70 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEF56D31B6D36D3005684E2 /* Result.framework */; };
 		CA7C53FC1B6DEB8D00F393CB /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEF56D31B6D36D3005684E2 /* Result.framework */; };
 		CA7C53FD1B6DEB8D00F393CB /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAEF56D31B6D36D3005684E2 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CA7C54001B6DF4B400F393CB /* EventEmitterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7C53FE1B6DF17300F393CB /* EventEmitterSpec.swift */; };
-		CA7C54011B6DF4B400F393CB /* EventEmitterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7C53FE1B6DF17300F393CB /* EventEmitterSpec.swift */; };
+		CA7C54001B6DF4B400F393CB /* StoreSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7C53FE1B6DF17300F393CB /* StoreSpec.swift */; };
+		CA7C54011B6DF4B400F393CB /* StoreSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7C53FE1B6DF17300F393CB /* StoreSpec.swift */; };
 		CACA8E3E1B6CD85F00F051B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA8E3D1B6CD85F00F051B8 /* AppDelegate.swift */; };
 		CACA8E401B6CD85F00F051B8 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA8E3F1B6CD85F00F051B8 /* TodoListViewController.swift */; };
 		CACA8E431B6CD85F00F051B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CACA8E411B6CD85F00F051B8 /* Main.storyboard */; };
@@ -139,7 +139,7 @@
 		CA3159FB1B6D2FB5004A8F2C /* SwiftFlux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftFlux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA315A051B6D2FB5004A8F2C /* SwiftFluxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftFluxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA70C3541BFF82AA00EABF70 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
-		CA7C53FE1B6DF17300F393CB /* EventEmitterSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEmitterSpec.swift; sourceTree = "<group>"; };
+		CA7C53FE1B6DF17300F393CB /* StoreSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreSpec.swift; sourceTree = "<group>"; };
 		CACA8E391B6CD85F00F051B8 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACA8E3C1B6CD85F00F051B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CACA8E3D1B6CD85F00F051B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -339,7 +339,7 @@
 			children = (
 				CA1C3FEA1B7919390048126F /* ActionCreatorSpec.swift */,
 				CAEF5DBA1B6D3989005684E2 /* DispatcherSpec.swift */,
-				CA7C53FE1B6DF17300F393CB /* EventEmitterSpec.swift */,
+				CA7C53FE1B6DF17300F393CB /* StoreSpec.swift */,
 				CAEAF03D1BFBA4C70021CC66 /* Utils */,
 				CACC48051B6B9DDA00FDF2BF /* Supporting Files */,
 			);
@@ -671,7 +671,7 @@
 				CAFDEA1C1BFF5D5300AF7A09 /* StoreBaseSpec.swift in Sources */,
 				CAEEE11A1BFDBB2A000C1B09 /* ReduceStoreSpec.swift in Sources */,
 				CA1C3FED1B791CA30048126F /* ActionCreatorSpec.swift in Sources */,
-				CA7C54011B6DF4B400F393CB /* EventEmitterSpec.swift in Sources */,
+				CA7C54011B6DF4B400F393CB /* StoreSpec.swift in Sources */,
 				CAEF5DBE1B6D3989005684E2 /* DispatcherSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -708,7 +708,7 @@
 				CAFDEA1B1BFF5D5300AF7A09 /* StoreBaseSpec.swift in Sources */,
 				CAEEE1191BFDBB29000C1B09 /* ReduceStoreSpec.swift in Sources */,
 				CA1C3FEC1B791CA20048126F /* ActionCreatorSpec.swift in Sources */,
-				CA7C54001B6DF4B400F393CB /* EventEmitterSpec.swift in Sources */,
+				CA7C54001B6DF4B400F393CB /* StoreSpec.swift in Sources */,
 				CAEF5DBD1B6D3989005684E2 /* DispatcherSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

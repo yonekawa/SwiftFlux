@@ -43,7 +43,7 @@ class StoreBaseSpec: QuickSpec {
                 switch result {
                 case .Success(let value):
                     self.internalNumber += value
-                    self.eventEmitter.emit(.Changed)
+                    self.emitChange()
                 default:
                     break
                 }
@@ -53,7 +53,7 @@ class StoreBaseSpec: QuickSpec {
                 switch result {
                 case .Success(let value):
                     self.internalNumber -= value
-                    self.eventEmitter.emit(.Changed)
+                    self.emitChange()
                 default:
                     break
                 }
@@ -67,7 +67,7 @@ class StoreBaseSpec: QuickSpec {
 
         beforeEach { () in
             results = []
-            store.eventEmitter.listen(.Changed) { () in
+            store.subscribe { () in
                 results.append(store.number)
             }
         }
