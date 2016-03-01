@@ -10,7 +10,7 @@ import Foundation
 import SwiftFlux
 import Result
 
-class TodoAction {
+struct TodoAction {
     struct Fetch: Action {
         typealias Payload = [Todo]
         func invoke(dispatcher: Dispatcher) {

@@ -25,7 +25,7 @@ public class ReduceStore<T: Equatable>: StoreBase {
             let startState = self.state
             self.internalState = reducer(self.state, result)
             if startState != self.state {
-                self.eventEmitter.emit(.Changed)
+               self.emitChange()
             }
         }
     }

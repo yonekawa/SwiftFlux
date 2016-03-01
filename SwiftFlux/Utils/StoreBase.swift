@@ -9,18 +9,12 @@
 import Result
 
 public class StoreBase: Store {
-    public enum StoreEvent: Equatable {
-        case Changed
-    }
-    public typealias Event = StoreEvent
-    public let eventEmitter = EventEmitter<StoreBase>()
-
     private var dispatchIdentifiers: [String] = []
 
     public init() {}
 
-    public func register<T: Action>(type: T.Type, handler: (Result<T.Payload, T.Error>) -> Void) -> String {
-        let identifier = ActionCreator.dispatcher.register(type) { (result) -> Void in
+    public func register<T: Action>(type: T.Type, handler: (Result<T.Payload, T.Error>) -> ()) -> String {
+        let identifier = ActionCreator.dispatcher.register(type) { (result) -> () in
             handler(result)
         }
         dispatchIdentifiers.append(identifier)

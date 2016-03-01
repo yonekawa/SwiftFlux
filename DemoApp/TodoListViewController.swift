@@ -15,13 +15,7 @@ class TodoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.todoStore.eventEmitter.listen(TodoStore.Event.Fetched) { () in
-            self.tableView.reloadData()
-        }
-        self.todoStore.eventEmitter.listen(TodoStore.Event.Created) { () in
-            self.tableView.reloadData()
-        }
-        self.todoStore.eventEmitter.listen(TodoStore.Event.Deleted) { () in
+        self.todoStore.subscribe { () in
             self.tableView.reloadData()
         }
         ActionCreator.invoke(TodoAction.Fetch())
@@ -32,12 +26,12 @@ class TodoListViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.todoStore.list.count
+        return self.todoStore.todos.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TodoCell") as UITableViewCell!
-        cell.textLabel!.text = self.todoStore.list[indexPath.row].title
+        cell.textLabel!.text = self.todoStore.todos[indexPath.row].title
         return cell
     }
 

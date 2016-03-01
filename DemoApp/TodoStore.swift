@@ -11,26 +11,14 @@ import SwiftFlux
 import Result
 
 class TodoStore : Store {
-    enum TodoEvent {
-        case Fetched
-        case Created
-        case Deleted
-    }
-    typealias Event = TodoEvent
-
-    let eventEmitter = EventEmitter<TodoStore>()
-
-    private var todos = [Todo]()
-    var list: Array<Todo> {
-        return todos;
-    }
+    private(set) var todos = [Todo]()
 
     init() {
         ActionCreator.dispatcher.register(TodoAction.Fetch.self) { (result) in
             switch result {
             case .Success(let box):
                 self.todos = box
-                self.eventEmitter.emit(TodoEvent.Fetched)
+                self.emitChange()
             case .Failure(_):
                 break;
             }
@@ -40,7 +28,7 @@ class TodoStore : Store {
             switch result {
             case .Success(let box):
                 self.todos.insert(box, atIndex: 0)
-                self.eventEmitter.emit(TodoEvent.Created)
+                self.emitChange()
             case .Failure(_):
                 break;
             }
@@ -50,7 +38,7 @@ class TodoStore : Store {
             switch result {
             case .Success(let box):
                 self.todos.removeAtIndex(box)
-                self.eventEmitter.emit(TodoEvent.Deleted)
+                self.emitChange()
             case .Failure(_):
                 break;
             }

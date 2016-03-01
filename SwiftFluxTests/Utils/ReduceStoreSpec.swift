@@ -55,7 +55,7 @@ class ReduceStoreSpec: QuickSpec {
 
         beforeEach { () -> () in
             results = []
-            store.eventEmitter.listen(.Changed) { () -> () in
+            store.subscribe { () -> () in
                 results.append(store.state)
             }
         }
