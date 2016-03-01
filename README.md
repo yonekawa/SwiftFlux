@@ -9,7 +9,7 @@ It provides concept of "one-way data flow" with **type-safe** modules by Swift l
 
 - Type of an action's payload is inferred from the type of its action.
 - A result of an action is represented by [Result](https://github.com/antitypical/Result), which is also known as Either.
-- EventEmitter supports to fire event of Store changed.
+- Subscribe store to know state changed.
 
 # Requirements
 
@@ -53,33 +53,20 @@ struct TodoAction {
 
 ### Step 2: Define Store and register action to dispatch
 
-- Define event enum and assign type to Event `typealiase`.
-- Define `EventEmitter` instance with generic type.
 - Register any subscribe action callback to dispatcher.
 - Unbox action result value by Either in callback.
+- Notify store's state change to subscribers by `emitChange`
 
 ```swift
 class TodoStore : Store {
-    enum TodoEvent {
-        case Created
-    }
-    typealias Event = TodoEvent
-
-    let eventEmitter = EventEmitter<TodoStore>()
-
-    private var todos = [Todo]()
-    var list: Array<Todo> {
-        get {
-            return todos;
-        }
-    }
+    private(set) var todos = [Todo]()
 
     init() {
         ActionCreator.dispatcher.register(TodoAction.List.self) { (result) in
             switch result {
             case .Success(let value):
                 self.todos.append(value)
-                self.eventEmitter.emit(.Created)
+                self.emitChange()
             case .Failure(let error):
                 NSLog("error \(error)")
                 break;
@@ -89,15 +76,15 @@ class TodoStore : Store {
 }
 ```
 
-### Step 3: Listen store's event at View
+### Step 3: Subscribe store at View
 
-- Listen store's event by `EventEmitter` created at Step2.
+- Subscribe store to know state changed.
 - Get result from store's public interface.
 
 ```swift
 let todoStore = TodoStore()
-todoStore.eventEmitter.listen(.Created) { () -> Void in
-    for todo in todoStore.list {
+todoStore.subscribe { () -> () in
+    for todo in todoStore.todos {
         plintln(todo.title)
     }
 }
@@ -119,18 +106,18 @@ You need to release handler reference when store instance released.
 
 ```swift
 class TodoStore {
-    private var dispatchIdentifiers: Array<String> = []
+    private var dispatchTokens: [DispatchToken] = []
     init() {
-        dispatchIdentifiers.append(
-            ActionCreator.dispatcher.register(TodoAction.self) { (result) -> Void in
+        dispatchTokens.append(
+            ActionCreator.dispatcher.register(TodoAction.self) { (result) -> () in
               ...
             }
         )
     }
 
     func unregsiter() {
-        for identifier in dispatchIdentifiers {
-            ActionCreator.dispatcher.unregister(identifier)
+        for token in dispatchTokens {
+            ActionCreator.dispatcher.unregister(token)
         }
     }
 }
@@ -164,7 +151,7 @@ class YourOwnDispatcher: Dispatcher {
     func dispatch<T: Action>(action: T, result: Result<T.Payload, T.Error>) {
         ...
     }
-    func register<T: Action>(type: T.Type, handler: (Result<T.Payload, T.Error>) -> Void) -> String {
+    func register<T: Action>(type: T.Type, handler: (Result<T.Payload, T.Error>) -> ()) -> String {
         ...
     }
 
@@ -204,14 +191,11 @@ SwiftFlux contains basic `Store` implementation utilities like as [flux-utils](h
 ### StoreBase
 
 `StoreBase` provides basic store implementation.
-For example, register/unregister callback of `Action`, `eventEmitter` property, etc.
+For example, register/unregister callback of `Action`, etc.
 
 ```swift
 class CalculateStore: StoreBase {
-    private var internalNumber = 0
-    var number: Int {
-        return internalNumber
-    }
+    private(set) var number = 0
 
     override init() {
         super.init()
@@ -219,8 +203,8 @@ class CalculateStore: StoreBase {
         self.register(CalculateActions.Plus.self) { (result) in
             switch result {
             case .Success(let value):
-                self.internalNumber += value
-                self.eventEmitter.emit(.Changed)
+                self.number += value
+                self.emitChange()
             default:
                 break
             }
@@ -229,8 +213,8 @@ class CalculateStore: StoreBase {
         self.register(CalculateActions.Minus.self) { (result) in
             switch result {
             case .Success(let value):
-                self.internalNumber -= value
-                self.eventEmitter.emit(.Changed)
+                self.number -= value
+                self.emitChange()
             default:
                 break
             }
