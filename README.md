@@ -155,10 +155,10 @@ class YourOwnDispatcher: Dispatcher {
         ...
     }
 
-    func unregister(identifier: String) {
+    func unregister(dispatchToken: String) {
         ...
     }
-    func waitFor<T: Action>(identifiers: Array<String>, type: T.Type, result: Result<T.Payload, T.Error>) {
+    func waitFor<T: Action>(dispatchTokens: [String], type: T.Type, result: Result<T.Payload, T.Error>) {
         ...
     }
 }
