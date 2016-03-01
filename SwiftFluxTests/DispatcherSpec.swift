@@ -27,7 +27,7 @@ class DispatcherSpec: QuickSpec {
         describe("dispatch") {
             var results = [String]()
             var fails = [String]()
-            var callbacks = [String]()
+            var callbacks = [DispatchToken]()
 
             beforeEach { () in
                 results = []
@@ -80,7 +80,7 @@ class DispatcherSpec: QuickSpec {
 
         describe("waitFor") {
             var results = [String]()
-            var callbacks = [String]()
+            var callbacks = [DispatchToken]()
             var id1 = "";
             var id2 = "";
             var id3 = "";
