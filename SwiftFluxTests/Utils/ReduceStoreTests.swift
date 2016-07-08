@@ -1,17 +1,8 @@
-//
-//  ReduceStoreSpec.swift
-//  SwiftFlux
-//
-//  Created by Kenichi Yonekawa on 11/18/15.
-//  Copyright © 2015 mog2dev. All rights reserved.
-//
-
-import Quick
-import Nimble
-import Result
+import XCTest
 import SwiftFlux
 
-class ReduceStoreSpec: QuickSpec {
+class ReduceStoreTests: XCTestCase {
+
     struct CalculateActions {
         struct Plus: Action {
             typealias Payload = Int
@@ -49,32 +40,30 @@ class ReduceStoreSpec: QuickSpec {
         }
     }
 
-    override func spec() {
-        let store = CalculateStore()
-        var results = [Int]()
+    let store = CalculateStore()
+    var results = [Int]()
 
-        beforeEach { () -> () in
-            results = []
-            store.subscribe { () -> () in
-                results.append(store.state)
-            }
+    override func setUp() {
+        results = []
+        store.subscribe { () -> () in
+            self.results.append(self.store.state)
         }
+    }
 
-        afterEach({ () -> () in
-            store.unregister()
-        })
+    override func tearDown() {
+        store.unregister()
+    }
 
-        it("should calculate state with number") {
-            ActionCreator.invoke(CalculateActions.Plus(number: 3))
-            ActionCreator.invoke(CalculateActions.Plus(number: 3))
-            ActionCreator.invoke(CalculateActions.Minus(number: 2))
-            ActionCreator.invoke(CalculateActions.Minus(number: 1))
+    func testShouldCalculateStateWithNumber() {
+        ActionCreator.invoke(CalculateActions.Plus(number: 3))
+        ActionCreator.invoke(CalculateActions.Plus(number: 3))
+        ActionCreator.invoke(CalculateActions.Minus(number: 2))
+        ActionCreator.invoke(CalculateActions.Minus(number: 1))
 
-            expect(results.count).to(equal(4))
-            expect(results[0]).to(equal(3))
-            expect(results[1]).to(equal(6))
-            expect(results[2]).to(equal(4))
-            expect(results[3]).to(equal(3))
-        }
+        XCTAssertEqual(results.count, 4)
+        XCTAssertEqual(results[0], 3)
+        XCTAssertEqual(results[1], 6)
+        XCTAssertEqual(results[2], 4)
+        XCTAssertEqual(results[3], 3)
     }
 }

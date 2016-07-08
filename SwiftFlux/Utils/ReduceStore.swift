@@ -1,13 +1,3 @@
-//
-//  ReduceStore.swift
-//  SwiftFlux
-//
-//  Created by Kenichi Yonekawa on 11/18/15.
-//  Copyright © 2015 mog2dev. All rights reserved.
-//
-
-import Result
-
 public class ReduceStore<T: Equatable>: StoreBase {
     public init(initialState: T) {
         self.initialState = initialState

@@ -1,13 +1,3 @@
-//
-//  StoreBase.swift
-//  SwiftFlux
-//
-//  Created by Kenichi Yonekawa on 11/20/15.
-//  Copyright © 2015 mog2dev. All rights reserved.
-//
-
-import Result
-
 public class StoreBase: Store {
     private var dispatchTokens: [DispatchToken] = []
 

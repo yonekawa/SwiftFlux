@@ -1,21 +1,11 @@
-//
-//  Store.swift
-//  SwiftFlux
-//
-//  Created by Kenichi Yonekawa on 7/31/15.
-//  Copyright (c) 2015 mog2dev. All rights reserved.
-//
-
-import Foundation
-
 public typealias StoreListenerToken = String
 
-public protocol Store : AnyObject {
-}
+public protocol Store : AnyObject {}
 
 private var EventEmitterObjectKey: UInt8 = 0
 
 extension Store {
+
     private var eventEmitter: EventEmitter {
         guard let eventEmitter = objc_getAssociatedObject(self, &EventEmitterObjectKey) as? EventEmitter else {
             let eventEmitter = DefaultEventEmitter()
@@ -50,9 +40,11 @@ public protocol EventEmitter {
 }
 
 public class DefaultEventEmitter: EventEmitter {
+
     private var eventListeners: [StoreListenerToken: EventListener] = [:]
 
     public init() {}
+
     deinit {
         eventListeners.removeAll()
     }
