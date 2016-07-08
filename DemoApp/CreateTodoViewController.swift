@@ -1,11 +1,3 @@
-//
-//  CreateTodoViewController.swift
-//  SwiftFlux
-//
-//  Created by Kenichi Yonekawa on 11/20/15.
-//  Copyright © 2015 mog2dev. All rights reserved.
-//
-
 import UIKit
 import SwiftFlux
 

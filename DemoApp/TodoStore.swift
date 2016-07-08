@@ -1,16 +1,7 @@
-//
-//  TodoStore.swift
-//  SwiftFlux
-//
-//  Created by Kenichi Yonekawa on 8/1/15.
-//  Copyright (c) 2015 mog2dev. All rights reserved.
-//
-
-import Foundation
 import SwiftFlux
-import Result
 
-class TodoStore : Store {
+class TodoStore: Store {
+
     private(set) var todos = [Todo]()
 
     init() {
