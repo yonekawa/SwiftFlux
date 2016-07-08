@@ -2,24 +2,16 @@ public protocol Action {
 
     #if swift(>=2.2)
         associatedtype Payload
-        associatedtype Error: ErrorType = NSError
+        associatedtype Error: ErrorProtocol = NSError
     #else
         typealias Payload
         typealias Error: ErrorType = NSError
     #endif
 
-    func invoke(dispatcher: Dispatcher)
-}
+    #if swift(>=3)
+        func invoke(_ dispatcher: Dispatcher)
+    #else
+        func invoke(dispatcher: Dispatcher)
+    #endif
 
-public class ActionCreator {
-
-    private static let internalDefaultDispatcher = DefaultDispatcher()
-
-    public class var dispatcher: Dispatcher {
-        return internalDefaultDispatcher;
-    }
-
-    public class func invoke<T: Action>(action: T) {
-        action.invoke(self.dispatcher)
-    }
 }

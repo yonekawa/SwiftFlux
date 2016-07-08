@@ -8,7 +8,12 @@ class DispatcherSpec: XCTestCase {
 
     struct DispatcherTestAction: Action {
         typealias Payload = DispatcherTestModel
-        func invoke(dispatcher: Dispatcher) {}
+
+        #if swift(>=3)
+            func invoke(_ dispatcher: Dispatcher) {}
+        #else
+            func invoke(dispatcher: Dispatcher) {}
+        #endif
     }
 }
 
@@ -20,7 +25,12 @@ class DispatcherDispatchTests: XCTestCase {
 
     struct DispatcherTestAction: Action {
         typealias Payload = DispatcherTestModel
-        func invoke(dispatcher: Dispatcher) {}
+
+        #if swift(>=3)
+            func invoke(_ dispatcher: Dispatcher) {}
+        #else
+            func invoke(dispatcher: Dispatcher) {}
+        #endif
     }
 
     let dispatcher = DefaultDispatcher()
@@ -68,8 +78,13 @@ class DispatcherDispatchTests: XCTestCase {
 
         XCTAssertEqual(results.count, 2)
         XCTAssert(fails.isEmpty)
-        XCTAssertNotNil(results.indexOf("test1"))
-        XCTAssertNotNil(results.indexOf("test2"))
+        #if swift(>=3)
+            XCTAssertNotNil(results.index(of: "test1"))
+            XCTAssertNotNil(results.index(of: "test2"))
+        #else
+            XCTAssertNotNil(results.indexOf("test1"))
+            XCTAssertNotNil(results.indexOf("test2"))
+        #endif
     }
 
     func testActionFailed() {
@@ -91,7 +106,12 @@ class DispatcherWaitForTests: XCTestCase {
 
     struct DispatcherTestAction: Action {
         typealias Payload = DispatcherTestModel
-        func invoke(dispatcher: Dispatcher) {}
+
+        #if swift(>=3)
+            func invoke(_ dispatcher: Dispatcher) {}
+        #else
+            func invoke(dispatcher: Dispatcher) {}
+        #endif
     }
 
     let dispatcher = DefaultDispatcher()

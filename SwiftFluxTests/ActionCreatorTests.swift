@@ -9,31 +9,53 @@ class ActionCreatorTests: XCTestCase {
 
     struct ActionCreatorTestAction: Action {
         typealias Payload = ActionCreatorTestModel
-        func invoke(dispatcher: Dispatcher) {
-            dispatcher.dispatch(self, result: Result(value: ActionCreatorTestModel(name: "test")))
-        }
+        #if swift(>=3)
+            func invoke(_ dispatcher: Dispatcher) {
+                dispatcher.dispatch(self, result: Result(value: ActionCreatorTestModel(name: "test")))
+            }
+        #else
+            func invoke(dispatcher: Dispatcher) {
+                dispatcher.dispatch(self, result: Result(value: ActionCreatorTestModel(name: "test")))
+            }
+        #endif
     }
 
     struct ActionCreatorDefaultErrorAction: Action {
         typealias Payload = ActionCreatorTestModel
-        func invoke(dispatcher: Dispatcher) {
-            dispatcher.dispatch(self, result: Result(error: NSError(domain: "TEST00000", code: -1, userInfo: [:])))
-        }
+        #if swift(>=3)
+            func invoke(_ dispatcher: Dispatcher) {
+                dispatcher.dispatch(self, result: Result(error: NSError(domain: "TEST00000", code: -1, userInfo: [:])))
+            }
+        #else
+            func invoke(dispatcher: Dispatcher) {
+                dispatcher.dispatch(self, result: Result(error: NSError(domain: "TEST00000", code: -1, userInfo: [:])))
+            }
+        #endif
     }
 
-    enum ActionError: ErrorType {
+    enum ActionError: ErrorProtocol {
         case UnexpectedError(NSError)
     }
 
     struct ActionCreatorErrorAction: Action {
         typealias Payload = ActionCreatorTestModel
         typealias Error = ActionError
-        func invoke(dispatcher: Dispatcher) {
-            let error = ActionError.UnexpectedError(
-                NSError(domain: "TEST00000", code: -1, userInfo: [:])
-            )
-            dispatcher.dispatch(self, result: Result(error: error))
-        }
+
+        #if swift(>=3)
+            func invoke(_ dispatcher: Dispatcher) {
+                let error = ActionError.UnexpectedError(
+                    NSError(domain: "TEST00000", code: -1, userInfo: [:])
+                )
+                dispatcher.dispatch(self, result: Result(error: error))
+            }
+        #else
+            func invoke(dispatcher: Dispatcher) {
+                let error = ActionError.UnexpectedError(
+                    NSError(domain: "TEST00000", code: -1, userInfo: [:])
+                )
+                dispatcher.dispatch(self, result: Result(error: error))
+            }
+        #endif
     }
 
     var results = [String]()
@@ -87,7 +109,11 @@ class ActionCreatorTests: XCTestCase {
 
         XCTAssertEqual(results.count, 1)
         XCTAssert(fails.isEmpty)
-        XCTAssertNotNil(results.indexOf("test1"))
+        #if swift(>=3)
+            XCTAssertNotNil(results.index(of: "test1"))
+        #else
+            XCTAssertNotNil(results.indexOf("test1"))
+        #endif
     }
 
     func testWhenActionFailedWithErrorType() {
@@ -97,7 +123,11 @@ class ActionCreatorTests: XCTestCase {
         
         XCTAssertEqual(fails.count, 1)
         XCTAssert(results.isEmpty)
-        XCTAssertNotNil(fails.indexOf("fail2 ActionError"))
+        #if swift(>=3)
+            XCTAssertNotNil(fails.index(of: "fail2 ActionError"))
+        #else
+            XCTAssertNotNil(fails.indexOf("fail2 ActionError"))
+        #endif
     }
 
     func testWhenActionFailed() {
@@ -107,6 +137,10 @@ class ActionCreatorTests: XCTestCase {
         
         XCTAssertEqual(fails.count, 1)
         XCTAssert(results.isEmpty)
-        XCTAssertNotNil(fails.indexOf("fail3 NSError"))
+        #if swift(>=3)
+            XCTAssertNotNil(fails.index(of: "fail3 NSError"))
+        #else
+            XCTAssertNotNil(fails.indexOf("fail3 NSError"))
+        #endif
     }
 }

@@ -28,15 +28,27 @@ class StoreEmitChangeTests: XCTestCase {
     func testShoulFireEventCorrectly() {
         store1.emitChange()
         XCTAssertEqual(results.count, 1)
-        XCTAssertNotNil(results.indexOf("store1"))
+        #if swift(>=3)
+            XCTAssertNotNil(results.index(of: "store1"))
+        #else
+            XCTAssertNotNil(results.indexOf("store1"))
+        #endif
 
         store1.emitChange()
         XCTAssertEqual(results.count, 2)
-        XCTAssertNotNil(results.indexOf("store1"))
+        #if swift(>=3)
+            XCTAssertNil(results.index(of: "store2"))
+        #else
+            XCTAssertNil(results.indexOf("store2"))
+        #endif
 
         store2.emitChange()
-        XCTAssertEqual(results.count,3)
-        XCTAssertNotNil(results.indexOf("store2"))
+        XCTAssertEqual(results.count, 3)
+        #if swift(>=3)
+            XCTAssertNotNil(results.index(of: "store2"))
+        #else
+            XCTAssertNotNil(results.indexOf("store2"))
+        #endif
     }
 }
 
@@ -65,13 +77,25 @@ class StoreUnsubscribeTests: XCTestCase {
     func testShouldUnsubscribeCollectly() {
         store1.emitChange()
         XCTAssertEqual(results.count, 1)
-        XCTAssertNotNil(results.indexOf("store1"))
+        #if swift(>=3)
+            XCTAssertNotNil(results.index(of: "store1"))
+        #else
+            XCTAssertNotNil(results.indexOf("store1"))
+        #endif
 
         results = []
 
-        store1.unsubscribe(token)
+        #if swift(>=3)
+            store1.unsubscribe(token)
+        #else
+            store1.unsubscribe(token)
+        #endif
         store1.emitChange()
         XCTAssertEqual(results.count, 0)
-        XCTAssertNil(results.indexOf("store1"))
+        #if swift(>=3)
+            XCTAssertNil(results.index(of: "store1"))
+        #else
+            XCTAssertNil(results.indexOf("store1"))
+        #endif
     }
 }

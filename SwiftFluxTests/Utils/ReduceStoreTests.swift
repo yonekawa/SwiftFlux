@@ -7,16 +7,30 @@ class ReduceStoreTests: XCTestCase {
         struct Plus: Action {
             typealias Payload = Int
             let number: Int
-            func invoke(dispatcher: Dispatcher) {
-                dispatcher.dispatch(self, result: Result(value: number))
-            }
+
+            #if swift(>=3)
+                func invoke(_ dispatcher: Dispatcher) {
+                    dispatcher.dispatch(self, result: Result(value: number))
+                }
+            #else
+                func invoke(dispatcher: Dispatcher) {
+                    dispatcher.dispatch(self, result: Result(value: number))
+                }
+            #endif
         }
         struct Minus: Action {
             typealias Payload = Int
             let number: Int
-            func invoke(dispatcher: Dispatcher) {
-                dispatcher.dispatch(self, result: Result(value: number))
-            }
+
+            #if swift(>=3)
+                func invoke(_ dispatcher: Dispatcher) {
+                    dispatcher.dispatch(self, result: Result(value: number))
+                }
+            #else
+                func invoke(dispatcher: Dispatcher) {
+                    dispatcher.dispatch(self, result: Result(value: number))
+                }
+            #endif
         }
     }
 

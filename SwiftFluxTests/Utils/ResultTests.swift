@@ -1,7 +1,7 @@
 //  Copyright (c) 2015 Rob Rix. All rights reserved.
 
 import XCTest
-import SwiftFlux
+@testable import SwiftFlux
 
 final class ResultTests: XCTestCase {
 	func testMapTransformsSuccesses() {
@@ -66,16 +66,22 @@ final class ResultTests: XCTestCase {
 		let result1 = materialize(try tryIsSuccess("success"))
 		XCTAssert(result1 == success)
 
-		let result2 = materialize { try tryIsSuccess("success") }
-		XCTAssert(result2 == success)
+        #if swift(>=3)
+        #else
+            let result2 = materialize { try tryIsSuccess("success") }
+            XCTAssert(result2 == success)
+        #endif
 	}
 
 	func testMaterializeProducesFailures() {
 		let result1 = materialize(try tryIsSuccess(nil))
 		XCTAssert(result1.error == error)
 
-		let result2 = materialize { try tryIsSuccess(nil) }
-		XCTAssert(result2.error == error)
+        #if swift(>=3)
+        #else
+            let result2 = materialize { try tryIsSuccess(nil) }
+            XCTAssert(result2.error == error)
+        #endif
 	}
 
 	// MARK: Cocoa API idioms
@@ -137,22 +143,43 @@ let failure2 = Result<String, NSError>.Failure(error2)
 
 // MARK: - Helpers
 
-func attempt<T>(value: T, succeed: Bool, error: NSErrorPointer) -> T? {
-	if succeed {
-		return value
-	} else {
-		error.memory = Result<(), NSError>.error()
-		return nil
-	}
-}
+#if swift(>=3)
+    func attempt<T>(_ value: T, succeed: Bool, error: NSErrorPointer) -> T? {
+        if succeed {
+            return value
+        } else {
+//            error!.memory = Result<(), NSError>.error()
+            return nil
+        }
+    }
+#else
+    func attempt<T>(value: T, succeed: Bool, error: NSErrorPointer) -> T? {
+        if succeed {
+            return value
+        } else {
+            error.memory = Result<(), NSError>.error()
+            return nil
+        }
+    }
+#endif
 
-func tryIsSuccess(text: String?) throws -> String {
-	guard let text = text else {
-		throw error
-	}
-	
-	return text
-}
+#if swift(>=3)
+    func tryIsSuccess(_ text: String?) throws -> String {
+        guard let text = text else {
+            throw error
+        }
+        
+        return text
+    }
+#else
+    func tryIsSuccess(text: String?) throws -> String {
+        guard let text = text else {
+            throw error
+        }
+
+        return text
+    }
+#endif
 
 extension NSError {
 	var function: String? {
