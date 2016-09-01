@@ -10,8 +10,8 @@ import Foundation
 import Result
 
 public protocol Action {
-    typealias Payload
-    typealias Error: ErrorType = NSError
+    associatedtype Payload
+    associatedtype Error: ErrorType = NSError
     func invoke(dispatcher: Dispatcher)
 }
 
