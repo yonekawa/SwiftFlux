@@ -15,7 +15,7 @@ before_install:
 
 script:
   - pod repo update
-  - pod spec lint SwiftFlux.podspec
+  - pod spec lint SwiftFlux.podspec --allow-warnings
   - set -o pipefail
   - carthage build --no-skip-current --platform Mac,iOS
   - rake test:ios
