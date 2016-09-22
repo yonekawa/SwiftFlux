@@ -13,7 +13,7 @@ public class StoreBase: Store {
 
     public init() {}
 
-    public func register<T: Action>(type: T.Type, handler: (Result<T.Payload, T.Error>) -> ()) -> DispatchToken {
+    public func register<T: Action>(type: T.Type, handler: (Result) -> ()) -> DispatchToken {
         let dispatchToken = ActionCreator.dispatcher.register(type) { (result) -> () in
             handler(result)
         }
