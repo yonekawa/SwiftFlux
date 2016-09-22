@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = "SwiftFlux"
-  s.version  = "0.5.0"
+  s.version  = "0.6.0"
   s.summary  = "Type-Safe Flux implementation for Swift."
   s.homepage = "https://github.com/yonekawa/SwiftFlux"
   s.author = { "Kenichi Yonekawa" => "tcgrim@gmail.com" }
@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 
   s.source = {
     git: "https://github.com/yonekawa/SwiftFlux.git",
-    tag: "v0.5.0",
+    tag: "v0.6.0",
   }
   s.source_files = "SwiftFlux/**/*.swift"
 
@@ -37,5 +37,5 @@ Pod::Spec.new do |s|
     LICENSE
   }
 
-  s.dependency "Result", "~> 1.0.0"
+  s.dependency "Result", "~> 2.1.0"
 end
