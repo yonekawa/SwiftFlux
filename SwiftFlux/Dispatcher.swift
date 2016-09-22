@@ -12,10 +12,10 @@ import Result
 public typealias DispatchToken = String
 
 public protocol Dispatcher {
-    func dispatch<T: Action>(action: T, result: Result)
-    func register<T: Action>(type: T.Type, handler: (Result) -> ()) -> DispatchToken
+    func dispatch<T: Action>(action: T, result: Result<T.Payload, T.Error>)
+    func register<T: Action>(type: T.Type, handler: (Result<T.Payload, T.Error>) -> ()) -> DispatchToken
     func unregister(dispatchToken: DispatchToken)
-    func waitFor<T: Action>(dispatchTokens: [DispatchToken], type: T.Type, result: Result)
+    func waitFor<T: Action>(dispatchTokens: [DispatchToken], type: T.Type, result: Result<T.Payload, T.Error>)
 }
 
 public class DefaultDispatcher: Dispatcher {
@@ -33,11 +33,11 @@ public class DefaultDispatcher: Dispatcher {
         callbacks.removeAll()
     }
 
-    public func dispatch<T: Action>(action: T, result: Result) {
+    public func dispatch<T: Action>(action: T, result: Result<T.Payload, T.Error>) {
         dispatch(action.dynamicType, result: result)
     }
 
-    public func register<T: Action>(type: T.Type, handler: (Result) -> Void) -> DispatchToken {
+    public func register<T: Action>(type: T.Type, handler: (Result<T.Payload, T.Error>) -> Void) -> DispatchToken {
         let nextDispatchToken = NSUUID().UUIDString
         callbacks[nextDispatchToken] = DispatchCallback<T>(type: type, handler: handler)
         return nextDispatchToken
@@ -47,7 +47,7 @@ public class DefaultDispatcher: Dispatcher {
         callbacks.removeValueForKey(dispatchToken)
     }
 
-    public func waitFor<T: Action>(dispatchTokens: [DispatchToken], type: T.Type, result: Result) {
+    public func waitFor<T: Action>(dispatchTokens: [DispatchToken], type: T.Type, result: Result<T.Payload, T.Error>) {
         for dispatchToken in dispatchTokens {
             guard let callback = callbacks[dispatchToken] as? DispatchCallback<T> else { continue }
             switch callback.status {
@@ -62,7 +62,7 @@ public class DefaultDispatcher: Dispatcher {
         }
     }
 
-    private func dispatch<T: Action>(type: T.Type, result: Result) {
+    private func dispatch<T: Action>(type: T.Type, result: Result<T.Payload, T.Error>) {
         objc_sync_enter(self)
 
         startDispatching(type)
@@ -80,7 +80,7 @@ public class DefaultDispatcher: Dispatcher {
         }
     }
 
-    private func invokeCallback<T: Action>(dispatchToken: DispatchToken, type: T.Type, result: Result) {
+    private func invokeCallback<T: Action>(dispatchToken: DispatchToken, type: T.Type, result: Result<T.Payload, T.Error>) {
         guard let callback = callbacks[dispatchToken] as? DispatchCallback<T> else { return }
         guard callback.status == .Waiting else { return }
 
@@ -92,10 +92,10 @@ public class DefaultDispatcher: Dispatcher {
 
 private class DispatchCallback<T: Action> {
     let type: T.Type
-    let handler: (Result) -> ()
+    let handler: (Result<T.Payload, T.Error>) -> ()
     var status = DefaultDispatcher.Status.Waiting
 
-    init(type: T.Type, handler: (Result) -> ()) {
+    init(type: T.Type, handler: (Result<T.Payload, T.Error>) -> ()) {
         self.type = type
         self.handler = handler
     }
