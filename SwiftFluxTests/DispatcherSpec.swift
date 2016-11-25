@@ -34,19 +34,19 @@ class DispatcherSpec: QuickSpec {
                 fails = []
                 callbacks = []
 
-                let id1 = dispatcher.register(DispatcherTestAction.self) { (result) in
+                let id1 = dispatcher.register(type: DispatcherTestAction.self) { (result) in
                     switch result {
-                    case .Success(let box):
+                    case .success(let box):
                         results.append("\(box.name)1")
-                    case .Failure(_):
+                    case .failure(_):
                         fails.append("fail")
                     }
                 }
-                let id2 = dispatcher.register(DispatcherTestAction.self) { (result) in
+                let id2 = dispatcher.register(type: DispatcherTestAction.self) { (result) in
                     switch result {
-                    case .Success(let box):
+                    case .success(let box):
                         results.append("\(box.name)2")
-                    case .Failure(_):
+                    case .failure(_):
                         fails.append("fail")
                     }
                 }
@@ -56,13 +56,13 @@ class DispatcherSpec: QuickSpec {
 
             afterEach { () in
                 for id in callbacks {
-                    dispatcher.unregister(id)
+                    dispatcher.unregister(dispatchToken: id)
                 }
             }
             
             context("when action succeeded") {
                 it("should dispatch to registered callback handlers") {
-                    dispatcher.dispatch(DispatcherTestAction(), result: Result(value: DispatcherTestModel(name: "test")))
+                    dispatcher.dispatch(action: DispatcherTestAction(), result: Result(value: DispatcherTestModel(name: "test")))
                     expect(results.count).to(equal(2))
                     expect(fails.isEmpty).to(beTruthy())
                     expect(results).to(contain("test1", "test2"))
@@ -71,7 +71,7 @@ class DispatcherSpec: QuickSpec {
             
             context("when action failed") {
                 it("should dispatch to registered callback handlers") {
-                    dispatcher.dispatch(DispatcherTestAction(), result: Result(error: NSError(domain: "TEST0000", code: -1, userInfo: [:])))
+                    dispatcher.dispatch(action: DispatcherTestAction(), result: Result(error: NSError(domain: "TEST0000", code: -1, userInfo: [:])))
                     expect(fails.count).to(equal(2))
                     expect(results.isEmpty).to(beTruthy())
                 }
@@ -89,27 +89,27 @@ class DispatcherSpec: QuickSpec {
                 results = []
                 callbacks = []
 
-                id1 = dispatcher.register(DispatcherTestAction.self) { (result) in
+                id1 = dispatcher.register(type: DispatcherTestAction.self) { (result) in
                     switch result {
-                    case .Success(let box):
-                        dispatcher.waitFor([id2], type: DispatcherTestAction.self, result: result)
+                    case .success(let box):
+                        dispatcher.waitFor(dispatchTokens: [id2], type: DispatcherTestAction.self, result: result)
                         results.append("\(box.name)1")
                     default:
                         break
                     }
                 }
-                id2 = dispatcher.register(DispatcherTestAction.self) { (result) in
+                id2 = dispatcher.register(type: DispatcherTestAction.self) { (result) in
                     switch result {
-                    case .Success(let box):
-                        dispatcher.waitFor([id3], type: DispatcherTestAction.self, result: result)
+                    case .success(let box):
+                        dispatcher.waitFor(dispatchTokens: [id3], type: DispatcherTestAction.self, result: result)
                         results.append("\(box.name)2")
                     default:
                         break
                     }
                 }
-                id3 = dispatcher.register(DispatcherTestAction.self) { (result) in
+                id3 = dispatcher.register(type: DispatcherTestAction.self) { (result) in
                     switch result {
-                    case .Success(let box):
+                    case .success(let box):
                         results.append("\(box.name)3")
                     default:
                         break
@@ -122,12 +122,12 @@ class DispatcherSpec: QuickSpec {
 
             afterEach { () in
                 for id in callbacks {
-                    dispatcher.unregister(id)
+                    dispatcher.unregister(dispatchToken: id)
                 }
             }
 
             it("should wait for invoke callback") {
-                dispatcher.dispatch(DispatcherTestAction(), result: Result(value: DispatcherTestModel(name: "test")))
+                dispatcher.dispatch(action: DispatcherTestAction(), result: Result(value: DispatcherTestModel(name: "test")))
                 expect(results.count).to(equal(3))
                 expect(results[0]).to(equal("test3"))
                 expect(results[1]).to(equal("test2"))

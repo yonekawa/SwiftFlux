@@ -11,7 +11,7 @@ import Result
 
 public protocol Action {
     associatedtype Payload
-    associatedtype Error: ErrorType = NSError
+    associatedtype ActionError: Error = NSError
     func invoke(dispatcher: Dispatcher)
 }
 
@@ -22,6 +22,6 @@ public class ActionCreator {
     }
 
     public class func invoke<T: Action>(action: T) {
-        action.invoke(self.dispatcher)
+        action.invoke(dispatcher: self.dispatcher)
     }
 }

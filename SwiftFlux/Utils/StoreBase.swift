@@ -8,13 +8,13 @@
 
 import Result
 
-public class StoreBase: Store {
+open class StoreBase: Store {
     private var dispatchTokens: [DispatchToken] = []
 
     public init() {}
 
-    public func register<T: Action>(type: T.Type, handler: (Result<T.Payload, T.Error>) -> ()) -> DispatchToken {
-        let dispatchToken = ActionCreator.dispatcher.register(type) { (result) -> () in
+    public func register<T: Action>(type: T.Type, handler: @escaping (Result<T.Payload, T.ActionError>) -> ()) -> DispatchToken {
+        let dispatchToken = ActionCreator.dispatcher.register(type: type) { (result) -> () in
             handler(result)
         }
         dispatchTokens.append(dispatchToken)
@@ -23,7 +23,7 @@ public class StoreBase: Store {
 
     public func unregister() {
         dispatchTokens.forEach { (dispatchToken) -> () in
-            ActionCreator.dispatcher.unregister(dispatchToken)
+            ActionCreator.dispatcher.unregister(dispatchToken: dispatchToken)
         }
     }
 }

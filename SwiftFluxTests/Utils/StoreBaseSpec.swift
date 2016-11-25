@@ -18,14 +18,14 @@ class StoreBaseSpec: QuickSpec {
             typealias Payload = Int
             let number: Int
             func invoke(dispatcher: Dispatcher) {
-                dispatcher.dispatch(self, result: Result(value: number))
+                dispatcher.dispatch(action: self, result: Result(value: number))
             }
         }
         struct Minus: Action {
             typealias Payload = Int
             let number: Int
             func invoke(dispatcher: Dispatcher) {
-                dispatcher.dispatch(self, result: Result(value: number))
+                dispatcher.dispatch(action: self, result: Result(value: number))
             }
         }
     }
@@ -36,9 +36,9 @@ class StoreBaseSpec: QuickSpec {
         override init() {
             super.init()
 
-            self.register(CalculateActions.Plus.self) { (result) in
+            let _ = self.register(type: CalculateActions.Plus.self) { (result) in
                 switch result {
-                case .Success(let value):
+                case .success(let value):
                     self.number += value
                     self.emitChange()
                 default:
@@ -46,9 +46,9 @@ class StoreBaseSpec: QuickSpec {
                 }
             }
             
-            self.register(CalculateActions.Minus.self) { (result) in
+            let _ = self.register(type: CalculateActions.Minus.self) { (result) in
                 switch result {
-                case .Success(let value):
+                case .success(let value):
                     self.number -= value
                     self.emitChange()
                 default:
@@ -64,9 +64,9 @@ class StoreBaseSpec: QuickSpec {
 
         beforeEach { () in
             results = []
-            store.subscribe { () in
+            let _ = store.subscribe(store: store, handler: {
                 results.append(store.number)
-            }
+            })
         }
 
         afterEach { () in
@@ -74,10 +74,10 @@ class StoreBaseSpec: QuickSpec {
         }
 
         it("should calculate state with number") {
-            ActionCreator.invoke(CalculateActions.Plus(number: 3))
-            ActionCreator.invoke(CalculateActions.Plus(number: 3))
-            ActionCreator.invoke(CalculateActions.Minus(number: 2))
-            ActionCreator.invoke(CalculateActions.Minus(number: 1))
+            ActionCreator.invoke(action: CalculateActions.Plus(number: 3))
+            ActionCreator.invoke(action: CalculateActions.Plus(number: 3))
+            ActionCreator.invoke(action: CalculateActions.Minus(number: 2))
+            ActionCreator.invoke(action: CalculateActions.Minus(number: 1))
 
             expect(results.count).to(equal(4))
             expect(results[0]).to(equal(3))

@@ -796,7 +796,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0.1;
 				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Debug;
@@ -824,7 +824,7 @@
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0.1;
 				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Release;
@@ -853,7 +853,7 @@
 				PRODUCT_NAME = SwiftFluxTests;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0.1;
 				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Debug;
@@ -876,7 +876,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.mog2dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SwiftFluxTests;
 				SDKROOT = macosx;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0.1;
 				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Release;
@@ -899,7 +899,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.mog2dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -917,7 +917,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.mog2dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
@@ -1046,7 +1046,7 @@
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -1073,7 +1073,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.mog2dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
@@ -1094,7 +1094,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.mog2dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SwiftFluxTests;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -1111,7 +1111,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.mog2dev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SwiftFluxTests;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};

@@ -15,28 +15,30 @@ class TodoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.todoStore.subscribe { () in
+        let _ = self.todoStore.subscribe(store: self.todoStore) {
             self.tableView.reloadData()
         }
-        ActionCreator.invoke(TodoAction.Fetch())
+        ActionCreator.invoke(action: TodoAction.Fetch())
     }
 
     @IBAction func createTodo() {
-        ActionCreator.invoke(TodoAction.Create(title: "New ToDo"))
+        ActionCreator.invoke(action: TodoAction.Create(title: "New ToDo"))
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.todoStore.todos.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TodoCell") as UITableViewCell!
-        cell.textLabel!.text = self.todoStore.todos[indexPath.row].title
-        return cell
-    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoCell") as UITableViewCell!
+        cell?.textLabel!.text = self.todoStore.todos[indexPath.row].title
+        return cell!
 
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        ActionCreator.invoke(TodoAction.Delete(index: indexPath.row))
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        ActionCreator.invoke(action: TodoAction.Delete(index: indexPath.row))
+    }
+    
 }
 

@@ -12,10 +12,10 @@ import Result
 public typealias DispatchToken = String
 
 public protocol Dispatcher {
-    func dispatch<T: Action>(action: T, result: Result<T.Payload, T.Error>)
-    func register<T: Action>(type: T.Type, handler: (Result<T.Payload, T.Error>) -> ()) -> DispatchToken
+    func dispatch<T: Action>(action: T, result: Result<T.Payload, T.ActionError>)
+    func register<T: Action>(type: T.Type, handler: @escaping (Result<T.Payload, T.ActionError>) -> Void) -> DispatchToken
     func unregister(dispatchToken: DispatchToken)
-    func waitFor<T: Action>(dispatchTokens: [DispatchToken], type: T.Type, result: Result<T.Payload, T.Error>)
+    func waitFor<T: Action>(dispatchTokens: [DispatchToken], type: T.Type, result: Result<T.Payload, T.ActionError>)
 }
 
 public class DefaultDispatcher: Dispatcher {
@@ -33,21 +33,21 @@ public class DefaultDispatcher: Dispatcher {
         callbacks.removeAll()
     }
 
-    public func dispatch<T: Action>(action: T, result: Result<T.Payload, T.Error>) {
-        dispatch(action.dynamicType, result: result)
+    public func dispatch<T: Action>(action: T, result: Result<T.Payload, T.ActionError>) {
+        dispatch(type: type(of: action), result: result)
     }
 
-    public func register<T: Action>(type: T.Type, handler: (Result<T.Payload, T.Error>) -> Void) -> DispatchToken {
-        let nextDispatchToken = NSUUID().UUIDString
+    public func register<T: Action>(type: T.Type, handler: @escaping (Result<T.Payload, T.ActionError>) -> Void) -> DispatchToken {
+        let nextDispatchToken = NSUUID().uuidString
         callbacks[nextDispatchToken] = DispatchCallback<T>(type: type, handler: handler)
         return nextDispatchToken
     }
 
     public func unregister(dispatchToken: DispatchToken) {
-        callbacks.removeValueForKey(dispatchToken)
+        callbacks.removeValue(forKey: dispatchToken)
     }
 
-    public func waitFor<T: Action>(dispatchTokens: [DispatchToken], type: T.Type, result: Result<T.Payload, T.Error>) {
+    public func waitFor<T: Action>(dispatchTokens: [DispatchToken], type: T.Type, result: Result<T.Payload, T.ActionError>) {
         for dispatchToken in dispatchTokens {
             guard let callback = callbacks[dispatchToken] as? DispatchCallback<T> else { continue }
             switch callback.status {
@@ -57,17 +57,17 @@ public class DefaultDispatcher: Dispatcher {
                 // Circular dependency detected while
                 continue
             default:
-                invokeCallback(dispatchToken, type: type, result: result)
+                invokeCallback(dispatchToken: dispatchToken, type: type, result: result)
             }
         }
     }
 
-    private func dispatch<T: Action>(type: T.Type, result: Result<T.Payload, T.Error>) {
+    private func dispatch<T: Action>(type: T.Type, result: Result<T.Payload, T.ActionError>) {
         objc_sync_enter(self)
 
-        startDispatching(type)
+        startDispatching(type: type)
         for dispatchToken in callbacks.keys {
-            invokeCallback(dispatchToken, type: type, result: result)
+            invokeCallback(dispatchToken: dispatchToken, type: type, result: result)
         }
 
         objc_sync_exit(self)
@@ -80,7 +80,7 @@ public class DefaultDispatcher: Dispatcher {
         }
     }
 
-    private func invokeCallback<T: Action>(dispatchToken: DispatchToken, type: T.Type, result: Result<T.Payload, T.Error>) {
+    private func invokeCallback<T: Action>(dispatchToken: DispatchToken, type: T.Type, result: Result<T.Payload, T.ActionError>) {
         guard let callback = callbacks[dispatchToken] as? DispatchCallback<T> else { return }
         guard callback.status == .Waiting else { return }
 
@@ -92,10 +92,10 @@ public class DefaultDispatcher: Dispatcher {
 
 private class DispatchCallback<T: Action> {
     let type: T.Type
-    let handler: (Result<T.Payload, T.Error>) -> ()
+    let handler: (Result<T.Payload, T.ActionError>) -> ()
     var status = DefaultDispatcher.Status.Waiting
 
-    init(type: T.Type, handler: (Result<T.Payload, T.Error>) -> ()) {
+    init(type: T.Type, handler: @escaping (Result<T.Payload, T.ActionError>) -> ()) {
         self.type = type
         self.handler = handler
     }
