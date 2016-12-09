@@ -11,7 +11,7 @@ git:
 before_install:
   - git submodule update --init --recursive
   - brew update
-  - brew install carthage
+  - brew ls --versions carthage || brew install carthage
 
 script:
   - pod repo update
