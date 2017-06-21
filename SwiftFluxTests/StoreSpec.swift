@@ -24,12 +24,12 @@ class StoreSpec: QuickSpec {
 
             beforeEach { () in
                 results = []
-                store1.subscribe { () in
+                let _ = store1.subscribe(store: store1, handler: {
                     results.append("store1")
-                }
-                store2.subscribe { () in
+                })
+                let _ = store2.subscribe(store: store2, handler: { 
                     results.append("store2")
-                }
+                })
             }
 
             afterEach { () in
@@ -58,9 +58,9 @@ class StoreSpec: QuickSpec {
 
             beforeEach { () in
                 results = []
-                token = store1.subscribe { () in
+                token = store1.subscribe(store: store1, handler: { 
                     results.append("store1")
-                }
+                })
             }
 
             afterEach { () in
@@ -75,7 +75,7 @@ class StoreSpec: QuickSpec {
 
                 results = []
 
-                store1.unsubscribe(token)
+                store1.unsubscribe(listenerToken: token)
                 store1.emitChange()
                 expect(results.count).to(equal(0))
                 expect(results).toNot(contain("store1"))

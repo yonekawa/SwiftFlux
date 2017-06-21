@@ -8,7 +8,7 @@
 
 import Result
 
-public class ReduceStore<T: Equatable>: StoreBase {
+open class ReduceStore<T: Equatable>: StoreBase {
     public init(initialState: T) {
         self.initialState = initialState
         super.init()
@@ -20,8 +20,8 @@ public class ReduceStore<T: Equatable>: StoreBase {
         return internalState ?? initialState
     }
 
-    public func reduce<A: Action>(type: A.Type, reducer: (T, Result<A.Payload, A.Error>) -> T) -> DispatchToken {
-        return self.register(type) { (result) in
+    public func reduce<A: Action>(type: A.Type, reducer: @escaping (T, Result<A.Payload, A.ActionError>) -> T) -> DispatchToken {
+        return self.register(type: type) { (result) in
             let startState = self.state
             self.internalState = reducer(self.state, result)
             if startState != self.state {

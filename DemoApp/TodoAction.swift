@@ -19,7 +19,7 @@ struct TodoAction {
                 Todo(title: "ToDo 2"),
                 Todo(title: "ToDo 3")
             ]
-            dispatcher.dispatch(self, result: Result(value: todos))
+            dispatcher.dispatch(action: self, result: Result(value: todos))
         }
     }
 
@@ -28,7 +28,7 @@ struct TodoAction {
         let title: String
 
         func invoke(dispatcher: Dispatcher) {
-            dispatcher.dispatch(self, result: Result(value: Todo(title: title)))
+            dispatcher.dispatch(action: self, result: Result(value: Todo(title: title)))
         }
     }
 
@@ -37,7 +37,7 @@ struct TodoAction {
         let index: Int
         
         func invoke(dispatcher: Dispatcher) {
-            dispatcher.dispatch(self, result: Result(value: index))
+            dispatcher.dispatch(action: self, result: Result(value: index))
         }
     }
 }

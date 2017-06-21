@@ -12,7 +12,7 @@ import SwiftFlux
 class CreateTodoViewController: UITableViewController {
     @IBOutlet weak var titleTextField: UITextField?
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         titleTextField?.becomeFirstResponder()
     }
@@ -21,11 +21,11 @@ class CreateTodoViewController: UITableViewController {
         guard let title = titleTextField?.text else { return }
         guard title.characters.count > 0 else { return }
 
-        ActionCreator.invoke(TodoAction.Create(title: title))
+        ActionCreator.invoke(action: TodoAction.Create(title: title))
         self.dismiss()
     }
 
     @IBAction func dismiss() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
